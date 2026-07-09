@@ -49,13 +49,8 @@ Building agentic AI and ML-system prototypes`,
     "Research Assistantship · GenAI / Multimodal Learning · Efficient AI · Agentic AI Systems",
   focus: "Multimodal / Multi-Agent AI Research · AI Systems Engineering",
   availability: "Research Assistantship · Research Collaboration",
-  intro: `I'm Zhenkai Zhang (Ken), an incoming Data Science student at PolyU with a background in mathematical modeling, machine learning, and AI system development.
-
-My undergraduate work spans research-oriented machine learning and industry-oriented AI development. My publication record includes a first-author AINIT 2025 paper on advanced MoE architectures, a first-author Applied Sciences paper on Olympic medal prediction, a third-author Sustainability paper on thin-walled steel-ply-bamboo structural behavior prediction, a second-author robotic vision review, and a third-author DEIC 2025 paper on digital service trade. I also received the MCM Meritorious Winner award and maintained a GPA of 88/100.
-
-On the engineering side, I participated in the development of the EnergyQuant investment platform, independently built a Finance Agent system for analyzing 4,000+ stocks, and launched two mini programs using Codex.
-
-My current interests lie in efficient generative AI, Mixture-of-Experts, model adaptation and reuse, and agentic AI systems. I am seeking research assistantship opportunities where I can contribute to experiments, benchmarking, system prototyping, and paper writing.`,
+  intro:
+    "I’m Zhenkai Zhang (Ken), an incoming Data Science student at PolyU, interested in efficient generative AI, Mixture-of-Experts, model adaptation, and agentic AI systems. My work combines research experience in ML/AI papers with hands-on AI system building, including Finance-Agent, a multi-agent A-share research prototype. I’m looking for RA opportunities where I can contribute to experiments, benchmarking, system prototyping, and paper writing.",
 };
 
 export const homeLanes = [
@@ -95,7 +90,10 @@ export const applications: TimelineEntry[] = [
       "Used factor analysis to reduce ten influencing variables into principal components.",
       "Treated as the featured research card on this page.",
     ],
-    actions: [{ label: "Paper", href: "https://doi.org/10.3390/app15147793", external: true }],
+    actions: [
+      { label: "View Brief", href: "/brief/olympic-prediction" },
+      { label: "Paper", href: "https://doi.org/10.3390/app15147793", external: true },
+    ],
     emphasis: "featured",
   },
   {
@@ -111,6 +109,7 @@ export const applications: TimelineEntry[] = [
       "Reviewed seven representative post-2022 MoE architectures.",
       "Compared MoE and dense Transformer architectures across five dimensions.",
     ],
+    actions: [{ label: "View Brief", href: "/brief/moe" }],
     emphasis: "compact",
   },
   {
@@ -122,6 +121,10 @@ export const applications: TimelineEntry[] = [
     description:
       "A review-oriented research work on robotic vision, computer vision, machine learning, technological evolution, challenges, and industrial applications.",
     tags: ["Computer Vision", "Robotics", "Perception", "Review"],
+    actions: [
+      { label: "View Brief", href: "/brief/robot-vision" },
+      { label: "Paper", href: "https://doi.org/10.30967/IJCRSET/Yujie-Gao/174", external: true },
+    ],
     emphasis: "compact",
   },
   {
@@ -134,7 +137,10 @@ export const applications: TimelineEntry[] = [
     description:
       "A machine-learning study for predicting connection behavior in eco-designed thin-walled steel-ply-bamboo structures.",
     tags: ["Sustainability", "Machine Learning", "Structural Mechanics", "Mechanical Properties"],
-    actions: [{ label: "Paper", href: "https://doi.org/10.3390/su17156753", external: true }],
+    actions: [
+      { label: "View Brief", href: "/brief/sustainability-bamboo" },
+      { label: "Paper", href: "https://doi.org/10.3390/su17156753", external: true },
+    ],
     emphasis: "medium",
   },
   {
@@ -147,6 +153,7 @@ export const applications: TimelineEntry[] = [
     description:
       "Accepted by DEIC 2025. The paper studies digital service trade export potential in BRI countries using stochastic frontier gravity modeling and mediation-pathway analysis.",
     tags: ["Digital Economy", "Stochastic Frontier Gravity Model", "Mediation Analysis", "BRI"],
+    actions: [{ label: "View Brief", href: "/brief/deic-digital-trade" }],
     emphasis: "compact",
   },
 ];
@@ -248,7 +255,10 @@ export const developmentProjects: DevelopmentProject[] = [
       "Added summary agent, evaluator agent and reflection-based replanning loop.",
       "Integrated Qwen3-8B LoRA news factor model.",
     ],
-    actions: [{ label: "GitHub", href: "https://github.com/ken-ab/Finance-Agent", external: true }],
+    actions: [
+      { label: "View Brief", href: "/brief/finance-agent" },
+      { label: "GitHub", href: "https://github.com/ken-ab/Finance-Agent", external: true },
+    ],
     emphasis: "featured",
     sections: {
       problem:

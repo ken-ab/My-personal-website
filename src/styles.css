@@ -884,6 +884,274 @@ img {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.case-study-page {
+  --tone: var(--wine);
+}
+
+.case-study-page.tone-career {
+  --tone: var(--gold);
+}
+
+.case-study-page.tone-systems {
+  --tone: var(--green);
+}
+
+.case-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 48px;
+  align-items: end;
+  padding: 28px 0 36px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.case-hero h1,
+.case-section-heading h2,
+.case-links-card h2,
+.case-evidence-card h2 {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.case-hero h1 {
+  max-width: 940px;
+  margin-top: 18px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.98;
+}
+
+.case-subtitle {
+  max-width: 820px;
+  margin-top: 24px;
+  color: var(--ink-soft);
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.case-meta-card,
+.case-summary-card,
+.case-visual-card,
+.case-evidence-card,
+.case-links-card,
+.method-node {
+  border: 1px solid var(--paper-line);
+  border-radius: 8px;
+  background: rgba(251, 250, 245, 0.72);
+  box-shadow: 0 16px 42px rgba(49, 41, 31, 0.06);
+}
+
+.case-meta-card {
+  padding: 22px;
+  border-top: 4px solid var(--tone);
+}
+
+.case-meta-card span {
+  color: var(--tone);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.case-meta-card strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.case-meta-card p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.case-summary-card {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 28px;
+  margin-top: 34px;
+  padding: 26px;
+  border-left: 4px solid var(--tone);
+}
+
+.case-summary-card span {
+  color: var(--tone);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.case-summary-card p {
+  color: var(--ink-soft);
+  font-size: 21px;
+  line-height: 1.55;
+}
+
+.case-section {
+  margin-top: 44px;
+}
+
+.case-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.62fr);
+  gap: 42px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+.case-section-heading h2,
+.case-links-card h2,
+.case-evidence-card h2 {
+  margin-top: 10px;
+  font-size: 34px;
+  line-height: 1.08;
+}
+
+.case-section-heading p:not(.section-eyebrow) {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.case-visual-card {
+  overflow: hidden;
+  background: var(--paper-soft);
+}
+
+.case-visual-card img {
+  width: 100%;
+  max-height: 760px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.case-visual-card figcaption {
+  padding: 14px 18px;
+  border-top: 1px solid var(--paper-line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.method-diagram {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.method-node {
+  position: relative;
+  min-height: 214px;
+  padding: 20px;
+  border-top: 4px solid var(--tone);
+  overflow: hidden;
+}
+
+.method-diagram.is-compact .method-node {
+  min-height: 132px;
+}
+
+.method-node::before {
+  position: absolute;
+  right: -34px;
+  bottom: -42px;
+  width: 118px;
+  height: 118px;
+  content: "";
+  border: 1px solid color-mix(in srgb, var(--tone) 22%, transparent);
+  border-radius: 50%;
+}
+
+.method-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--tone) 28%, var(--paper-line));
+  border-radius: 999px;
+  color: var(--tone);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.method-node h3 {
+  margin-top: 18px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.method-node p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.method-arrow {
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  border-top: 1px solid var(--tone);
+  border-right: 1px solid var(--tone);
+  background: var(--paper);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.case-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 44px;
+}
+
+.case-evidence-card {
+  padding: 26px;
+}
+
+.case-evidence-card ul {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.case-evidence-card li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.case-evidence-card li::before {
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 8px;
+  height: 1px;
+  content: "";
+  background: var(--tone);
+}
+
+.case-links-card {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 44px;
+  padding: 26px;
+  border-top: 4px solid var(--tone);
+}
+
 .contact-page {
   min-height: calc(100vh - 74px);
   display: grid;
@@ -957,6 +1225,15 @@ img {
   .system-modules {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .method-diagram,
+  .case-evidence-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .method-arrow {
+    display: none;
+  }
 }
 
 @media (max-width: 880px) {
@@ -997,7 +1274,10 @@ img {
   }
 
   .contact-layout,
-  .section-hero-grid {
+  .section-hero-grid,
+  .case-hero,
+  .case-section-heading,
+  .case-summary-card {
     grid-template-columns: 1fr;
   }
 
@@ -1080,6 +1360,11 @@ img {
   .system-card-header p {
     max-width: none;
     text-align: left;
+  }
+
+  .case-links-card {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
@@ -1212,7 +1497,19 @@ img {
   }
 
   .system-modules,
-  .system-highlights {
+  .system-highlights,
+  .method-diagram,
+  .case-evidence-grid {
     grid-template-columns: 1fr;
+  }
+
+  .case-summary-card,
+  .case-evidence-card,
+  .case-links-card {
+    padding: 20px;
+  }
+
+  .case-summary-card p {
+    font-size: 18px;
   }
 }
