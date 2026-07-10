@@ -54,7 +54,7 @@ export function CaseStudyPage() {
           <p>{study.methodLead}</p>
         </div>
         {study.id === "olympic-prediction" ? (
-          <OlympicMethodRoute steps={study.methodSteps} />
+          <OlympicMethodRoute />
         ) : (
           <MethodDiagram steps={study.methodSteps} />
         )}

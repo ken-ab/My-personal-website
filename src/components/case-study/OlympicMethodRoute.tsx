@@ -1,55 +1,22 @@
-import { BrainCircuit, Database, Medal, Trophy, UsersRound } from "lucide-react";
+import { ArrowRight, ChartNoAxesCombined, House, Medal, UserRoundCog } from "lucide-react";
 
-type MethodStep = {
-  label: string;
-  title: string;
-  body: string;
-};
-
-type OlympicMethodRouteProps = {
-  steps: MethodStep[];
-};
-
-const quickRoute = [
-  {
-    semantic: "INPUT",
-    icon: Database,
-    signals: ["1896–2024", "Medals · events · athletes"],
-  },
-  {
-    semantic: "PROCESS 01",
-    icon: UsersRound,
-    signals: ["K-means · 234 nations", "Factor analysis"],
-  },
-  {
-    semantic: "PROCESS 02",
-    icon: BrainCircuit,
-    signals: ["MPXG + FMPM", "ARIMA · XGBoost · FCNN"],
-  },
-  {
-    semantic: "OUTPUT",
-    icon: Medal,
-    signals: ["2028 forecast", "Host + coach effects"],
-  },
-];
-
-export function OlympicMethodRoute({ steps }: OlympicMethodRouteProps) {
+export function OlympicMethodRoute() {
   return (
     <div className="olympic-method-experience">
       <figure className="olympic-technical-map">
         <div className="olympic-map-header">
           <div>
-            <span>Custom technical map</span>
-            <strong>One dataset. Two prediction paths. One interpretable forecast.</strong>
+            <span>Paper-faithful technical map</span>
+            <strong>Olympic history first, K-means second, then two model-specific routes.</strong>
           </div>
-          <span className="olympic-live-indicator"><i aria-hidden="true" /> animated data flow</span>
+          <span className="olympic-live-indicator"><i aria-hidden="true" /> data flow</span>
         </div>
 
         <div className="olympic-svg-scroll" role="img" aria-labelledby="olympic-map-title olympic-map-description">
-          <svg className="olympic-route-svg" viewBox="0 0 1180 610" xmlns="http://www.w3.org/2000/svg">
-            <title id="olympic-map-title">Dual-model technical route for the Olympic medal prediction paper</title>
+          <svg className="olympic-route-svg" viewBox="0 0 1400 720" xmlns="http://www.w3.org/2000/svg">
+            <title id="olympic-map-title">Corrected technical route for the Olympic medal prediction paper</title>
             <desc id="olympic-map-description">
-              Historical Olympic data is split into an MPXG medal prediction path and an FMPM first-medal prediction path, then combined with host and great-coach effect analysis.
+              Olympic history enters K-means clustering, which creates four country groups. The first three medal-winning groups enter MPXG, while the fourth non-medal-winning group enters FMPM.
             </desc>
             <defs>
               <pattern id="olympic-paper-grid" width="28" height="28" patternUnits="userSpaceOnUse">
@@ -64,133 +31,247 @@ export function OlympicMethodRoute({ steps }: OlympicMethodRouteProps) {
               </filter>
             </defs>
 
-            <rect className="olympic-svg-grid" height="610" rx="24" width="1180" />
+            <rect className="olympic-svg-grid" height="720" rx="24" width="1400" />
 
-            <g className="olympic-svg-input" filter="url(#olympic-pencil)">
-              <rect height="178" rx="24" width="190" x="28" y="216" />
-              <text className="olympic-svg-role" x="52" y="246">INPUT</text>
-              <ellipse cx="104" cy="289" rx="45" ry="13" />
-              <path d="M59 289v44c0 8 20 14 45 14s45-6 45-14v-44" />
-              <path d="M59 311c0 8 20 14 45 14s45-6 45-14" />
-              <text className="olympic-svg-title" x="52" y="370">Olympic history</text>
-              <text className="olympic-svg-note" x="52" y="388">1896–2024</text>
-              <path className="olympic-svg-spark" d="M171 265l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" />
+            <g className="olympic-svg-section-tag">
+              <rect height="42" rx="21" width="388" x="466" y="42" />
+              <text x="490" y="69">ROUTE A - MPXG / MEDAL-WINNING COUNTRIES</text>
+            </g>
+            <g className="olympic-svg-section-tag is-fmpm">
+              <rect height="42" rx="21" width="424" x="466" y="642" />
+              <text x="490" y="669">ROUTE B - FMPM / NON-MEDAL-WINNING COUNTRIES</text>
             </g>
 
-            <path className="olympic-svg-sketch-path is-ghost" d="M218 306 C270 306 265 162 330 162 H981 C1017 162 1010 255 1044 275" />
-            <path className="olympic-svg-sketch-path" d="M218 304 C270 304 268 168 330 168 H980 C1014 168 1009 258 1044 279" id="olympic-top-flow" markerEnd="url(#olympic-arrow)" />
-            <path className="olympic-svg-sketch-path is-ghost" d="M218 310 C270 310 265 451 330 451 H981 C1017 451 1010 358 1044 338" />
-            <path className="olympic-svg-sketch-path" d="M218 308 C270 308 268 445 330 445 H980 C1014 445 1009 355 1044 334" id="olympic-bottom-flow" markerEnd="url(#olympic-arrow)" />
+            <path className="olympic-svg-connector is-ghost" d="M190 358 H230" />
+            <path className="olympic-svg-connector" d="M190 355 H230" markerEnd="url(#olympic-arrow)" />
+            <path className="olympic-svg-connector is-ghost" d="M410 342 C443 342 439 177 470 177" />
+            <path className="olympic-svg-connector" d="M410 339 C443 339 439 174 470 174" markerEnd="url(#olympic-arrow)" />
+            <path className="olympic-svg-connector is-ghost" d="M410 401 C443 401 439 553 470 553" />
+            <path className="olympic-svg-connector" d="M410 398 C443 398 439 550 470 550" markerEnd="url(#olympic-arrow)" />
 
+            <Connector x1={610} x2={640} y={174} />
+            <Connector x1={780} x2={810} y={174} />
+            <Connector x1={1070} x2={1092} y={174} />
+            <Connector x1={1216} x2={1240} y={174} />
+
+            <Connector x1={615} x2={645} y={550} />
+            <Connector x1={790} x2={820} y={550} />
+            <Connector x1={995} x2={1025} y={550} />
+            <Connector x1={1190} x2={1220} y={550} />
+
+            <circle className="olympic-flow-dot is-input" r="6">
+              <animateMotion dur="2.2s" path="M190 355 H230" repeatCount="indefinite" />
+            </circle>
             <circle className="olympic-flow-dot is-top" r="6">
-              <animateMotion dur="6.8s" path="M218 304 C270 304 268 168 330 168 H980 C1014 168 1009 258 1044 279" repeatCount="indefinite" />
+              <animateMotion dur="7.4s" path="M410 339 C443 339 439 174 470 174 H1240" repeatCount="indefinite" />
             </circle>
             <circle className="olympic-flow-dot is-bottom" r="6">
-              <animateMotion begin="-3.4s" dur="6.8s" path="M218 308 C270 308 268 445 330 445 H980 C1014 445 1009 355 1044 334" repeatCount="indefinite" />
+              <animateMotion begin="-3.7s" dur="7.4s" path="M410 398 C443 398 439 550 470 550 H1220" repeatCount="indefinite" />
             </circle>
 
-            <g className="olympic-svg-branch-label">
-              <rect height="42" rx="21" width="326" x="317" y="54" />
-              <text x="340" y="80">PROCESS A · MPXG MEDAL FORECAST</text>
-            </g>
-            <g className="olympic-svg-branch-label is-second">
-              <rect height="42" rx="21" width="335" x="317" y="514" />
-              <text x="340" y="540">PROCESS B · FMPM FIRST MEDAL</text>
-            </g>
-
-            <SvgNode detail="234 nations" label="K-means" x={316} y={119} />
-            <SvgNode detail="10 → 3 factors" label="Factor analysis" x={496} y={119} />
-            <SvgNode detail="ARIMA(3,1,2)" label="2028 features" x={676} y={119} />
-            <SvgNode detail="best performer" label="XGBoost" x={856} y={119} />
-
-            <SvgNode detail="country records" label="Participation" x={316} y={396} />
-            <SvgNode detail="2028 estimate" label="ARIMA forecast" x={496} y={396} />
-            <SvgNode detail="64 → 32 → 1" label="Three-layer FCNN" x={676} y={396} />
-            <SvgNode detail="first medal" label="Probability" x={856} y={396} />
-
-            <g className="olympic-svg-output" filter="url(#olympic-pencil)">
-              <rect height="244" rx="28" width="126" x="1036" y="183" />
-              <text className="olympic-svg-role" x="1056" y="214">OUTPUT</text>
-              <path d="M1080 238h38v12c0 17-9 27-19 27s-19-10-19-27z" />
-              <path d="M1089 278h20v12h-20zM1080 290h38" />
-              <path d="M1080 246h-11c0 15 6 23 17 25M1118 246h11c0 15-6 23-17 25" />
-              <text className="olympic-svg-title is-output" x="1056" y="326">2028</text>
-              <text className="olympic-svg-note" x="1056" y="346">medal forecast</text>
-              <line x1="1056" x2="1142" y1="365" y2="365" />
-              <text className="olympic-svg-note is-strong" x="1056" y="386">Host effect</text>
-              <text className="olympic-svg-note is-strong" x="1056" y="407">Coach effect</text>
+            <g className="olympic-svg-input" filter="url(#olympic-pencil)">
+              <rect height="140" rx="24" width="160" x="30" y="285" />
+              <text className="olympic-svg-role" x="52" y="314">INPUT</text>
+              <ellipse cx="82" cy="347" rx="31" ry="9" />
+              <path d="M51 347v31c0 7 14 10 31 10s31-3 31-10v-31" />
+              <path d="M51 363c0 7 14 10 31 10s31-3 31-10" />
+              <text className="olympic-svg-title" x="52" y="405">Olympic History</text>
+              <text className="olympic-svg-note" x="52" y="421">1896-2024</text>
+              <path className="olympic-svg-spark" d="M145 320l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" />
             </g>
 
-            <g className="olympic-svg-annotation">
-              <path d="M748 278c32-32 64-38 97-17" />
-              <text x="684" y="290">two models answer different questions</text>
+            <g className="olympic-cluster-node" filter="url(#olympic-pencil)">
+              <rect height="190" rx="25" width="180" x="230" y="260" />
+              <text className="olympic-svg-role" x="252" y="289">K-MEANS</text>
+              <text className="olympic-svg-title" x="252" y="312">4 country groups</text>
+              <g className="olympic-cluster-row is-medal">
+                <circle cx="266" cy="342" r="17" /><circle cx="311" cy="342" r="17" /><circle cx="356" cy="342" r="17" />
+                <text x="258" y="347">C1</text><text x="303" y="347">C2</text><text x="348" y="347">C3</text>
+              </g>
+              <text className="olympic-cluster-caption is-medal" x="252" y="374">prior medal winners</text>
+              <g className="olympic-cluster-row is-none">
+                <circle cx="266" cy="404" r="17" />
+                <text x="258" y="409">C4</text>
+              </g>
+              <text className="olympic-cluster-caption is-none" x="291" y="409">no prior medal</text>
+            </g>
+
+            <g className="olympic-branch-note is-medal">
+              <rect height="30" rx="15" width="174" x="426" y="224" />
+              <text x="442" y="244">C1-C3: medal-winning</text>
+            </g>
+            <g className="olympic-branch-note is-none">
+              <rect height="30" rx="15" width="161" x="426" y="451" />
+              <text x="442" y="471">C4: no prior medal</text>
+            </g>
+
+            <SvgNode detail="10 factors -> 3" label={["Factor", "Analysis"]} x={470} y={124} />
+            <SvgNode detail="forecast 2028 factors" label={["ARIMA", "time series"]} x={640} y={124} />
+
+            <g className="olympic-model-compare" filter="url(#olympic-pencil)">
+              <rect height="140" rx="22" width="260" x="810" y="104" />
+              <text className="olympic-svg-role" x="830" y="130">COMPARE 4 MODELS</text>
+              <ModelPill label="Random Forest" x={828} y={145} />
+              <ModelPill label="BPNN" x={946} y={145} />
+              <ModelPill best label="XGBoost" x={828} y={190} />
+              <ModelPill label="SVM" x={946} y={190} />
+            </g>
+
+            <g className="olympic-best-badge" filter="url(#olympic-pencil)">
+              <rect height="64" rx="18" width="124" x="1092" y="142" />
+              <text className="olympic-svg-role" x="1113" y="163">BEST</text>
+              <text className="olympic-svg-title" x="1113" y="188">XGBoost</text>
+              <path d="M1195 153l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" />
+            </g>
+
+            <g className="olympic-svg-output is-medal" filter="url(#olympic-pencil)">
+              <rect height="130" rx="24" width="130" x="1240" y="109" />
+              <text className="olympic-svg-role" x="1262" y="137">OUTPUT</text>
+              <text className="olympic-svg-title is-output" x="1262" y="174">2028</text>
+              <text className="olympic-svg-note is-strong" x="1262" y="198">medal forecast</text>
+              <text className="olympic-svg-note" x="1262" y="217">90% interval</text>
+            </g>
+
+            <SvgNode detail="C4: 1896-2024" label={["Participation", "records"]} x={470} y={500} width={145} />
+            <SvgNode detail="2028 participants" label={["ARIMA", "forecast"]} x={645} y={500} width={145} />
+            <SvgNode detail="Dense 64 -> 32 -> 1" label={["Three-layer", "FCNN"]} x={820} y={500} width={175} />
+            <SvgNode detail="model output" label={["First-medal", "probability"]} x={1025} y={500} width={165} />
+
+            <g className="olympic-svg-output is-first-medal" filter="url(#olympic-pencil)">
+              <rect height="130" rx="24" width="150" x="1220" y="485" />
+              <text className="olympic-svg-role" x="1242" y="513">OUTPUT</text>
+              <text className="olympic-svg-title is-output" x="1242" y="550">2028</text>
+              <text className="olympic-svg-note is-strong" x="1242" y="574">first-medal</text>
+              <text className="olympic-svg-note" x="1242" y="593">probability</text>
             </g>
           </svg>
         </div>
         <figcaption>
-          The technical map separates medal-count forecasting from first-medal probability, then reconnects both results to interpretable host and coaching effects.
+          The sequence is fixed: Olympic history enters K-means first; clusters C1-C3 follow MPXG, while C4 follows FMPM.
         </figcaption>
       </figure>
 
-      <div className="olympic-fast-route-heading">
-        <span>FAST SCAN · 4 STAGES</span>
-        <p>Follow the moving signal from historical records to an explainable 2028 forecast.</p>
-      </div>
+      <section className="olympic-findings" aria-labelledby="olympic-findings-title">
+        <header className="olympic-findings-header">
+          <div>
+            <span>SECOND TECHNICAL ROUTE</span>
+            <h3 id="olympic-findings-title">Two interesting findings</h3>
+          </div>
+          <p>Separate effect analyses explain what can shift the predicted medal outcomes.</p>
+        </header>
 
-      <div className="olympic-animated-route" role="list" aria-label="Four-stage animated Olympic prediction route">
-        {steps.map((step, index) => {
-          const route = quickRoute[index];
-          const Icon = route.icon;
-
-          return (
-            <article className="olympic-route-stage" data-stage={index + 1} key={step.label} role="listitem">
-              <div className="olympic-route-glyph">
-                <span className="olympic-stage-number">0{index + 1}</span>
-                <span className="olympic-glyph-orbit" aria-hidden="true">
-                  <i className="olympic-orbit-dot is-a" />
-                  <i className="olympic-orbit-dot is-b" />
-                </span>
-                <Icon aria-hidden="true" size={31} strokeWidth={1.7} />
-                {index === 3 ? <Trophy aria-hidden="true" className="olympic-result-spark" size={15} /> : null}
-              </div>
-
-              <div className="olympic-route-copy">
-                <span className="olympic-route-semantic">{route.semantic}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-                <div className="olympic-route-signals" aria-label="Key methods and evidence">
-                  {route.signals.map((signal) => <span key={signal}>{signal}</span>)}
-                </div>
-              </div>
-
-              {index < steps.length - 1 ? (
-                <span className="olympic-route-connector" aria-hidden="true">
-                  <i />
-                </span>
-              ) : null}
-            </article>
-          );
-        })}
-      </div>
+        <div className="olympic-finding-lanes">
+          <FindingLane
+            description="Gold, silver, and bronze are scored 13, 12, and 10; the host formula is evaluated across the last eight editions."
+            icon={House}
+            label="FINDING 01"
+            result="+74% medals"
+            steps={["Medal scoring", "Host-effect formula", "Last 8 editions"]}
+            title="Host Effect"
+            tone="host"
+          />
+          <FindingLane
+            description="Coach status, project scope, athlete value, and country-group weight are combined before the 2028 estimate."
+            icon={UserRoundCog}
+            label="FINDING 02"
+            result="2028 impact"
+            steps={["C.E. score", "AWP", "Country weight", "Bayesian regression"]}
+            title="Great Coach Effect"
+            tone="coach"
+          />
+        </div>
+      </section>
     </div>
   );
 }
 
 type SvgNodeProps = {
   detail: string;
+  label: string[];
+  width?: number;
+  x: number;
+  y: number;
+};
+
+function SvgNode({ detail, label, width = 140, x, y }: SvgNodeProps) {
+  return (
+    <g className="olympic-svg-node" transform={`translate(${x} ${y})`}>
+      <rect height="100" rx="18" width={width} />
+      <circle cx="23" cy="24" r="7" />
+      <path d={`M38 24h${width - 58}`} />
+      <text className="olympic-svg-node-title" x="18" y="50">
+        {label.map((line, index) => <tspan key={line} x="18" y={50 + index * 18}>{line}</tspan>)}
+      </text>
+      <text className="olympic-svg-node-detail" x="18" y="91">{detail}</text>
+    </g>
+  );
+}
+
+type ConnectorProps = {
+  x1: number;
+  x2: number;
+  y: number;
+};
+
+function Connector({ x1, x2, y }: ConnectorProps) {
+  return (
+    <>
+      <path className="olympic-svg-connector is-ghost" d={`M${x1} ${y + 3} H${x2}`} />
+      <path className="olympic-svg-connector" d={`M${x1} ${y} H${x2}`} markerEnd="url(#olympic-arrow)" />
+    </>
+  );
+}
+
+type ModelPillProps = {
+  best?: boolean;
   label: string;
   x: number;
   y: number;
 };
 
-function SvgNode({ detail, label, x, y }: SvgNodeProps) {
+function ModelPill({ best = false, label, x, y }: ModelPillProps) {
   return (
-    <g className="olympic-svg-node" transform={`translate(${x} ${y})`}>
-      <rect height="98" rx="18" width="152" />
-      <circle cx="24" cy="27" r="8" />
-      <path d="M40 27h84" />
-      <text className="olympic-svg-node-title" x="18" y="58">{label}</text>
-      <text className="olympic-svg-node-detail" x="18" y="80">{detail}</text>
+    <g className={best ? "olympic-model-pill is-best" : "olympic-model-pill"}>
+      <rect height="34" rx="12" width="104" x={x} y={y} />
+      <text x={x + 12} y={y + 22}>{label}</text>
     </g>
+  );
+}
+
+type FindingLaneProps = {
+  description: string;
+  icon: typeof House;
+  label: string;
+  result: string;
+  steps: string[];
+  title: string;
+  tone: "coach" | "host";
+};
+
+function FindingLane({ description, icon: Icon, label, result, steps, title, tone }: FindingLaneProps) {
+  return (
+    <article className="olympic-finding-lane" data-finding={tone}>
+      <div className="olympic-finding-identity">
+        <span className="olympic-finding-icon" aria-hidden="true"><Icon size={27} strokeWidth={1.7} /></span>
+        <div>
+          <span>{label}</span>
+          <h4>{title}</h4>
+        </div>
+      </div>
+      <div className="olympic-finding-flow" aria-label={`${title} analysis flow`}>
+        {steps.map((step, index) => (
+          <span className="olympic-finding-step-group" key={step}>
+            <span className="olympic-finding-step">{step}</span>
+            {index < steps.length - 1 ? <ArrowRight aria-hidden="true" size={17} /> : null}
+          </span>
+        ))}
+        <ArrowRight aria-hidden="true" size={17} />
+        <strong>{result}</strong>
+      </div>
+      <div className="olympic-finding-footnote">
+        {tone === "host" ? <Medal aria-hidden="true" size={16} /> : <ChartNoAxesCombined aria-hidden="true" size={16} />}
+        <p>{description}</p>
+      </div>
+    </article>
   );
 }

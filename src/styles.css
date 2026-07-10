@@ -2086,3 +2086,382 @@ img {
   84% { opacity: 1; }
   to { top: calc(100% - 8px); opacity: 0; }
 }
+
+/* Olympic method map v2: paper-faithful clustering and two model routes. */
+.olympic-svg-section-tag rect {
+  fill: color-mix(in srgb, var(--olympic-blue) 7%, rgba(255, 255, 255, 0.94));
+  stroke: color-mix(in srgb, var(--olympic-blue) 34%, var(--paper-line));
+}
+
+.olympic-svg-section-tag text {
+  fill: var(--olympic-blue);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.075em;
+}
+
+.olympic-svg-section-tag.is-fmpm rect {
+  fill: color-mix(in srgb, var(--green) 7%, rgba(255, 255, 255, 0.94));
+  stroke: color-mix(in srgb, var(--green) 34%, var(--paper-line));
+}
+
+.olympic-svg-section-tag.is-fmpm text {
+  fill: var(--green);
+}
+
+.olympic-svg-connector {
+  fill: none;
+  stroke: var(--olympic-blue);
+  stroke-dasharray: 8 7;
+  stroke-linecap: round;
+  stroke-width: 2.7;
+  animation: olympic-route-dash 13s linear infinite;
+}
+
+.olympic-svg-connector.is-ghost {
+  stroke: var(--wine);
+  stroke-dasharray: 2 10;
+  stroke-width: 1.2;
+  opacity: 0.24;
+}
+
+.olympic-flow-dot.is-input {
+  fill: var(--olympic-blue);
+}
+
+.olympic-cluster-node rect:first-child {
+  fill: rgba(251, 250, 245, 0.98);
+  stroke: var(--olympic-blue);
+  stroke-width: 2.2;
+}
+
+.olympic-cluster-row circle {
+  stroke-width: 1.4;
+}
+
+.olympic-cluster-row text {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.olympic-cluster-row.is-medal circle {
+  fill: color-mix(in srgb, var(--olympic-blue) 10%, white);
+  stroke: var(--olympic-blue);
+}
+
+.olympic-cluster-row.is-medal text {
+  fill: var(--olympic-blue);
+}
+
+.olympic-cluster-row.is-none circle {
+  fill: color-mix(in srgb, var(--green) 10%, white);
+  stroke: var(--green);
+}
+
+.olympic-cluster-row.is-none text {
+  fill: var(--green);
+}
+
+.olympic-cluster-caption {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.olympic-cluster-caption.is-medal {
+  fill: var(--olympic-blue);
+}
+
+.olympic-cluster-caption.is-none {
+  fill: var(--green);
+}
+
+.olympic-branch-note rect {
+  fill: rgba(255, 255, 255, 0.94);
+  stroke-width: 1.2;
+}
+
+.olympic-branch-note text {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.olympic-branch-note.is-medal rect {
+  stroke: color-mix(in srgb, var(--olympic-blue) 40%, var(--paper-line));
+}
+
+.olympic-branch-note.is-medal text {
+  fill: var(--olympic-blue);
+}
+
+.olympic-branch-note.is-none rect {
+  stroke: color-mix(in srgb, var(--green) 42%, var(--paper-line));
+}
+
+.olympic-branch-note.is-none text {
+  fill: var(--green);
+}
+
+.olympic-model-compare > rect:first-child {
+  fill: rgba(251, 250, 245, 0.98);
+  stroke: color-mix(in srgb, var(--wine) 48%, var(--paper-line));
+  stroke-width: 1.8;
+}
+
+.olympic-model-pill rect {
+  fill: rgba(255, 255, 255, 0.96);
+  stroke: color-mix(in srgb, var(--wine) 24%, var(--paper-line));
+}
+
+.olympic-model-pill text {
+  fill: var(--muted);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.olympic-model-pill.is-best rect {
+  fill: color-mix(in srgb, var(--wine) 9%, white);
+  stroke: var(--wine);
+  stroke-width: 1.7;
+}
+
+.olympic-model-pill.is-best text {
+  fill: var(--wine);
+}
+
+.olympic-best-badge rect {
+  fill: color-mix(in srgb, var(--olympic-gold) 10%, white);
+  stroke: var(--olympic-gold);
+  stroke-width: 2;
+}
+
+.olympic-best-badge .olympic-svg-role,
+.olympic-best-badge .olympic-svg-title {
+  fill: color-mix(in srgb, var(--gold) 84%, var(--ink));
+}
+
+.olympic-best-badge path {
+  fill: color-mix(in srgb, var(--olympic-gold) 60%, white);
+  stroke: var(--olympic-gold);
+}
+
+.olympic-svg-output.is-medal {
+  color: var(--wine);
+}
+
+.olympic-svg-output.is-first-medal {
+  color: var(--green);
+}
+
+.olympic-findings {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--wine) 20%, var(--paper-line));
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.025) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(17, 17, 17, 0.018) 1px, transparent 1px),
+    rgba(251, 250, 245, 0.78);
+  background-size: 32px 32px;
+  box-shadow: 0 20px 52px rgba(49, 41, 31, 0.07);
+}
+
+.olympic-findings-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--paper-line);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.olympic-findings-header > div {
+  display: grid;
+  gap: 7px;
+}
+
+.olympic-findings-header span,
+.olympic-finding-identity > div > span {
+  color: var(--wine);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+}
+
+.olympic-findings-header h3 {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 550;
+  line-height: 1.08;
+}
+
+.olympic-findings-header p {
+  max-width: 430px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: right;
+}
+
+.olympic-finding-lanes {
+  display: grid;
+}
+
+.olympic-finding-lane {
+  --finding-color: var(--olympic-blue);
+  display: grid;
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: 24px 30px;
+  align-items: center;
+  padding: 26px 28px;
+  border-left: 4px solid var(--finding-color);
+}
+
+.olympic-finding-lane + .olympic-finding-lane {
+  border-top: 1px solid var(--paper-line);
+}
+
+.olympic-finding-lane[data-finding="coach"] {
+  --finding-color: var(--green);
+}
+
+.olympic-finding-identity {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.olympic-finding-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid color-mix(in srgb, var(--finding-color) 34%, var(--paper-line));
+  border-radius: 50%;
+  color: var(--finding-color);
+  background: color-mix(in srgb, var(--finding-color) 7%, white);
+  box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.5);
+}
+
+.olympic-finding-identity > div {
+  display: grid;
+  gap: 5px;
+}
+
+.olympic-finding-lane[data-finding="coach"] .olympic-finding-identity > div > span {
+  color: var(--green);
+}
+
+.olympic-finding-identity h4 {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.olympic-finding-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+}
+
+.olympic-finding-step-group {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.olympic-finding-flow svg {
+  flex: 0 0 auto;
+  color: color-mix(in srgb, var(--finding-color) 62%, var(--muted));
+}
+
+.olympic-finding-step {
+  padding: 8px 10px;
+  border-bottom: 2px solid color-mix(in srgb, var(--finding-color) 55%, var(--paper-line));
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.48);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.olympic-finding-flow strong {
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: white;
+  background: var(--finding-color);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--finding-color) 20%, transparent);
+}
+
+.olympic-finding-footnote {
+  grid-column: 2;
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin-top: -12px;
+  color: var(--finding-color);
+}
+
+.olympic-finding-footnote p {
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+@media (max-width: 820px) {
+  .olympic-route-svg {
+    width: 1180px;
+  }
+
+  .olympic-findings-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .olympic-findings-header p {
+    text-align: left;
+  }
+
+  .olympic-finding-lane {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px 20px 24px;
+  }
+
+  .olympic-finding-flow {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 16px;
+    border-left: 2px dashed color-mix(in srgb, var(--finding-color) 42%, var(--paper-line));
+  }
+
+  .olympic-finding-step-group {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .olympic-finding-flow svg {
+    margin-left: 14px;
+    transform: rotate(90deg);
+  }
+
+  .olympic-finding-footnote {
+    grid-column: 1;
+    margin-top: 0;
+  }
+}
