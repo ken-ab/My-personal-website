@@ -11,41 +11,11 @@ export function CaseStudyPage() {
     return <Navigate replace to="/publications" />;
   }
 
+  const isPublication = Boolean(study.authors?.length && study.abstract);
+
   return (
     <main className={`page-shell case-study-page tone-${study.tone} page-enter`}>
-      <section className="case-hero">
-        <div>
-          <p className="section-eyebrow">{study.eyebrow}</p>
-          <h1>{study.title}</h1>
-          <p className="case-subtitle">{study.subtitle}</p>
-        </div>
-        <aside className="case-meta-card" aria-label="Case study metadata">
-          <span>{study.period}</span>
-          <strong>{study.role}</strong>
-          <p>Project brief for fast RA screening and technical follow-up.</p>
-        </aside>
-      </section>
-
-      <section className="case-summary-card">
-        <span>One-line summary</span>
-        <p>{study.oneLineSummary}</p>
-      </section>
-
-      <section className="case-section">
-        <div className="case-section-heading">
-          <p className="section-eyebrow">Visual Abstract</p>
-          <h2>See the work before reading the paper</h2>
-        </div>
-
-        {study.visual ? (
-          <figure className="case-visual-card">
-            <img alt={study.visual.alt} src={study.visual.src} />
-            <figcaption>{study.visual.caption}</figcaption>
-          </figure>
-        ) : (
-          <MethodDiagram compact steps={study.methodSteps} />
-        )}
-      </section>
+      {isPublication ? <PublicationIntro study={study} /> : <ProjectIntro study={study} />}
 
       <section className="case-section case-method-section">
         <div className="case-section-heading">
@@ -79,6 +49,85 @@ export function CaseStudyPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+type CaseStudyIntroProps = {
+  study: NonNullable<ReturnType<typeof getCaseStudy>>;
+};
+
+function PublicationIntro({ study }: CaseStudyIntroProps) {
+  return (
+    <>
+      <section className="paper-brief-hero" aria-labelledby="paper-brief-title">
+        <p className="paper-keywords">{study.keywords?.join(" · ")}</p>
+        <h1 id="paper-brief-title">{study.title}</h1>
+        <p className="paper-authors" aria-label="Paper authors">
+          {study.authors?.map((author, index) => (
+            <span className={author === "Zhenkai Zhang" ? "is-owner" : ""} key={author}>
+              {index ? <span aria-hidden="true">, </span> : null}
+              {author}
+            </span>
+          ))}
+        </p>
+        {study.paperUrl ? (
+          <div className="paper-primary-action">
+            <ActionButton external href={study.paperUrl} variant="primary">
+              Paper
+            </ActionButton>
+          </div>
+        ) : null}
+      </section>
+
+      <section className="paper-visual-section" aria-label="Paper research overview">
+        <div className={`paper-visual-gallery${study.visuals && study.visuals.length > 1 ? " has-multiple" : ""}`}>
+          {study.visuals?.map((visual) => (
+            <figure className="paper-visual-frame" key={visual.src}>
+              <img alt={visual.alt} src={visual.src} />
+            </figure>
+          ))}
+        </div>
+        <p className="paper-visual-summary">{study.oneLineSummary}</p>
+      </section>
+
+      <section className="paper-abstract-section" aria-labelledby="paper-abstract-title">
+        <h2 id="paper-abstract-title">Abstract</h2>
+        <p>{study.abstract}</p>
+      </section>
+    </>
+  );
+}
+
+function ProjectIntro({ study }: CaseStudyIntroProps) {
+  return (
+    <>
+      <section className="case-hero">
+        <div>
+          <p className="section-eyebrow">{study.eyebrow}</p>
+          <h1>{study.title}</h1>
+          <p className="case-subtitle">{study.subtitle}</p>
+        </div>
+        <aside className="case-meta-card" aria-label="Case study metadata">
+          <span>{study.period}</span>
+          <strong>{study.role}</strong>
+          <p>Project brief for fast RA screening and technical follow-up.</p>
+        </aside>
+      </section>
+
+      <section className="case-summary-card">
+        <span>One-line summary</span>
+        <p>{study.oneLineSummary}</p>
+      </section>
+
+      <section className="case-section">
+        <div className="case-section-heading">
+          <p className="section-eyebrow">Visual Abstract</p>
+          <h2>See the work before reading the project details</h2>
+        </div>
+
+        <MethodDiagram compact steps={study.methodSteps} />
+      </section>
+    </>
   );
 }
 

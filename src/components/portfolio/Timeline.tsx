@@ -6,14 +6,16 @@ import { TagList } from "./TagList";
 
 type TimelineProps = {
   items: TimelineEntry[];
+  presentation?: "default" | "publications";
   tone: Tone;
 };
 
-export function Timeline({ items, tone }: TimelineProps) {
+export function Timeline({ items, presentation = "default", tone }: TimelineProps) {
   const sortedItems = sortTimelineEntries(items);
+  const isPublications = presentation === "publications";
 
   return (
-    <ol className={`timeline-list tone-${tone}`}>
+    <ol className={`timeline-list tone-${tone}${isPublications ? " is-publications" : ""}`}>
       {sortedItems.map((item, index) => (
         <li
           className={`timeline-item is-${item.emphasis ?? "medium"}`}
@@ -28,9 +30,19 @@ export function Timeline({ items, tone }: TimelineProps) {
             </div>
             <h2>{item.title}</h2>
             {item.chineseTitle ? <p className="timeline-chinese-title">{item.chineseTitle}</p> : null}
-            <p className="timeline-description">{item.description}</p>
+            {isPublications && item.cardVisuals?.length ? (
+              <div className="publication-visual-strip" aria-label={`${item.title} research visuals`}>
+                {item.cardVisuals.map((visual) => (
+                  <figure className="publication-card-visual" key={visual.src}>
+                    <img alt={visual.alt} loading="lazy" src={visual.src} />
+                  </figure>
+                ))}
+              </div>
+            ) : null}
 
-            {item.highlights?.length ? (
+            {isPublications ? null : <p className="timeline-description">{item.description}</p>}
+
+            {!isPublications && item.highlights?.length ? (
               <ul className="highlight-list">
                 {item.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
@@ -42,7 +54,7 @@ export function Timeline({ items, tone }: TimelineProps) {
 
             {item.actions?.length ? (
               <div className="inline-actions">
-                {item.actions.map((action) => (
+                {item.actions.filter((action) => !isPublications || action.label === "View Brief").map((action) => (
                   <ActionButton external={action.external} href={action.href} key={action.label} variant="quiet">
                     {action.label}
                   </ActionButton>

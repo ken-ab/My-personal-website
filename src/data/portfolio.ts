@@ -1,3 +1,10 @@
+import bambooConnectionsFigure from "../assets/case-studies/bamboo-connections-framework.png";
+import briDigitalEconomyFigure from "../assets/case-studies/bri-digital-economy.png";
+import moeTimelineFigure from "../assets/case-studies/moe-timeline.png";
+import olympicHostEffectFigure from "../assets/case-studies/olympic-host-effect.png";
+import olympicModelFrameworkFigure from "../assets/case-studies/olympic-model-framework.png";
+import robotVisionFigure from "../assets/case-studies/robot-vision-detection.png";
+
 export type Tone = "research" | "career" | "systems";
 
 export type PortfolioLink = {
@@ -17,6 +24,10 @@ export type TimelineEntry = {
   tags: string[];
   highlights?: string[];
   actions?: PortfolioLink[];
+  cardVisuals?: Array<{
+    src: string;
+    alt: string;
+  }>;
   emphasis?: "featured" | "medium" | "compact";
 };
 
@@ -84,6 +95,16 @@ export const applications: TimelineEntry[] = [
     description:
       "A machine learning study for predicting medal performance at the 2028 Olympic Games, combining factor analysis, time-series analysis, machine learning, and Bayesian regression.",
     tags: ["K-means", "Factor Analysis", "ARIMA", "XGBoost", "FCNN", "Bayesian Regression", "Olympic Data"],
+    cardVisuals: [
+      {
+        src: olympicModelFrameworkFigure,
+        alt: "Olympic medal prediction framework covering MPXG, FMPM, host effects, and coach effects.",
+      },
+      {
+        src: olympicHostEffectFigure,
+        alt: "Historical host-country Olympic medal scores and host-effect comparison.",
+      },
+    ],
     highlights: [
       "Built separate modeling pipelines for medal-winning and non-medal countries.",
       "Quantified medal trends, host-country effects and coach effects.",
@@ -105,6 +126,12 @@ export const applications: TimelineEntry[] = [
     description:
       "Accepted by the 2025 IEEE 6th International Seminar on Artificial Intelligence, Networking and Information Technology. The paper reviews advanced Mixture-of-Experts architectures and their performance-efficiency trade-offs.",
     tags: ["DeepSpeed-MoE", "Switch Transformer", "Mixtral", "DeepSeek-V3", "Sparse Activation", "Expert Routing"],
+    cardVisuals: [
+      {
+        src: moeTimelineFigure,
+        alt: "Timeline of major Mixture-of-Experts models from 2017 to 2024.",
+      },
+    ],
     highlights: [
       "Reviewed seven representative post-2022 MoE architectures.",
       "Compared MoE and dense Transformer architectures across five dimensions.",
@@ -121,6 +148,12 @@ export const applications: TimelineEntry[] = [
     description:
       "A review-oriented research work on robotic vision, computer vision, machine learning, technological evolution, challenges, and industrial applications.",
     tags: ["Computer Vision", "Robotics", "Perception", "Review"],
+    cardVisuals: [
+      {
+        src: robotVisionFigure,
+        alt: "Urban scene demonstrating object detection for robot and computer vision.",
+      },
+    ],
     actions: [
       { label: "View Brief", href: "/brief/robot-vision" },
       { label: "Paper", href: "https://doi.org/10.30967/IJCRSET/Yujie-Gao/174", external: true },
@@ -137,6 +170,12 @@ export const applications: TimelineEntry[] = [
     description:
       "A machine-learning study for predicting connection behavior in eco-designed thin-walled steel-ply-bamboo structures.",
     tags: ["Sustainability", "Machine Learning", "Structural Mechanics", "Mechanical Properties"],
+    cardVisuals: [
+      {
+        src: bambooConnectionsFigure,
+        alt: "Machine-learning framework for thin-walled steel-ply-bamboo connection experiments and prediction.",
+      },
+    ],
     actions: [
       { label: "View Brief", href: "/brief/sustainability-bamboo" },
       { label: "Paper", href: "https://doi.org/10.3390/su17156753", external: true },
@@ -153,6 +192,12 @@ export const applications: TimelineEntry[] = [
     description:
       "Accepted by DEIC 2025. The paper studies digital service trade export potential in BRI countries using stochastic frontier gravity modeling and mediation-pathway analysis.",
     tags: ["Digital Economy", "Stochastic Frontier Gravity Model", "Mediation Analysis", "BRI"],
+    cardVisuals: [
+      {
+        src: briDigitalEconomyFigure,
+        alt: "Belt and Road digital economy ecosystem, trends, technologies, and enabling factors.",
+      },
+    ],
     actions: [{ label: "View Brief", href: "/brief/deic-digital-trade" }],
     emphasis: "compact",
   },
