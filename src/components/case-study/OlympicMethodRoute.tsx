@@ -119,17 +119,16 @@ export function OlympicMethodRoute() {
             </g>
 
             <g className="olympic-model-evidence-callout">
-              <path d="M934 244 L952 263 L970 244" />
-              <rect height="220" rx="24" width="700" x="610" y="262" />
-              <text className="olympic-svg-role" x="634" y="288">MODEL COMPARISON EVIDENCE · TRAINING / TEST</text>
+              <path d="M934 244 L952 250 L970 244" />
               <image
-                height="176"
+                height="247.5"
                 href={olympicModelComparisonRadar}
                 preserveAspectRatio="xMidYMid meet"
-                width="658"
-                x="631"
-                y="296"
+                width="700"
+                x="610"
+                y="250"
               />
+              <rect height="247.5" rx="18" width="700" x="610" y="250" />
             </g>
 
             <g className="olympic-best-badge" filter="url(#olympic-pencil)">

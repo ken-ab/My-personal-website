@@ -41,7 +41,31 @@ type CaseStudyIntroProps = {
   study: NonNullable<ReturnType<typeof getCaseStudy>>;
 };
 
+function splitAbstractIntoParagraphs(text: string, breakAfter: string[] = []) {
+  if (breakAfter.length === 0) return [text];
+
+  const paragraphs: string[] = [];
+  let remaining = text;
+
+  breakAfter.forEach((marker) => {
+    const markerIndex = remaining.indexOf(marker);
+    if (markerIndex === -1) return;
+
+    const paragraphEnd = markerIndex + marker.length;
+    paragraphs.push(remaining.slice(0, paragraphEnd).trim());
+    remaining = remaining.slice(paragraphEnd).trim();
+  });
+
+  if (remaining) paragraphs.push(remaining);
+  return paragraphs;
+}
+
 function PublicationIntro({ study }: CaseStudyIntroProps) {
+  const abstractParagraphs = splitAbstractIntoParagraphs(
+    study.abstract ?? "",
+    study.abstractParagraphBreaks,
+  );
+
   return (
     <>
       <section className="paper-brief-hero" aria-labelledby="paper-brief-title">
@@ -80,7 +104,9 @@ function PublicationIntro({ study }: CaseStudyIntroProps) {
 
       <section className="paper-abstract-section" aria-labelledby="paper-abstract-title">
         <h2 id="paper-abstract-title">Abstract</h2>
-        <p>{study.abstract}</p>
+        {abstractParagraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
       </section>
     </>
   );

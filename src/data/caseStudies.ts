@@ -18,6 +18,7 @@ export type CaseStudy = {
   authors?: string[];
   correspondingAuthors?: string[];
   abstract?: string;
+  abstractParagraphBreaks?: string[];
   paperUrl?: string;
   oneLineSummary: string;
   visuals?: Array<{
@@ -161,6 +162,12 @@ export const caseStudies: CaseStudy[] = [
     correspondingAuthors: ["Wanwan Xia"],
     abstract:
       "This study develops two machine learning models to predict the medal performance of countries at the 2028 Olympic Games while systematically analyzing and quantifying the impacts of the host effect and exceptional coaching on medal gains. The dataset encompasses records of total medals by country, event categories, and athletes’ participation from the Olympic Games held between 1896 and 2024. We use K-means clustering to analyze medal trends, categorizing 234 nations into four groups (α1, α2, α3, α4). Among these, α1, α2, α3 represent medal-winning countries, while α4 consists of non-medal-winning nations. For the α1, α2, and α3 groups, 2–3 representative countries from each are selected for trend analysis, with the United States serving as a case study. This study extracts ten factors that may influence medal wins from the dataset, including participant data, the number of events, and medal growth rates. Factor analysis is used to reduce them into three principal components: Factor analysis condenses ten influencing factors into three principal components: the event scale factor (F1), the medal trend factor (F2), and the gender and athletic ability factor (F3). An ARIMA model predicts the factor coefficients for 2028 as 0.9539, 0.7999, and 0.2937, respectively. Four models (random forest, BP Neural Network, XGBoost, and SVM) are employed to predict medal outcomes, using historical data split into training and testing sets to compare their predictive performance. The research results show that XGBoost is the optimal medal predicted model, with the United States projected to win 57 gold medals and a total of 135 medals in 2028. For non-medal-winning countries (α4), a three-layer fully connected neural network (FCNN) is constructed, achieving an accuracy of 85.5% during testing. Additionally, a formula to calculate the host effect and a Bayesian linear regression model to assess the impact of exceptional coaching on athletes’ medal performance are proposed. The overall trend of countries in the α1 group is stable, but they are significantly affected by the host effect; the trend in the α2 group shows an upward trend; the trend in the α3 group depend on the athletes’ conditions and whether the events they excel in are included in that year’s Olympics. In the α4 group, the probabilities of the United Arab Republic (UAR) and Mali (MLI) winning medals in the 2028 Olympic Games are 77.47% and 58.47%, respectively, and there are another four countries with probabilities exceeding 30%. For the eight most recent Olympic Games, the gain rate of the host effect is 74%. Great coaches can bring an average increase of 0.2 to 0.5 medals for each athlete. The proposed models, through an innovative integration of clustering, dimensionality reduction, and predictive algorithms, provide reliable forecasts and data-driven insights for optimizing national sports strategies. These contributions not only address the gap in predicting first-time medal wins for non-medal-winning nations but also offer guidance for policymakers and sports organizations, though they are constrained by assumptions of stable historical trends, minimal external disruptions, and the exclusion of unknown athletes.",
+    abstractParagraphBreaks: [
+      "while α4 consists of non-medal-winning nations.",
+      "with the United States projected to win 57 gold medals and a total of 135 medals in 2028.",
+      "on athletes’ medal performance are proposed.",
+      "Great coaches can bring an average increase of 0.2 to 0.5 medals for each athlete.",
+    ],
     paperUrl: "https://doi.org/10.3390/app15147793",
     oneLineSummary:
       "This paper builds machine-learning models to predict 2028 Olympic medal performance while quantifying host-country and exceptional-coaching effects.",

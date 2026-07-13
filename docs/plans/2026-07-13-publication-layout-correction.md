@@ -24,3 +24,10 @@ Make publication cards and paper briefs read as one continuous editorial page in
 - Run lint and production build.
 - Inspect the publications page, an Olympic brief, and a single-image brief at desktop and mobile widths.
 - Push the verified main branch so GitHub Pages can publish the updated site.
+
+## Follow-up: Olympic brief refinement
+
+- Remove the model-comparison caption so the radar figure carries the evidence directly.
+- Scale the radar figure to its natural aspect ratio and make the callout border match the image bounds exactly.
+- Preserve the published abstract verbatim while breaking it into five paragraphs after the four user-marked sentences.
+- Reduce the shared publication-detail title size so long titles settle into roughly two to three desktop lines.
