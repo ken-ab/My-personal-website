@@ -37,7 +37,15 @@ export function Timeline({ items, presentation = "default", tone }: TimelineProp
               >
                 {item.cardVisuals.map((visual) => (
                   <figure className="publication-card-visual" key={visual.src}>
-                    <img alt={visual.alt} loading="lazy" src={visual.src} />
+                    <img
+                      alt={visual.alt}
+                      decoding="async"
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      height={visual.height}
+                      loading="eager"
+                      src={visual.src}
+                      width={visual.width}
+                    />
                   </figure>
                 ))}
               </div>

@@ -1,9 +1,17 @@
-import bambooConnectionsFigure from "../assets/case-studies/bamboo-connections-framework.png";
-import briDigitalEconomyFigure from "../assets/case-studies/bri-digital-economy.png";
-import moeTimelineFigure from "../assets/case-studies/moe-timeline.png";
-import olympicHostEffectFigure from "../assets/case-studies/olympic-host-effect.png";
-import olympicModelFrameworkFigure from "../assets/case-studies/olympic-model-framework.png";
-import robotVisionFigure from "../assets/case-studies/robot-vision-detection.png";
+import bambooConnectionsCardFigure from "../assets/publication-cards/bamboo-connections-card.webp";
+import briDigitalEconomyCardFigure from "../assets/publication-cards/bri-digital-economy-card.webp";
+import moeTimelineCardFigure from "../assets/publication-cards/moe-timeline-card.webp";
+import olympicHostEffectCardFigure from "../assets/publication-cards/olympic-host-effect-card.webp";
+import olympicModelFrameworkCardFigure from "../assets/publication-cards/olympic-model-framework-card.webp";
+import robotVisionCardFigure from "../assets/publication-cards/robot-vision-card.webp";
+import qianfanChallengeScreenshot from "../assets/project-details/qianfan-challenge.png";
+import qianfanHomeScreenshot from "../assets/project-details/qianfan-home.png";
+import qianfanMiniProgramQr from "../assets/project-details/qianfan-mini-program-qr.png";
+import qianfanProjectsScreenshot from "../assets/project-details/qianfan-projects.png";
+import wangCheckinScreenshot from "../assets/project-details/wang-checkin.png";
+import wangExerciseScreenshot from "../assets/project-details/wang-exercise.png";
+import wangHomeScreenshot from "../assets/project-details/wang-home.png";
+import wangMiniProgramQr from "../assets/project-details/wang-mini-program-qr.png";
 
 export type Tone = "research" | "career" | "systems";
 
@@ -27,8 +35,29 @@ export type TimelineEntry = {
   cardVisuals?: Array<{
     src: string;
     alt: string;
+    width: number;
+    height: number;
   }>;
   emphasis?: "featured" | "medium" | "compact";
+};
+
+export type ProjectShowcase = {
+  kind: "mini-program";
+  status: string;
+  qrCode: string;
+  screenshots: Array<{
+    src: string;
+    alt: string;
+    label: string;
+    width: number;
+    height: number;
+  }>;
+  metrics: Array<{
+    value: string;
+    label: string;
+    source?: string;
+  }>;
+  flow: string[];
 };
 
 export type DevelopmentProject = TimelineEntry & {
@@ -38,6 +67,7 @@ export type DevelopmentProject = TimelineEntry & {
     work: string;
     outcome: string;
   };
+  showcase?: ProjectShowcase;
 };
 
 export const profile = {
@@ -97,12 +127,16 @@ export const applications: TimelineEntry[] = [
     tags: ["K-means", "Factor Analysis", "ARIMA", "XGBoost", "FCNN", "Bayesian Regression", "Olympic Data"],
     cardVisuals: [
       {
-        src: olympicModelFrameworkFigure,
+        src: olympicModelFrameworkCardFigure,
         alt: "Olympic medal prediction framework covering MPXG, FMPM, host effects, and coach effects.",
+        width: 989,
+        height: 760,
       },
       {
-        src: olympicHostEffectFigure,
+        src: olympicHostEffectCardFigure,
         alt: "Historical host-country Olympic medal scores and host-effect comparison.",
+        width: 1280,
+        height: 640,
       },
     ],
     highlights: [
@@ -128,8 +162,10 @@ export const applications: TimelineEntry[] = [
     tags: ["DeepSpeed-MoE", "Switch Transformer", "Mixtral", "DeepSeek-V3", "Sparse Activation", "Expert Routing"],
     cardVisuals: [
       {
-        src: moeTimelineFigure,
+        src: moeTimelineCardFigure,
         alt: "Timeline of major Mixture-of-Experts models from 2017 to 2024.",
+        width: 1280,
+        height: 730,
       },
     ],
     highlights: [
@@ -150,8 +186,10 @@ export const applications: TimelineEntry[] = [
     tags: ["Computer Vision", "Robotics", "Perception", "Review"],
     cardVisuals: [
       {
-        src: robotVisionFigure,
+        src: robotVisionCardFigure,
         alt: "Urban scene demonstrating object detection for robot and computer vision.",
+        width: 981,
+        height: 650,
       },
     ],
     actions: [
@@ -172,8 +210,10 @@ export const applications: TimelineEntry[] = [
     tags: ["Sustainability", "Machine Learning", "Structural Mechanics", "Mechanical Properties"],
     cardVisuals: [
       {
-        src: bambooConnectionsFigure,
+        src: bambooConnectionsCardFigure,
         alt: "Machine-learning framework for thin-walled steel-ply-bamboo connection experiments and prediction.",
+        width: 1280,
+        height: 880,
       },
     ],
     actions: [
@@ -194,14 +234,20 @@ export const applications: TimelineEntry[] = [
     tags: ["Digital Economy", "Stochastic Frontier Gravity Model", "Mediation Analysis", "BRI"],
     cardVisuals: [
       {
-        src: briDigitalEconomyFigure,
+        src: briDigitalEconomyCardFigure,
         alt: "Belt and Road digital economy ecosystem, trends, technologies, and enabling factors.",
+        width: 704,
+        height: 366,
       },
     ],
     actions: [{ label: "View Brief", href: "/brief/deic-digital-trade" }],
     emphasis: "compact",
   },
 ];
+
+export const publicationCardImageSources = applications.flatMap((item) =>
+  item.cardVisuals?.map((visual) => visual.src) ?? [],
+);
 
 export const internshipAwards: TimelineEntry[] = [
   {
@@ -332,6 +378,22 @@ export const developmentProjects: DevelopmentProject[] = [
     ],
     actions: [{ label: "View Detail", href: "/brief/jingjiang-platform" }],
     emphasis: "medium",
+    showcase: {
+      kind: "mini-program",
+      status: "Deployed · verified 2026-07-13",
+      qrCode: qianfanMiniProgramQr,
+      screenshots: [
+        { src: qianfanHomeScreenshot, alt: "Jingjiang mini-program home dashboard.", label: "Live home", width: 375, height: 811 },
+        { src: qianfanChallengeScreenshot, alt: "Jingjiang challenge-batch catalogue.", label: "Challenge batches", width: 430, height: 900 },
+        { src: qianfanProjectsScreenshot, alt: "Jingjiang public project catalogue.", label: "Project catalogue", width: 430, height: 900 },
+      ],
+      metrics: [
+        { value: "18", label: "provinces" },
+        { value: "79", label: "institutions" },
+        { value: "201", label: "public projects" },
+      ],
+      flow: ["Mini program", "Express API", "Governed catalogue"],
+    },
     sections: {
       problem:
         "University cooperation data is scattered across projects, policies and regional context, making it hard to browse and maintain.",
@@ -368,6 +430,22 @@ export const developmentProjects: DevelopmentProject[] = [
     ],
     actions: [{ label: "View Detail", href: "/brief/laowang-checkin" }],
     emphasis: "medium",
+    showcase: {
+      kind: "mini-program",
+      status: "Deployed · live mini program",
+      qrCode: wangMiniProgramQr,
+      screenshots: [
+        { src: wangHomeScreenshot, alt: "Lao Wang mini-program home screen.", label: "Daily entry", width: 375, height: 811 },
+        { src: wangExerciseScreenshot, alt: "Lao Wang exercise timer and cadence setup.", label: "Exercise timer", width: 375, height: 811 },
+        { src: wangCheckinScreenshot, alt: "Lao Wang health check-in choices.", label: "Health check-ins", width: 375, height: 811 },
+      ],
+      metrics: [
+        { value: "872", label: "cumulative users", source: "WeAnalysis" },
+        { value: "127", label: "avg. daily visitors", source: "30-day WeAnalysis" },
+        { value: "7,277", label: "health check-ins", source: "production" },
+      ],
+      flow: ["Daily routine", "Health record", "Reminder loop"],
+    },
     sections: {
       problem:
         "Health check-in tools need low-friction daily usage, reminders, family support and an operations backend.",

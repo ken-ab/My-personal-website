@@ -61,9 +61,14 @@ export type MiniProgramCaseStudy = CaseStudyBase & {
   kind: "mini-program";
   keywords: string[];
   qrCode: string;
-  asOf?: string;
-  metrics: Array<{ label: string; value: string; note?: string }>;
-  metricNote?: string;
+  metricGroups: Array<{
+    label: string;
+    source: string;
+    asOf: string;
+    window?: string;
+    metrics: Array<{ label: string; value: string; note?: string }>;
+  }>;
+  verificationNote?: string;
   batchBreakdown?: Array<{ label: string; value: number }>;
   screenshots: Array<{ src: string; alt: string; label: string }>;
   featureBlocks: Array<{ title: string; body: string }>;
@@ -472,9 +477,31 @@ export const caseStudies: CaseStudy[] = [
     role: "Product & Full-stack Development",
     keywords: ["WeChat Mini Program", "uni-app", "Vue 3", "Pinia", "Express", "Healthy Ageing"],
     qrCode: wangMiniProgramQr,
-    metrics: [],
-    metricNote:
-      "WeChat usage figures are intentionally withheld until a verified WeAnalysis export is available; no estimated user numbers are published.",
+    metricGroups: [
+      {
+        label: "WeAnalysis · Last 30 Days",
+        source: "WeChat WeAnalysis",
+        asOf: "2026-07-14",
+        window: "2026-06-14 – 2026-07-13",
+        metrics: [
+          { label: "Cumulative users", value: "872", note: "cumulative WeChat visitor users" },
+          { label: "Average daily visitors", value: "127", note: "average unique visitors per day" },
+          { label: "Average daily opens", value: "252", note: "average mini-program opens per day" },
+          { label: "Average daily page views", value: "1,691", note: "average viewed pages per day" },
+        ],
+      },
+      {
+        label: "Production Backend",
+        source: "Read-only production database aggregation",
+        asOf: "2026-07-14",
+        metrics: [
+          { label: "Registered users", value: "508", note: "accounts in the production user table" },
+          { label: "Health check-ins", value: "7,277", note: "exercise + diet + vital-sign check-ins" },
+          { label: "Finished exercise timers", value: "141", note: "sessions with FINISHED status" },
+          { label: "Active check-in users", value: "264", note: "distinct users, 2026-06-14 to 2026-07-13" },
+        ],
+      },
+    ],
     oneLineSummary:
       "A production mini program that gives older users one clear path from exercise setup to health check-in, records, reminders, and community participation.",
     screenshots: [
@@ -526,14 +553,20 @@ export const caseStudies: CaseStudy[] = [
     role: "Product, Data Pipeline & Full-stack Development",
     keywords: ["WeChat Mini Program", "Vue 3", "Express", "MySQL", "Project Map", "Data Governance"],
     qrCode: qianfanMiniProgramQr,
-    asOf: "2026-07-13",
-    metrics: [
-      { label: "Provinces", value: "18", note: "enabled provinces with public projects" },
-      { label: "Universities", value: "79", note: "enabled universities and institutes" },
-      { label: "Public projects", value: "201", note: "currently visible project records" },
-      { label: "Policies", value: "7", note: "public policy documents" },
-      { label: "Challenge batches", value: "3", note: "published demand batches" },
-      { label: "Listed demands", value: "39", note: "16 + 7 + 16 across three batches" },
+    metricGroups: [
+      {
+        label: "Public Catalogue Snapshot",
+        source: "Public production API",
+        asOf: "2026-07-13",
+        metrics: [
+          { label: "Provinces", value: "18", note: "enabled provinces with public projects" },
+          { label: "Universities", value: "79", note: "enabled universities and institutes" },
+          { label: "Public projects", value: "201", note: "currently visible project records" },
+          { label: "Policies", value: "7", note: "public policy documents" },
+          { label: "Challenge batches", value: "3", note: "published demand batches" },
+          { label: "Listed demands", value: "39", note: "16 + 7 + 16 across three batches" },
+        ],
+      },
     ],
     batchBreakdown: [
       { label: "Batch 01", value: 16 },

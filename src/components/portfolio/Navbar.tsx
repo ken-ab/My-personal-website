@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import { preloadPublicationImages } from "../../utils/publicationImagePreload";
 
 const navItems = [
   { label: "Publications", href: "/publications" },
@@ -8,6 +9,10 @@ const navItems = [
 ];
 
 export function Navbar() {
+  const warmPublicationRoute = () => {
+    void preloadPublicationImages();
+  };
+
   return (
     <header className="site-header">
       <nav aria-label="Primary navigation" className="site-nav">
@@ -18,7 +23,14 @@ export function Navbar() {
 
         <div className="nav-center">
           {navItems.map((item) => (
-            <NavLink className={({ isActive }) => (isActive ? "nav-link is-active" : "nav-link")} key={item.href} to={item.href}>
+            <NavLink
+              className={({ isActive }) => (isActive ? "nav-link is-active" : "nav-link")}
+              key={item.href}
+              onFocus={item.href === "/publications" ? warmPublicationRoute : undefined}
+              onPointerEnter={item.href === "/publications" ? warmPublicationRoute : undefined}
+              onTouchStart={item.href === "/publications" ? warmPublicationRoute : undefined}
+              to={item.href}
+            >
               {item.label}
             </NavLink>
           ))}

@@ -43,35 +43,42 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
           </aside>
 
           <div className="mini-proof-body">
-            {study.metrics.length ? (
-              <>
-                <div className="mini-metric-heading">
-                  <div>
-                    <span>VERIFIED DATA SNAPSHOT</span>
-                    <strong>{study.asOf}</strong>
-                  </div>
-                  <ShieldCheck aria-hidden="true" size={25} />
-                </div>
-                <div className="mini-metric-grid">
-                  {study.metrics.map((metric) => (
-                    <article className="mini-metric-card" key={metric.label}>
-                      <strong>{metric.value}</strong>
-                      <span>{metric.label}</span>
-                      {metric.note ? <p>{metric.note}</p> : null}
-                    </article>
-                  ))}
-                </div>
-              </>
-            ) : (
+            {study.metricGroups.length ? (
+              <div className="mini-metric-groups">
+                {study.metricGroups.map((group) => (
+                  <section className="mini-metric-group" key={`${group.label}-${group.asOf}`}>
+                    <div className="mini-metric-heading">
+                      <div>
+                        <span>{group.label}</span>
+                        <strong>{group.window ?? `As of ${group.asOf}`}</strong>
+                        <small>{group.source} · captured {group.asOf}</small>
+                      </div>
+                      <ShieldCheck aria-hidden="true" size={25} />
+                    </div>
+                    <div className="mini-metric-grid">
+                      {group.metrics.map((metric) => (
+                        <article className="mini-metric-card" key={metric.label}>
+                          <strong>{metric.value}</strong>
+                          <span>{metric.label}</span>
+                          {metric.note ? <p>{metric.note}</p> : null}
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            ) : null}
+
+            {study.verificationNote ? (
               <div className="mini-verification-note">
                 <ShieldCheck aria-hidden="true" size={26} />
                 <div>
-                  <span>VERIFICATION POLICY</span>
-                  <strong>No invented usage figures</strong>
-                  <p>{study.metricNote}</p>
+                  <span>WEANALYSIS STATUS</span>
+                  <strong>Traffic snapshot awaiting sign-in</strong>
+                  <p>{study.verificationNote}</p>
                 </div>
               </div>
-            )}
+            ) : null}
 
             {study.batchBreakdown?.length ? (
               <div className="mini-batch-breakdown" aria-label="Challenge demands by batch">

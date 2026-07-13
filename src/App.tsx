@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/portfolio/Navbar";
 import { ScrollToTop } from "./components/portfolio/ScrollToTop";
@@ -7,8 +8,11 @@ import { Contact } from "./pages/Contact";
 import { DevelopmentProjects } from "./pages/DevelopmentProjects";
 import { Home } from "./pages/Home";
 import { InternshipAwards } from "./pages/InternshipAwards";
+import { schedulePublicationImagePreload } from "./utils/publicationImagePreload";
 
 export default function App() {
+  useEffect(() => schedulePublicationImagePreload(), []);
+
   return (
     <HashRouter>
       <ScrollToTop />

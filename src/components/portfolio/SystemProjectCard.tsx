@@ -1,5 +1,6 @@
 import type { DevelopmentProject } from "../../data/portfolio";
 import { ActionButton } from "./ActionButton";
+import { MiniProgramProjectShowcase } from "./MiniProgramProjectShowcase";
 import { TagList } from "./TagList";
 
 type SystemProjectCardProps = {
@@ -29,7 +30,9 @@ export function SystemProjectCard({ project }: SystemProjectCardProps) {
 
       <p className="system-description">{project.description}</p>
 
-      {featured ? <AgentMap /> : null}
+      {project.showcase ? (
+        <MiniProgramProjectShowcase showcase={project.showcase} title={project.title} />
+      ) : featured ? <AgentMap /> : null}
 
       <div className="system-modules">
         {sectionLabels.map(([label, key]) => (

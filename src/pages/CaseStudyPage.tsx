@@ -104,7 +104,7 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
         <div className={`paper-visual-gallery${study.visuals && study.visuals.length > 1 ? " has-multiple" : ""}`}>
           {study.visuals?.map((visual) => (
             <figure className="paper-visual-frame" key={visual.src}>
-              <img alt={visual.alt} src={visual.src} />
+              <img alt={visual.alt} decoding="async" loading="eager" src={visual.src} />
             </figure>
           ))}
         </div>
