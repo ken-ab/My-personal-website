@@ -46,6 +46,13 @@ export type TimelineEntry = {
     facts: Array<{ value: string; label: string }>;
   };
   emphasis?: "featured" | "medium" | "compact";
+  canonicalTitle?: string;
+  titleZh?: string;
+  abstractOriginal?: string;
+  summaryZh?: string;
+  displayTier?: "selected" | "additional";
+  publicationType?: "research" | "review";
+  authorRole?: string;
 };
 
 export type MiniProgramProjectShowcase = {
@@ -118,22 +125,22 @@ Building agentic AI and ML-system prototypes`,
 
 export const homeLanes = [
   {
-    label: "Publications",
-    title: "Research with model discipline",
-    body: "Machine learning, decision systems and review work arranged with a clear primary-to-supporting hierarchy.",
-    href: "/publications",
+    label: "Research",
+    title: "Current questions and selected evidence",
+    body: "Current experimental work, selected publications, and supporting research breadth.",
+    href: "/research",
   },
   {
-    label: "Projects",
-    title: "Research, competition and applied work",
-    body: "Bioinformatics pipelines, mathematical modeling and investment workflow practice beyond coursework.",
-    href: "/projects",
+    label: "Engineering",
+    title: "Working systems and delivery evidence",
+    body: "Agent systems, enterprise workflows, and deployed products presented as engineering work.",
+    href: "/engineering",
   },
   {
-    label: "Development Projects",
-    title: "Systems that can be operated",
-    body: "Agent systems, mini programs and admin workflows built from architecture to product interface.",
-    href: "/development-projects",
+    label: "Experience",
+    title: "Education, practice, and recognition",
+    body: "Academic preparation, technical experience, and competition research.",
+    href: "/experience",
   },
 ];
 
@@ -141,7 +148,7 @@ export const applications: TimelineEntry[] = [
   {
     id: "applied-sciences-olympic",
     period: "07/2025",
-    title: "Predicting Olympic Medal Performance for 2028: Machine Learning Models and the Impact of Host and Coaching Effect",
+    title: "Predicting Olympic Medal Performance for 2028: Machine Learning Models and the Impact of Host and Coaching Effects",
     role: "First Author",
     type: "Applied Sciences, 2025 / Machine Learning / Sports Analytics",
     description:
@@ -176,7 +183,7 @@ export const applications: TimelineEntry[] = [
   {
     id: "ainit-moe",
     period: "03/2025",
-    title: "Exploring and Enhancing Advanced MoE Models: From DeepSpeed-MoE to DeepSeek-V3",
+    title: "Exploring and Enhancing Advanced MoE Models: From Deepspeed-MoE to DeepSeek-V3",
     role: "First Author",
     type: "AINIT 2025 / Conference Paper / AI Architecture",
     description:
@@ -194,13 +201,16 @@ export const applications: TimelineEntry[] = [
       "Reviewed seven representative post-2022 MoE architectures.",
       "Compared MoE and dense Transformer architectures across five dimensions.",
     ],
-    actions: [{ label: "View Brief", href: "/brief/moe" }],
+    actions: [
+      { label: "View Brief", href: "/brief/moe" },
+      { label: "Paper", href: "https://doi.org/10.1109/AINIT65432.2025.11035928", external: true },
+    ],
     emphasis: "compact",
   },
   {
     id: "robotic-vision",
     period: "04/2025",
-    title: "Research Progress on the Integration of Robot Vision, Computer Vision, and Machine Learning: Technological Evolution, Challenges, and Industrial Applications",
+    title: "Research Progress on the Integration of Robot Vision, Computer Vision and Machine Learning: Technological Evolution, Challenges and Industrial Applications",
     role: "Second Author",
     type: "International Journal of Current Research in Science, Engineering & Technology, 2025",
     description:
@@ -296,7 +306,6 @@ export const projects: TimelineEntry[] = [
       "Used Spearman correlation and factor analysis to build a comprehensive statistical scoring model.",
       "Identified samples with imbalanced energy features.",
     ],
-    actions: [{ label: "View Detail", href: "#" }],
     emphasis: "featured",
   },
   {
@@ -339,9 +348,9 @@ export const projects: TimelineEntry[] = [
   },
   {
     id: "energyfund",
-    period: "2026.03 - 2026.07",
-    title: "EnergyFund / EnergyQuant Pre-investment System",
-    chineseTitle: "EnergyFund / EnergyQuant 投前系统",
+    period: "",
+    title: "EnergyQuant Pre-investment Workflow System",
+    chineseTitle: "EnergyQuant 投前工作流系统",
     type: "Project Experience / Investment Workflow / AI Document Processing",
     description:
       "A pre-investment workflow system for AI-assisted file classification, Track B material review, RBAC permission control and three-track parallel processing.",
@@ -358,9 +367,7 @@ export const projects: TimelineEntry[] = [
       "Designed AI-assisted material classification.",
       "Supported upload, unzip, preview and manual confirmation.",
       "Built role-based access control and parallel investment workflow logic.",
-      "This date must be 2026.03 - 2026.07, not 2026.06.",
     ],
-    actions: [{ label: "View Detail", href: "#" }],
     emphasis: "medium",
   },
 ];
@@ -369,7 +376,8 @@ export const developmentProjects: DevelopmentProject[] = [
   {
     id: "finance-agent",
     period: "2025.10 - 2026.01",
-    title: "Finance-Agent / A-share Investment Advisor Agent System",
+    title: "Finance-Agent: A Multi-Agent System for A-share Investment Research",
+    chineseTitle: "Finance-Agent：多智能体 A 股研究与分析系统",
     type: "AI Agent / Finance / Multi-agent System",
     description:
       "Built a multi-agent A-share investment research system using MCP tools, LangGraph and ReAct. The system decomposes stock analysis into fundamental, technical, valuation and news agents, then consolidates findings into traceable Markdown reports with evaluator-reflection loops.",

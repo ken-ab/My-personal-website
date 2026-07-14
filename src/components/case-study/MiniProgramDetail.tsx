@@ -20,7 +20,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
           </div>
           <aside className="mini-detail-meta">
             <span>{study.period}</span>
-            <strong>{study.role}</strong>
+            <strong>{localized?.role ?? study.role}</strong>
             <p>{localized?.summary ?? study.oneLineSummary}</p>
           </aside>
         </div>
@@ -42,7 +42,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
               <span>{bilingual(language, "WECHAT ENTRY", "微信入口")}</span>
               <strong>{bilingual(language, "Scan to open", "扫码打开")}</strong>
             </div>
-            <img alt={`${study.title} WeChat mini-program QR code`} src={study.qrCode} />
+            <img alt={bilingual(language, `${study.title} WeChat mini-program QR code`, `${localized?.title ?? study.title}微信小程序码`)} src={study.qrCode} />
             <p>{bilingual(language, "Use WeChat to scan the original mini-program code.", "请使用微信扫描原始小程序码。")}</p>
           </aside>
 
@@ -54,7 +54,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
                     <div className="mini-metric-heading">
                       <div>
                         <span>{localized?.metricGroup.label ?? group.label}</span>
-                        <strong>{group.window ?? `As of ${group.asOf}`}</strong>
+                        <strong>{group.window ?? bilingual(language, `As of ${group.asOf}`, `截至 ${group.asOf}`)}</strong>
                         <small>{localized?.metricGroup.source ?? group.source} · {bilingual(language, "captured", "采集于")} {group.asOf}</small>
                       </div>
                       <ShieldCheck aria-hidden="true" size={25} />
@@ -77,15 +77,15 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
               <div className="mini-verification-note">
                 <ShieldCheck aria-hidden="true" size={26} />
                 <div>
-                  <span>WEANALYSIS STATUS</span>
-                  <strong>Traffic snapshot awaiting sign-in</strong>
+                  <span>{bilingual(language, "WEANALYSIS STATUS", "WEANALYSIS 状态")}</span>
+                  <strong>{bilingual(language, "Traffic snapshot awaiting sign-in", "流量快照等待登录核验")}</strong>
                   <p>{study.verificationNote}</p>
                 </div>
               </div>
             ) : null}
 
             {study.batchBreakdown?.length ? (
-              <div className="mini-batch-breakdown" aria-label="Challenge demands by batch">
+              <div className="mini-batch-breakdown" aria-label={bilingual(language, "Challenge demands by batch", "各批次揭榜需求")}>
                 <span>{bilingual(language, "DEMANDS BY BATCH", "分批次需求")}</span>
                 {study.batchBreakdown.map((batch) => (
                   <div className="mini-batch-row" key={batch.label}>
@@ -127,7 +127,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
             <figure className={`mini-phone-shot${shot.featured ? " is-featured" : ""}`} key={shot.label}>
               <div className="mini-phone-chrome"><i /><i /><i /></div>
               <img
-                alt={shot.alt}
+                alt={localized?.screenshotAlts[shotIndex] ?? shot.alt}
                 decoding="async"
                 height={shot.height}
                 loading={shot.featured ? "eager" : "lazy"}
@@ -177,7 +177,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
               <h3>{localized?.features[index]?.title ?? feature.title}</h3>
               <p>{localized?.features[index]?.body ?? feature.body}</p>
               {feature.flow?.length ? (
-                <div className="mini-feature-flow" aria-label={`${feature.title} flow`}>
+                <div className="mini-feature-flow" aria-label={bilingual(language, `${feature.title} flow`, `${localized?.features[index]?.title ?? feature.title}流程`)}>
                   {feature.flow.map((step, flowIndex) => (
                     <div className="mini-feature-flow-step" key={step}>
                       <i aria-hidden="true" />

@@ -23,7 +23,7 @@ export function McmResearchMap() {
       </svg>
 
       <article className="mcm-map-input">
-        <span>INPUT</span>
+        <span>{bilingual(language, "INPUT", "输入")}</span>
         <Database aria-hidden="true" size={23} />
         <strong>{bilingual(language, "Evidence base", "证据输入")}</strong>
         <p>O*NET · MIT · Lincoln Tech · RISD</p>
@@ -31,7 +31,7 @@ export function McmResearchMap() {
 
       <section className="mcm-map-module mcm-map-module-one">
         <header>
-          <span>MODULE I</span>
+          <span>{bilingual(language, "MODULE I", "模块 I")}</span>
           <strong>{bilingual(language, "Career exposure", "职业 AI 暴露")}</strong>
           <BriefcaseBusiness aria-hidden="true" size={20} />
         </header>
@@ -45,7 +45,7 @@ export function McmResearchMap() {
 
       <section className="mcm-map-module mcm-map-module-two">
         <header>
-          <span>MODULE II</span>
+          <span>{bilingual(language, "MODULE II", "模块 II")}</span>
           <strong>E-MMCAS</strong>
           <Network aria-hidden="true" size={20} />
         </header>
@@ -59,7 +59,7 @@ export function McmResearchMap() {
 
       <section className="mcm-map-module mcm-map-module-three">
         <header>
-          <span>MODULE III</span>
+          <span>{bilingual(language, "MODULE III", "模块 III")}</span>
           <strong>{bilingual(language, "Policy decision", "政策决策")}</strong>
           <Scale aria-hidden="true" size={20} />
         </header>
@@ -73,14 +73,14 @@ export function McmResearchMap() {
 
       <section className="mcm-map-module mcm-map-module-four">
         <header>
-          <span>MODULE IV</span>
+          <span>{bilingual(language, "MODULE IV", "模块 IV")}</span>
           <strong>{bilingual(language, "Policy transfer", "策略泛化")}</strong>
           <Building2 aria-hidden="true" size={20} />
         </header>
         <div className="mcm-archetypes">
-          <b><Sparkles size={14} /> Pioneer</b>
-          <b><Workflow size={14} /> Pragmatic</b>
-          <b><BookOpen size={14} /> Transformative</b>
+          <b><Sparkles size={14} /> {bilingual(language, "Pioneer", "先锋型")}</b>
+          <b><Workflow size={14} /> {bilingual(language, "Pragmatic", "务实型")}</b>
+          <b><BookOpen size={14} /> {bilingual(language, "Transformative", "转型型")}</b>
         </div>
         <p>{bilingual(language, "Structurally generalizable, contextually adaptable", "结构可迁移，情境需校准")}</p>
       </section>

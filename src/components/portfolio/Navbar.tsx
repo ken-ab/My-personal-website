@@ -1,19 +1,15 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
-import { preloadPublicationImages } from "../../utils/publicationImagePreload";
 
 const navItems = [
-  { en: "Publications", zh: "论文", href: "/publications" },
-  { en: "Projects", zh: "项目经历", href: "/projects" },
-  { en: "Development Projects", zh: "开发项目", href: "/development-projects" },
+  { en: "Research", zh: "研究", href: "/research" },
+  { en: "Engineering", zh: "工程项目", href: "/engineering" },
+  { en: "Experience", zh: "经历", href: "/experience" },
 ];
 
 export function Navbar() {
   const { language, toggleLanguage } = useLanguage();
-  const warmPublicationRoute = () => {
-    void preloadPublicationImages();
-  };
 
   return (
     <header className="site-header">
@@ -28,9 +24,6 @@ export function Navbar() {
             <NavLink
               className={({ isActive }) => (isActive ? "nav-link is-active" : "nav-link")}
               key={item.href}
-              onFocus={item.href === "/publications" ? warmPublicationRoute : undefined}
-              onPointerEnter={item.href === "/publications" ? warmPublicationRoute : undefined}
-              onTouchStart={item.href === "/publications" ? warmPublicationRoute : undefined}
               to={item.href}
             >
               {bilingual(language, item.en, item.zh)}

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="66" height="66" patternUnits="userSpaceOnUse">
+      <path d="M66 0H0V66" fill="none" stroke="#174f78" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfaf5"/>
+      <stop offset="1" stop-color="#eee8dc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#wash)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="38" y="38" width="1124" height="554" rx="28" fill="none" stroke="#c9c0b0"/>
+  <path d="M794 38h340c15.5 0 28 12.5 28 28v226c-101-18-183-55-246-110-59-52-99-100-122-144Z" fill="#174f78" opacity=".08"/>
+  <circle cx="1066" cy="128" r="58" fill="#174f78" opacity=".11"/>
+  <circle cx="1066" cy="128" r="22" fill="#a97924" opacity=".9"/>
+  <rect x="88" y="82" width="54" height="54" fill="#111111"/>
+  <text x="115" y="121" fill="#f5f2ea" font-family="Georgia, serif" font-size="31" font-style="italic" font-weight="700" text-anchor="middle">K</text>
+  <text x="162" y="119" fill="#111111" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">KEN ZHANG</text>
+  <text x="88" y="184" fill="#174f78" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2.7">AI RESEARCH · SYSTEM BUILDING</text>
+  <text x="88" y="286" fill="#111111" font-family="Georgia, serif" font-size="61" font-weight="700">I research AI,</text>
+  <text x="88" y="359" fill="#111111" font-family="Georgia, serif" font-size="61" font-weight="700">build systems,</text>
+  <text x="88" y="432" fill="#111111" font-family="Georgia, serif" font-size="61" font-weight="700">and learn from both.</text>
+  <path d="M88 474h121" stroke="#a97924" stroke-width="5"/>
+  <text x="88" y="523" fill="#4d4942" font-family="Segoe UI, Arial, sans-serif" font-size="24">Model routing · Multimodal reasoning · Agentic AI evaluation</text>
+  <g transform="translate(832 418)">
+    <rect width="280" height="108" rx="18" fill="#fbfaf5" stroke="#174f78" stroke-opacity=".38"/>
+    <circle cx="38" cy="38" r="8" fill="#174f78"/>
+    <path d="M38 47v31M88 38h139M88 58h103M88 78h72" stroke="#174f78" stroke-linecap="round" stroke-opacity=".55" stroke-width="5"/>
+  </g>
+</svg>

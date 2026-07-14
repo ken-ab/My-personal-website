@@ -1,5 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import { FinanceAgentDetail } from "../components/case-study/FinanceAgentDetail";
+import { RouterBenchDetail } from "../components/case-study/RouterBenchDetail";
 import { OlympicMethodRoute } from "../components/case-study/OlympicMethodRoute";
 import { MiniProgramDetail } from "../components/case-study/MiniProgramDetail";
 import { McmProjectDetail } from "../components/case-study/McmProjectDetail";
@@ -9,14 +10,19 @@ import { getCaseStudy } from "../data/caseStudies";
 import type { AgentProjectCaseStudy, PublicationCaseStudy } from "../data/caseStudies";
 import { publicationZh } from "../i18n/content";
 import { bilingual, useLanguage } from "../i18n/LanguageContext";
+import { additionalPublications, selectedPublications } from "../data/siteStructure";
 
 export function CaseStudyPage() {
   const { id } = useParams();
   const study = getCaseStudy(id);
   const { language } = useLanguage();
 
+  if (id === "routerbench-mini") {
+    return <RouterBenchDetail />;
+  }
+
   if (!study) {
-    return <Navigate replace to="/publications" />;
+    return <Navigate replace to="/research" />;
   }
 
   if (study.kind === "mini-program") {
@@ -94,6 +100,7 @@ function splitAbstractIntoParagraphs(text: string, breakAfter: string[] = []) {
 function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
   const { language } = useLanguage();
   const localized = language === "zh" ? publicationZh[study.id] : undefined;
+  const publicationMeta = [...selectedPublications, ...additionalPublications].find((item) => item.briefId === study.id);
   const abstractParagraphs = splitAbstractIntoParagraphs(
     study.abstract ?? "",
     study.abstractParagraphBreaks,
@@ -104,13 +111,14 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
       <section className="paper-brief-hero" aria-labelledby="paper-brief-title">
         <p className="paper-keywords">{study.keywords?.join(" · ")}</p>
         <h1 id="paper-brief-title">{study.title}</h1>
-        <p className="paper-authors" aria-label="Paper authors">
+        {language === "zh" && publicationMeta ? <p className="translated-title">{publicationMeta.titleZh}</p> : null}
+        <p className="paper-authors" aria-label={bilingual(language, "Paper authors", "论文作者")}>
           {study.authors?.map((author, index) => (
-            <span className={author === "Zhenkai Zhang" ? "is-owner" : ""} key={author}>
+            <span className={author === "Zhenkai Zhang" || author === "Zhengkai Zhang" ? "is-owner" : ""} key={author}>
               {index ? <span aria-hidden="true">, </span> : null}
               {author}
               {study.correspondingAuthors?.includes(author) ? (
-                <sup className="corresponding-author-mark" aria-label="corresponding author">*</sup>
+                <sup className="corresponding-author-mark" aria-label={bilingual(language, "corresponding author", "通讯作者")}>*</sup>
               ) : null}
             </span>
           ))}
@@ -124,11 +132,11 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
         ) : null}
       </section>
 
-      <section className="paper-visual-section" aria-label="Paper research overview">
+      <section className="paper-visual-section" aria-label={bilingual(language, "Paper research overview", "论文研究概览")}>
         <div className={`paper-visual-gallery${study.visuals && study.visuals.length > 1 ? " has-multiple" : ""}`}>
-          {study.visuals?.map((visual) => (
+          {study.visuals?.map((visual, visualIndex) => (
             <figure className="paper-visual-frame" key={visual.src}>
-              <img alt={visual.alt} decoding="async" loading="eager" src={visual.src} />
+              <img alt={localized?.visualAlts[visualIndex] ?? visual.alt} decoding="async" loading="eager" src={visual.src} />
             </figure>
           ))}
         </div>
@@ -136,10 +144,18 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
       </section>
 
       <section className="paper-abstract-section" aria-labelledby="paper-abstract-title">
-        <h2 id="paper-abstract-title">{bilingual(language, "Abstract", "摘要")}</h2>
-        {abstractParagraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+        <h2 id="paper-abstract-title">{bilingual(language, "Abstract", "中文概述")}</h2>
+        {language === "zh" ? (
+          <>
+            <p>{localized?.abstractSummary ?? localized?.summary}</p>
+            <details className="original-abstract-disclosure">
+              <summary>{bilingual(language, "Original Abstract", "Original Abstract · 英文原文")}</summary>
+              <div>
+                {abstractParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+            </details>
+          </>
+        ) : abstractParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       </section>
     </>
   );
@@ -158,7 +174,7 @@ function ProjectIntro({ study }: { study: AgentProjectCaseStudy }) {
         <aside className="case-meta-card" aria-label="Case study metadata">
           <span>{study.period}</span>
           <strong>{study.role}</strong>
-          <p>{bilingual(language, "Project brief for fast RA screening and technical follow-up.", "用于快速了解技术能力与研究匹配度的项目简报。")}</p>
+          <p>{bilingual(language, "Technical project brief with traceable architecture and implementation evidence.", "以可追踪架构和实现证据呈现的技术项目简报。")}</p>
         </aside>
       </section>
 
