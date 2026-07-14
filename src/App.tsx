@@ -7,7 +7,7 @@ import { CaseStudyPage } from "./pages/CaseStudyPage";
 import { Contact } from "./pages/Contact";
 import { DevelopmentProjects } from "./pages/DevelopmentProjects";
 import { Home } from "./pages/Home";
-import { InternshipAwards } from "./pages/InternshipAwards";
+import { Projects } from "./pages/InternshipAwards";
 import { schedulePublicationImagePreload } from "./utils/publicationImagePreload";
 
 export default function App() {
@@ -22,7 +22,8 @@ export default function App() {
         <Route element={<Applications />} path="/publications" />
         <Route element={<CaseStudyPage />} path="/brief/:id" />
         <Route element={<Navigate replace to="/publications" />} path="/applications" />
-        <Route element={<InternshipAwards />} path="/internship-awards" />
+        <Route element={<Projects />} path="/projects" />
+        <Route element={<Navigate replace to="/projects" />} path="/internship-awards" />
         <Route element={<DevelopmentProjects />} path="/development-projects" />
         <Route element={<Contact />} path="/contact" />
         <Route element={<Navigate replace to="/" />} path="*" />

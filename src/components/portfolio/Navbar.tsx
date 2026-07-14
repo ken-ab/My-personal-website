@@ -1,14 +1,16 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 import { preloadPublicationImages } from "../../utils/publicationImagePreload";
 
 const navItems = [
-  { label: "Publications", href: "/publications" },
-  { label: "Internship & Awards", href: "/internship-awards" },
-  { label: "Development Projects", href: "/development-projects" },
+  { en: "Publications", zh: "论文", href: "/publications" },
+  { en: "Projects", zh: "项目经历", href: "/projects" },
+  { en: "Development Projects", zh: "开发项目", href: "/development-projects" },
 ];
 
 export function Navbar() {
+  const { language, toggleLanguage } = useLanguage();
   const warmPublicationRoute = () => {
     void preloadPublicationImages();
   };
@@ -31,15 +33,27 @@ export function Navbar() {
               onTouchStart={item.href === "/publications" ? warmPublicationRoute : undefined}
               to={item.href}
             >
-              {item.label}
+              {bilingual(language, item.en, item.zh)}
             </NavLink>
           ))}
         </div>
 
-        <Link className="contact-pill" to="/contact">
-          <span>Get in touch</span>
-          <ArrowUpRight aria-hidden="true" size={16} strokeWidth={1.9} />
-        </Link>
+        <div className="nav-actions">
+          <button
+            aria-label={bilingual(language, "Switch to Chinese", "切换为英文")}
+            className="language-toggle"
+            onClick={toggleLanguage}
+            type="button"
+          >
+            <span className={language === "zh" ? "is-active" : ""}>中</span>
+            <i aria-hidden="true" />
+            <span className={language === "en" ? "is-active" : ""}>EN</span>
+          </button>
+          <Link className="contact-pill" to="/contact">
+            <span>{bilingual(language, "Get in touch", "联系我")}</span>
+            <ArrowUpRight aria-hidden="true" size={16} strokeWidth={1.9} />
+          </Link>
+        </div>
       </nav>
     </header>
   );

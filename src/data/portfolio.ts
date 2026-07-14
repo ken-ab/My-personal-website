@@ -12,6 +12,7 @@ import wangCheckinsCardScreenshot from "../assets/project-details/laowang-checki
 import wangCommunityCardScreenshot from "../assets/project-details/laowang-community-card.webp";
 import wangHomeCardScreenshot from "../assets/project-details/laowang-home-card.webp";
 import wangMiniProgramQr from "../assets/project-details/wang-mini-program-qr.png";
+import mcmOverviewCard from "../assets/project-details/mcm-overview-card.webp";
 
 export type Tone = "research" | "career" | "systems";
 
@@ -38,6 +39,12 @@ export type TimelineEntry = {
     width: number;
     height: number;
   }>;
+  timelineShowcase?: {
+    kind: "competition-research";
+    award: string;
+    visual: { src: string; alt: string; width: number; height: number };
+    facts: Array<{ value: string; label: string }>;
+  };
   emphasis?: "featured" | "medium" | "compact";
 };
 
@@ -117,10 +124,10 @@ export const homeLanes = [
     href: "/publications",
   },
   {
-    label: "Internship & Awards",
-    title: "Evidence from real execution",
+    label: "Projects",
+    title: "Research, competition and applied work",
     body: "Bioinformatics pipelines, mathematical modeling and investment workflow practice beyond coursework.",
-    href: "/internship-awards",
+    href: "/projects",
   },
   {
     label: "Development Projects",
@@ -264,7 +271,7 @@ export const publicationCardImageSources = applications.flatMap((item) =>
   item.cardVisuals?.map((visual) => visual.src) ?? [],
 );
 
-export const internshipAwards: TimelineEntry[] = [
+export const projects: TimelineEntry[] = [
   {
     id: "nsc-wuxi",
     period: "2025.07 - 2025.09",
@@ -295,11 +302,12 @@ export const internshipAwards: TimelineEntry[] = [
   {
     id: "mcm-icm",
     period: "02/2026",
-    title: "Meritorious Winner (M Award), Mathematical Contest in Modeling (MCM)",
-    chineseTitle: "美赛 M 奖",
-    type: "Competition / Mathematical Modeling",
+    title: "Compete or Coevolve: An Evolutionary Macro-Micro Framework for AI-Era Educational Policy",
+    chineseTitle: "2026 美国大学生数学建模竞赛 M 奖",
+    role: "Meritorious Winner · MCM 2026",
+    type: "Mathematical Modeling / AI-era Education Policy / Problem F",
     description:
-      "Built a modeling framework for education policy in the AI era, combining skill demand analysis, course-skill networks and optimization methods.",
+      "A four-module framework that links task-level AI exposure, curriculum networks, labor-market evolution, and robust institutional policy selection.",
     tags: [
       "O*NET",
       "Sentence-BERT",
@@ -310,13 +318,24 @@ export const internshipAwards: TimelineEntry[] = [
       "Entropy Weight Method",
       "VIKOR",
     ],
-    highlights: [
-      "Modeled educational policy adaptation in the AI era.",
-      "Combined semantic skill mapping and multi-objective optimization.",
-      "Built a course-skill network and decision evaluation pipeline.",
-    ],
-    actions: [{ label: "View Detail", href: "#" }],
-    emphasis: "medium",
+    actions: [{ label: "View Detail", href: "/brief/mcm-2026" }],
+    timelineShowcase: {
+      kind: "competition-research",
+      award: "Meritorious Winner · MCM 2026",
+      visual: {
+        src: mcmOverviewCard,
+        alt: "Four-module overview of the MCM project from occupational AI exposure to policy generalization.",
+        width: 1280,
+        height: 926,
+      },
+      facts: [
+        { value: "3", label: "Careers" },
+        { value: "245", label: "Monte Carlo scenarios" },
+        { value: "6", label: "Evaluation criteria" },
+        { value: "3", label: "Institutional archetypes" },
+      ],
+    },
+    emphasis: "featured",
   },
   {
     id: "energyfund",

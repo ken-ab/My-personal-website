@@ -1,17 +1,19 @@
 import { SectionHero } from "../components/portfolio/SectionHero";
 import { Timeline } from "../components/portfolio/Timeline";
-import { internshipAwards } from "../data/portfolio";
+import { projects } from "../data/portfolio";
+import { bilingual, useLanguage } from "../i18n/LanguageContext";
 
-export function InternshipAwards() {
+export function Projects() {
+  const { language } = useLanguage();
   return (
     <main className="page-shell page-enter">
       <SectionHero
-        description="Internship, competition and engineering experiences that connect research with real-world execution."
-        eyebrow="Internship & Awards"
-        title="Internship & Awards"
+        description={bilingual(language, "Research, competition and engineering work that connects models with real-world execution.", "连接研究模型与真实执行的实习、竞赛和工程项目。")}
+        eyebrow={bilingual(language, "Projects", "项目")}
+        title={bilingual(language, "Projects", "项目经历")}
         tone="career"
       />
-      <Timeline items={internshipAwards} tone="career" />
+      <Timeline items={projects} presentation="projects" tone="career" />
     </main>
   );
 }

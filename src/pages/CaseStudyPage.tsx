@@ -2,14 +2,18 @@ import { Navigate, useParams } from "react-router-dom";
 import { FinanceAgentDetail } from "../components/case-study/FinanceAgentDetail";
 import { OlympicMethodRoute } from "../components/case-study/OlympicMethodRoute";
 import { MiniProgramDetail } from "../components/case-study/MiniProgramDetail";
+import { McmProjectDetail } from "../components/case-study/McmProjectDetail";
 import { ResearchMethodMap } from "../components/case-study/ResearchMethodMaps";
 import { ActionButton } from "../components/portfolio/ActionButton";
 import { getCaseStudy } from "../data/caseStudies";
 import type { AgentProjectCaseStudy, PublicationCaseStudy } from "../data/caseStudies";
+import { publicationZh } from "../i18n/content";
+import { bilingual, useLanguage } from "../i18n/LanguageContext";
 
 export function CaseStudyPage() {
   const { id } = useParams();
   const study = getCaseStudy(id);
+  const { language } = useLanguage();
 
   if (!study) {
     return <Navigate replace to="/publications" />;
@@ -23,6 +27,14 @@ export function CaseStudyPage() {
     );
   }
 
+  if (study.kind === "competition-project") {
+    return (
+      <main className={`page-shell case-study-page mcm-project-page tone-${study.tone} page-enter`}>
+        <McmProjectDetail study={study} />
+      </main>
+    );
+  }
+
   if (study.kind === "agent-project" && study.visualization === "finance-agent") {
     return (
       <main className={`page-shell case-study-page finance-agent-page tone-${study.tone} page-enter`}>
@@ -32,6 +44,7 @@ export function CaseStudyPage() {
   }
 
   const methodVisualization = study.kind === "publication" ? study.methodVisualization : undefined;
+  const localizedPublication = study.kind === "publication" && language === "zh" ? publicationZh[study.id] : undefined;
 
   return (
     <main className={`page-shell case-study-page tone-${study.tone} page-enter`}>
@@ -39,7 +52,7 @@ export function CaseStudyPage() {
 
       <section className="case-section case-method-section">
         <div className="case-section-heading is-method-only">
-          <p className="section-eyebrow">Method / System</p>
+          <p className="section-eyebrow">{bilingual(language, "Method / System", "方法 / 系统")}</p>
         </div>
         {methodVisualization === "olympic" ? (
           <OlympicMethodRoute />
@@ -51,8 +64,8 @@ export function CaseStudyPage() {
       </section>
 
       <section className="case-evidence-grid">
-        <EvidenceBlock items={study.contribution} title="My Contribution" />
-        <EvidenceBlock items={study.takeaways} title="Key Takeaways" />
+        <EvidenceBlock items={localizedPublication?.problem ?? study.problemAddressed} title={bilingual(language, "Problem Addressed", "解决的问题")} />
+        <EvidenceBlock items={localizedPublication?.innovations ?? study.innovations} title={bilingual(language, "Innovation", "创新点")} />
       </section>
 
     </main>
@@ -79,6 +92,8 @@ function splitAbstractIntoParagraphs(text: string, breakAfter: string[] = []) {
 }
 
 function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
+  const { language } = useLanguage();
+  const localized = language === "zh" ? publicationZh[study.id] : undefined;
   const abstractParagraphs = splitAbstractIntoParagraphs(
     study.abstract ?? "",
     study.abstractParagraphBreaks,
@@ -103,7 +118,7 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
         {study.paperUrl ? (
           <div className="paper-primary-action">
             <ActionButton external href={study.paperUrl} variant="primary">
-              Paper
+              {bilingual(language, "Paper", "论文")}
             </ActionButton>
           </div>
         ) : null}
@@ -117,11 +132,11 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
             </figure>
           ))}
         </div>
-        <p className="paper-visual-summary">{study.oneLineSummary}</p>
+        <p className="paper-visual-summary">{localized?.summary ?? study.oneLineSummary}</p>
       </section>
 
       <section className="paper-abstract-section" aria-labelledby="paper-abstract-title">
-        <h2 id="paper-abstract-title">Abstract</h2>
+        <h2 id="paper-abstract-title">{bilingual(language, "Abstract", "摘要")}</h2>
         {abstractParagraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
@@ -131,6 +146,7 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
 }
 
 function ProjectIntro({ study }: { study: AgentProjectCaseStudy }) {
+  const { language } = useLanguage();
   return (
     <>
       <section className="case-hero">
@@ -142,19 +158,19 @@ function ProjectIntro({ study }: { study: AgentProjectCaseStudy }) {
         <aside className="case-meta-card" aria-label="Case study metadata">
           <span>{study.period}</span>
           <strong>{study.role}</strong>
-          <p>Project brief for fast RA screening and technical follow-up.</p>
+          <p>{bilingual(language, "Project brief for fast RA screening and technical follow-up.", "用于快速了解技术能力与研究匹配度的项目简报。")}</p>
         </aside>
       </section>
 
       <section className="case-summary-card">
-        <span>One-line summary</span>
+        <span>{bilingual(language, "One-line summary", "一句话概述")}</span>
         <p>{study.oneLineSummary}</p>
       </section>
 
       <section className="case-section">
         <div className="case-section-heading">
-          <p className="section-eyebrow">Visual Abstract</p>
-          <h2>See the work before reading the project details</h2>
+          <p className="section-eyebrow">{bilingual(language, "Visual Abstract", "可视化概览")}</p>
+          <h2>{bilingual(language, "See the work before reading the project details", "先看懂项目，再进入技术细节")}</h2>
         </div>
 
         <MethodDiagram compact steps={study.methodSteps} />

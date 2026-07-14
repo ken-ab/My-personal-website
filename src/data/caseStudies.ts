@@ -14,6 +14,8 @@ import wangCommunityScreenshot from "../assets/project-details/laowang-community
 import wangHomeScreenshot from "../assets/project-details/laowang-home-detail.webp";
 import wangPosterScreenshot from "../assets/project-details/laowang-poster-detail.webp";
 import wangMiniProgramQr from "../assets/project-details/wang-mini-program-qr.png";
+import mcmCareerTrajectories from "../assets/project-details/mcm-career-trajectories.webp";
+import mcmReportUrl from "../assets/reports/2026-mcm-final.pdf";
 import type { PortfolioLink, Tone } from "./portfolio";
 
 type MethodStep = {
@@ -47,8 +49,25 @@ export type PublicationCaseStudy = CaseStudyBase & {
   methodTitle: string;
   methodLead: string;
   methodSteps: MethodStep[];
-  contribution: string[];
-  takeaways: string[];
+  problemAddressed: string[];
+  innovations: string[];
+};
+
+export type CompetitionProjectCaseStudy = CaseStudyBase & {
+  kind: "competition-project";
+  keywords: string[];
+  award: string;
+  problemLabel: string;
+  reportUrl: string;
+  facts: Array<{ value: string; label: string; note: string }>;
+  problemAddressed: string[];
+  innovations: string[];
+  trajectoryVisual: { src: string; alt: string; caption: string };
+  careerResults: Array<{ title: string; signal: string; body: string; tone: "blue" | "green" | "wine" }>;
+  ablations: Array<{ model: string; title: string; body: string }>;
+  ranking: Array<{ institution: string; score: string; rank: number }>;
+  strategies: Array<{ institution: string; archetype: string; body: string }>;
+  limitations: string[];
 };
 
 export type AgentProjectCaseStudy = CaseStudyBase & {
@@ -63,8 +82,8 @@ export type AgentProjectCaseStudy = CaseStudyBase & {
   methodTitle: string;
   methodLead: string;
   methodSteps: MethodStep[];
-  contribution: string[];
-  takeaways: string[];
+  problemAddressed: string[];
+  innovations: string[];
 };
 
 export type MiniProgramCaseStudy = CaseStudyBase & {
@@ -98,7 +117,7 @@ export type MiniProgramCaseStudy = CaseStudyBase & {
   deploymentProof: string[];
 };
 
-export type CaseStudy = PublicationCaseStudy | AgentProjectCaseStudy | MiniProgramCaseStudy;
+export type CaseStudy = PublicationCaseStudy | CompetitionProjectCaseStudy | AgentProjectCaseStudy | MiniProgramCaseStudy;
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -151,15 +170,13 @@ export const caseStudies: CaseStudy[] = [
         body: "Compare MoE and dense model families across popular aggregated results, commonsense reasoning, world knowledge, code, and math.",
       },
     ],
-    contribution: [
-      "Selected and organized representative post-2022 MoE architectures for comparative review.",
-      "Synthesized architecture-level trade-offs around sparse activation, routing, scalability, and inference efficiency.",
-      "Prepared the paper narrative and poster-style explanation for a non-specialist reader.",
+    problemAddressed: [
+      "Dense Transformers activate the full parameter set for every token, making inference increasingly expensive as models scale.",
+      "Modern MoE systems differ in routing, expert organization, and benchmark behavior, but those trade-offs are difficult to compare in one view.",
     ],
-    takeaways: [
-      "MoE is best presented as an efficiency architecture, not merely a model-size trick.",
-      "Sparse routing allows larger total capacity while activating only part of the model per token.",
-      "For RA applications, this brief demonstrates literature synthesis, architecture reading, and benchmark-oriented reasoning.",
+    innovations: [
+      "Builds a unified Token to Router to Top-k Experts to Weighted Aggregation view across Switch Transformer, DeepSpeed-MoE, PR-MoE, Mixtral, GLaM, DBRX, and DeepSeek-V3.",
+      "Synthesizes five benchmark families and identifies sparse activation, pyramid-residual layouts, adaptive expert sizing, and shared-expert isolation as efficiency mechanisms; the paper reports at least 50% lower inference computation while preserving performance.",
     ],
     links: [{ label: "Back to Publications", href: "/publications" }],
   },
@@ -228,15 +245,13 @@ export const caseStudies: CaseStudy[] = [
         body: "A summary agent consolidates results; an evaluator checks section coverage and goal alignment; a reflection agent can replan once when needed.",
       },
     ],
-    contribution: [
-      "Designed the LangGraph workflow that connects specialist agents, summary generation, evaluation, and reflection.",
-      "Implemented or organized core agents for fundamental, technical, valuation, news, summary, evaluator, and reflection stages.",
-      "Integrated experimental Qwen LoRA scripts for sentiment and risk scoring as a possible news-factor extension.",
+    problemAddressed: [
+      "One-shot financial prompts hide analytical roles, mix data sources, and make it difficult to inspect why a report is incomplete.",
+      "A reusable A-share research workflow needs explicit data tools, specialist reasoning, and a bounded quality-control loop.",
     ],
-    takeaways: [
-      "The project shows system-building ability beyond static ML modeling.",
-      "The architecture makes analysis roles explicit instead of hiding everything in one prompt.",
-      "Current evaluation hooks are visible in source; a frozen benchmark and variant comparison remain future work.",
+    innovations: [
+      "Uses LangGraph to keep fundamental, technical, valuation, and news analysis as parallel, traceable branches backed by eight MCP tool families.",
+      "Adds summary, evaluation, and one bounded reflection round before producing a structured Markdown report.",
     ],
     links: [
       { label: "GitHub", href: "https://github.com/ken-ab/Finance-Agent", external: true },
@@ -299,15 +314,13 @@ export const caseStudies: CaseStudy[] = [
         body: "Quantify host-country advantages and exceptional coaching effects to make the prediction more interpretable.",
       },
     ],
-    contribution: [
-      "Led the paper as first author and organized the modeling pipeline.",
-      "Built the modeling narrative connecting clustering, factor analysis, time-series forecasting, and neural prediction.",
-      "Helped turn quantitative results into an interpretable discussion of host and coach effects.",
+    problemAddressed: [
+      "A 2028 forecast must cover both established medal-winning nations and countries with no prior medals, despite very different historical-data density.",
+      "Medal forecasts are incomplete unless host-country advantage and exceptional-coach effects are quantified separately from the prediction itself.",
     ],
-    takeaways: [
-      "The work demonstrates applied ML pipeline design on a real-world historical dataset.",
-      "The technical road map makes the project easy for non-domain readers to follow.",
-      "The project is useful evidence for experiment design, model comparison, and academic writing.",
+    innovations: [
+      "Splits 234 nations into α1-α4: MPXG handles α1-α3 through factor analysis, ARIMA, and four-model comparison, while FMPM uses a three-layer FCNN for α4 first-medal probability.",
+      "Connects the best XGBoost forecast and 85.5% FCNN test accuracy with interpretable effects: a 74% recent host gain rate and an estimated 0.2-0.5 additional medals per athlete under exceptional coaching.",
     ],
     links: [
       { label: "Paper", href: "https://doi.org/10.3390/app15147793", external: true },
@@ -375,15 +388,13 @@ export const caseStudies: CaseStudy[] = [
         body: "Apply five hyperparameter optimization methods; Bayesian optimization improves the Random Forest result in the reported study.",
       },
     ],
-    contribution: [
-      "Contributed to the machine-learning framing and model-comparison narrative as a co-author.",
-      "Helped connect structural-mechanics data with data-driven prediction methods.",
-      "Supported manuscript preparation around the modeling workflow and result interpretation.",
+    problemAddressed: [
+      "Connection experiments are costly and the available structural dataset is limited, making it difficult to select a suitable bamboo-steel connection from new mechanical-property measurements.",
+      "A repeatable prediction workflow is needed to turn heterogeneous specimen tests into design guidance rather than isolated laboratory results.",
     ],
-    takeaways: [
-      "The work shows cross-domain ML application beyond pure AI benchmarks.",
-      "The Random Forest model performed best among compared models, and Bayesian optimization further improved performance.",
-      "For RA screening, this page signals comfort with data pipelines, model comparison, and interdisciplinary collaboration.",
+    innovations: [
+      "Combines factor-analysis ranking of 249 measurement records from 51 specimens with an eight-model machine-learning comparison.",
+      "Selects Random Forest at about 61% test accuracy, then compares five hyperparameter optimizers; Bayesian optimization raises the reported result to about 67% and feeds the prediction back into connection selection.",
     ],
     links: [
       { label: "Paper", href: "https://doi.org/10.3390/su17156753", external: true },
@@ -439,15 +450,13 @@ export const caseStudies: CaseStudy[] = [
         body: "Summarize application directions and challenges such as data quality, generalization, real-time constraints, and reliability.",
       },
     ],
-    contribution: [
-      "Contributed as second author to literature organization and review writing.",
-      "Helped structure the relationship among robot vision, computer vision, and machine learning.",
-      "Supported synthesis of technical evolution, challenges, and application scenarios.",
+    problemAddressed: [
+      "Robot vision, computer vision, and machine learning are often reviewed separately even though industrial systems must combine perception architecture, algorithms, and deployment constraints.",
+      "Real-time operation, scarce data, and multimodal fusion remain practical barriers to reliable robot deployment.",
     ],
-    takeaways: [
-      "This page is useful as evidence of broad AI/vision literacy.",
-      "The review format shows the ability to synthesize fragmented literature into a readable technical map.",
-      "It is a supporting brief rather than the main RA application anchor.",
+    innovations: [
+      "Creates a technology-scenario-industry map connecting global, embedded, and cloud-edge vision with detection, 3D reconstruction, and dynamic-scene understanding.",
+      "Maps lightweight models, federated learning, and neural-symbolic systems to deployment bottlenecks as a structured review synthesis rather than presenting them as newly invented algorithms.",
     ],
     links: [
       { label: "Paper", href: "https://doi.org/10.30967/IJCRSET/Yujie-Gao/174", external: true },
@@ -504,17 +513,117 @@ export const caseStudies: CaseStudy[] = [
         body: "Use a machine-learning prediction component to support export-potential analysis and comparative interpretation.",
       },
     ],
-    contribution: [
-      "Contributed as third author to data-analysis framing and manuscript preparation.",
-      "Helped connect digital-economy indicators, mediation pathways, and trade-potential interpretation.",
-      "Supported presentation of modeling results for an interdisciplinary audience.",
+    problemAddressed: [
+      "The relationship between exporter-side digital-economy development and digital-service export potential across BRI countries is not fully explained by observed trade volume alone.",
+      "Policy analysis also needs to identify the mechanisms carrying that effect and estimate how key indicators may evolve beyond the historical panel.",
     ],
-    takeaways: [
-      "The project shows comfort with non-neural statistical modeling and economic data analysis.",
-      "The result emphasizes that exporter-side digital-economy development improves digital service export potential.",
-      "This is a supporting evidence page for quantitative modeling breadth.",
+    innovations: [
+      "Combines a stochastic frontier gravity model for 36 countries with two mediation paths: service value added as a share of GDP and the Digital Technology Index.",
+      "Adds an XGBoost plus genetic-algorithm forecasting extension, connecting historical mechanism analysis with forward-looking 2022-2028 policy estimates.",
     ],
     links: [{ label: "Back to Publications", href: "/publications" }],
+  },
+  {
+    kind: "competition-project",
+    id: "mcm-2026",
+    eyebrow: "Competition Research Brief / Mathematical Modeling",
+    title: "Compete or Coevolve: An Evolutionary Macro-Micro Framework for AI-Era Educational Policy",
+    subtitle:
+      "A four-module modeling framework that connects task-level AI exposure, labor-market evolution, curriculum rewiring, and institution-specific policy selection.",
+    tone: "career",
+    period: "02/2026",
+    role: "Mathematical Modeling Project",
+    keywords: ["MCM 2026", "Problem F", "O*NET", "E-MMCAS", "DMPSO", "VIKOR"],
+    award: "Meritorious Winner (M Award)",
+    problemLabel: "Problem F / AI-era post-secondary education",
+    reportUrl: mcmReportUrl,
+    oneLineSummary:
+      "The project models whether AI substitutes for or complements a career, then rewires curricula and ranks robust education policies for research, vocational, and arts institutions.",
+    facts: [
+      { value: "3", label: "Career trajectories", note: "STEM, trade, and arts pathways" },
+      { value: "245", label: "Monte Carlo scenarios", note: "AI and policy uncertainty" },
+      { value: "6", label: "Evaluation criteria", note: "Employability through ethics" },
+      { value: "3", label: "Institutional archetypes", note: "Pioneer, pragmatic, transformative" },
+    ],
+    problemAddressed: [
+      "Task-level AI exposure, employment dynamics, curriculum design, and multi-objective policy evaluation are usually modeled in isolation.",
+      "Post-secondary institutions need differentiated, uncertainty-aware strategies rather than one universal response to generative AI.",
+    ],
+    innovations: [
+      "Defines a Tug-of-War mechanism with substitution, augmentation, and immunity drivers to explain heterogeneous career exposure.",
+      "Couples modified Lotka-Volterra employment dynamics with a course-skill bipartite network in the E-MMCAS framework.",
+      "Uses pruning, grafting, and bi-level DMPSO to search curriculum and enrollment policy trajectories.",
+      "Combines 245 Monte Carlo scenarios, entropy weighting, and VIKOR, then generalizes policies through structural institutional similarity.",
+    ],
+    trajectoryVisual: {
+      src: mcmCareerTrajectories,
+      alt: "Original MCM report figures comparing labor supply-demand dynamics and workforce-gap projections for data scientists, electricians, and graphic designers.",
+      caption: "Original Figures 3 and 4 from the report: three careers diverge as augmentation, physical immunity, and substitution become dominant.",
+    },
+    careerResults: [
+      {
+        title: "Data Scientist",
+        signal: "Augmentation-led growth",
+        body: "High augmentation (about 0.9) outweighs substantial semantic exposure, creating rapid demand growth and a widening talent gap.",
+        tone: "blue",
+      },
+      {
+        title: "Electrician",
+        signal: "Robust steady state",
+        body: "Physical immunity (about 0.95) acts as a structural firewall, keeping the occupation stable under AI volatility.",
+        tone: "green",
+      },
+      {
+        title: "Graphic Designer",
+        signal: "Structural displacement",
+        body: "High substitution (about 0.9) and low immunity (about 0.2) create declining demand and bifurcation risk.",
+        tone: "wine",
+      },
+    ],
+    ablations: [
+      {
+        model: "M1",
+        title: "Naive macro model",
+        body: "Removing curriculum topology causes the model to incorrectly predict collapse in physically intensive occupations.",
+      },
+      {
+        model: "M2",
+        title: "Passive model",
+        body: "Disabling curriculum adaptation produces persistent structural unemployment and misses transition-enabling bridge skills.",
+      },
+      {
+        model: "M3",
+        title: "Fully coupled E-MMCAS",
+        body: "Dynamic topology and DMPSO preserve immune occupations and enable adaptive transformation in vulnerable pathways.",
+      },
+    ],
+    ranking: [
+      { institution: "MIT", score: "0.212", rank: 1 },
+      { institution: "RISD", score: "0.345", rank: 2 },
+      { institution: "Lincoln Tech", score: "0.560", rank: 3 },
+    ],
+    strategies: [
+      {
+        institution: "MIT",
+        archetype: "Pioneer",
+        body: "Move from low-level coding toward system architecture, causal reasoning, energy-aware development, and AI orchestration.",
+      },
+      {
+        institution: "Lincoln Tech",
+        archetype: "Pragmatic",
+        body: "Reinforce physical-skill immunity with AI-assisted diagnostics and critical-infrastructure maintenance.",
+      },
+      {
+        institution: "RISD",
+        archetype: "Transformative",
+        body: "Shift from artifact production toward aesthetic judgment, curation, ethics, and human authorship.",
+      },
+    ],
+    limitations: [
+      "The calibration is U.S.-centric and assumes stable task traits over the modeling horizon.",
+      "AI capability is simplified into a hardware-led trajectory and may miss algorithmic breakthroughs or societal resistance.",
+    ],
+    links: [{ label: "Back to Projects", href: "/projects" }],
   },
   {
     kind: "mini-program",

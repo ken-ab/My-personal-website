@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
+import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 
 type FinanceAgentSystemMapProps = {
   agents: string[];
@@ -26,6 +27,8 @@ export function FinanceAgentSystemMap({
   query = "Analyze BYD (002594)",
   toolFamilies,
 }: FinanceAgentSystemMapProps) {
+  const { language } = useLanguage();
+  const agentZh = ["基本面", "技术面", "估值", "新闻"];
   return (
     <div
       aria-label="Finance-Agent workflow from natural-language query through MCP tools, parallel specialist agents, summary, evaluation, reflection, and Markdown output"
@@ -55,17 +58,17 @@ export function FinanceAgentSystemMap({
       </svg>
 
       <article className="finance-system-node finance-query-node">
-        <span>01 / INPUT</span>
+        <span>01 / {bilingual(language, "INPUT", "输入")}</span>
         <Search aria-hidden="true" size={compact ? 17 : 22} />
         <strong>{query}</strong>
-        <p>Natural-language stock request</p>
+        <p>{bilingual(language, "Natural-language stock request", "自然语言股票研究请求")}</p>
       </article>
 
       <article className="finance-system-node finance-mcp-node">
-        <span>02 / DATA</span>
+        <span>02 / {bilingual(language, "DATA", "数据")}</span>
         <Workflow aria-hidden="true" size={compact ? 18 : 23} />
-        <strong>MCP tool fabric</strong>
-        <p>{toolFamilies.length} registered tool families</p>
+        <strong>{bilingual(language, "MCP tool fabric", "MCP 工具层")}</strong>
+        <p>{toolFamilies.length} {bilingual(language, "registered tool families", "类已注册工具")}</p>
         <div className="finance-tool-ticks" aria-hidden="true">
           {toolFamilies.map((tool) => <i key={tool} />)}
         </div>
@@ -73,8 +76,8 @@ export function FinanceAgentSystemMap({
 
       <section className="finance-agent-cluster" aria-label="Parallel specialist agents">
         <header>
-          <span>03 / PARALLEL REASONING</span>
-          <strong>Specialist agents</strong>
+          <span>03 / {bilingual(language, "PARALLEL REASONING", "并行推理")}</span>
+          <strong>{bilingual(language, "Specialist agents", "专业智能体")}</strong>
         </header>
         <div>
           {agents.map((agent, index) => {
@@ -82,7 +85,7 @@ export function FinanceAgentSystemMap({
             return (
               <article className="finance-agent-node" key={agent}>
                 <Icon aria-hidden="true" size={compact ? 16 : 20} />
-                <strong>{agent}</strong>
+                <strong>{language === "zh" ? agentZh[index] ?? agent : agent}</strong>
                 <i aria-hidden="true" />
               </article>
             );
@@ -91,35 +94,35 @@ export function FinanceAgentSystemMap({
       </section>
 
       <article className="finance-system-node finance-summary-node">
-        <span>04 / SYNTHESIZE</span>
+        <span>04 / {bilingual(language, "SYNTHESIZE", "汇总")}</span>
         <FileText aria-hidden="true" size={compact ? 18 : 22} />
-        <strong>Summary agent</strong>
-        <p>Merge four traceable perspectives</p>
+        <strong>{bilingual(language, "Summary agent", "汇总智能体")}</strong>
+        <p>{bilingual(language, "Merge four traceable perspectives", "合并四条可追踪分析")}</p>
       </article>
 
       <article className="finance-system-node finance-evaluator-node">
-        <span>05 / CHECK</span>
+        <span>05 / {bilingual(language, "CHECK", "检查")}</span>
         <ShieldCheck aria-hidden="true" size={compact ? 18 : 22} />
-        <strong>Evaluator</strong>
-        <p>Coverage, logic, and goal alignment</p>
+        <strong>{bilingual(language, "Evaluator", "评估器")}</strong>
+        <p>{bilingual(language, "Coverage, logic, and goal alignment", "覆盖度、逻辑与目标匹配")}</p>
       </article>
 
       <article className="finance-system-node finance-report-node">
-        <span>PASS</span>
+        <span>{bilingual(language, "PASS", "通过")}</span>
         <FileText aria-hidden="true" size={compact ? 18 : 22} />
-        <strong>Markdown report</strong>
-        <p>Structured, saved, inspectable</p>
+        <strong>{bilingual(language, "Markdown report", "Markdown 报告")}</strong>
+        <p>{bilingual(language, "Structured, saved, inspectable", "结构化、可保存、可检查")}</p>
       </article>
 
       <article className="finance-system-node finance-reflection-node">
-        <span>NEEDS REVISION</span>
+        <span>{bilingual(language, "NEEDS REVISION", "需要修订")}</span>
         <RefreshCw aria-hidden="true" size={compact ? 18 : 22} />
-        <strong>Reflection</strong>
-        <p>One bounded replan, then rerun</p>
+        <strong>{bilingual(language, "Reflection", "反思")}</strong>
+        <p>{bilingual(language, "One bounded replan, then rerun", "一次有界重规划后重新执行")}</p>
       </article>
 
       <div className="finance-loop-label" aria-hidden="true">
-        <GitBranch size={14} /> evaluator-controlled branch
+        <GitBranch size={14} /> {bilingual(language, "evaluator-controlled branch", "由评估器控制的分支")}
       </div>
     </div>
   );
