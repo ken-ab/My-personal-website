@@ -13,8 +13,9 @@ export function McmProjectDetail({ study }: { study: CompetitionProjectCaseStudy
       <section className="mcm-detail-hero">
         <div>
           <p className="paper-keywords">{study.keywords.join(" · ")}</p>
-          <div className="mcm-award-badge"><Medal size={16} /> {study.award}</div>
+          <div className="mcm-award-badge"><Medal size={16} /> {bilingual(language, study.award, "Meritorious Winner · M 奖")}</div>
           <h1>{study.title}</h1>
+          {language === "zh" ? <p className="translated-title">竞争还是共生：面向 AI 时代教育政策的宏微观演化框架</p> : null}
           <p className="mcm-detail-lead">
             {bilingual(
               language,
@@ -85,14 +86,14 @@ export function McmProjectDetail({ study }: { study: CompetitionProjectCaseStudy
         body={bilingual(language, "Original report figures are preserved: the curves are cropped and compressed, never redrawn or numerically altered.", "这里保留论文原始曲线，只进行裁边和压缩，不重画、不修改数据。")}
       >
         <figure className="mcm-result-figure">
-          <img alt={study.trajectoryVisual.alt} decoding="async" loading="eager" src={study.trajectoryVisual.src} />
+          <img alt={bilingual(language, study.trajectoryVisual.alt, "数据科学家、电工和平面设计师三类职业的就业、供给与人才缺口演化曲线。") } decoding="async" loading="eager" src={study.trajectoryVisual.src} />
           <figcaption>{bilingual(language, study.trajectoryVisual.caption, "报告原始 Figure 3/4：增强、实体免疫与替代效应让三类职业走向不同轨迹。")}</figcaption>
         </figure>
         <div className="mcm-career-grid">
           {study.careerResults.map((result, index) => (
             <article className={`is-${result.tone}`} key={result.title}>
               <span>0{index + 1}</span>
-              <h3>{result.title}</h3>
+              <h3>{bilingual(language, result.title, ["数据科学家", "电工", "平面设计师"][index])}</h3>
               <strong>{bilingual(language, result.signal, ["增强驱动增长", "稳健均衡", "结构性位移"][index])}</strong>
               <p>{language === "zh" ? [
                 "约 0.9 的高增强能力压过语义暴露，需求快速上升并形成更大人才缺口。",
@@ -162,7 +163,7 @@ export function McmProjectDetail({ study }: { study: CompetitionProjectCaseStudy
         <div className="mcm-strategy-grid">
           {study.strategies.map((strategy, index) => (
             <article key={strategy.institution}>
-              <span>{strategy.archetype}</span>
+              <span>{bilingual(language, strategy.archetype, ["先锋型", "务实型", "转型型"][index])}</span>
               <h3>{strategy.institution}</h3>
               <p>{language === "zh" ? [
                 "从低层编码转向系统架构、因果推理、节能开发与 AI 编排。",

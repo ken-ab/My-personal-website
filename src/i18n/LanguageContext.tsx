@@ -2,6 +2,11 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 
 export type Language = "zh" | "en";
 
+export type LocalizedText = {
+  en: string;
+  zh: string;
+};
+
 type LanguageContextValue = {
   language: Language;
   setLanguage: (language: Language) => void;
@@ -15,7 +20,8 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    return stored === "en" || stored === "zh" ? stored : "zh";
+    if (stored === "en" || stored === "zh") return stored;
+    return window.navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
   });
 
   useEffect(() => {
@@ -43,4 +49,8 @@ export function useLanguage() {
 
 export function bilingual(language: Language, english: string, chinese: string) {
   return language === "zh" ? chinese : english;
+}
+
+export function localize(language: Language, text: LocalizedText) {
+  return language === "zh" ? text.zh : text.en;
 }

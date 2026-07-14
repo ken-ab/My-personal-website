@@ -24,8 +24,9 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
       <section className="finance-detail-hero">
         <div className="finance-detail-copy">
           <p className="finance-detail-keywords">{study.keywords?.join(" · ")}</p>
-          <span className="finance-detail-status"><i aria-hidden="true" /> {bilingual(language, "source-backed system brief", financeZh.status)}</span>
+          <span className="finance-detail-status"><i aria-hidden="true" /> {bilingual(language, "Technical project brief", financeZh.status)}</span>
           <h1>{study.title}</h1>
+          {language === "zh" ? <p className="translated-title">{financeZh.title}</p> : null}
           <p>{bilingual(language, study.subtitle, financeZh.subtitle)}</p>
           {study.githubUrl ? (
             <div className="finance-detail-actions">
@@ -38,12 +39,12 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
 
         <aside className="finance-detail-meta">
           <span>{study.period}</span>
-          <strong>{study.role}</strong>
+          <strong>{bilingual(language, study.role, financeZh.role)}</strong>
           <p>{bilingual(language, study.oneLineSummary, financeZh.summary)}</p>
         </aside>
       </section>
 
-      <section className="finance-fact-strip" aria-label="Verified Finance-Agent facts">
+      <section className="finance-fact-strip" aria-label={bilingual(language, "Verified Finance-Agent facts", "已核验的 Finance-Agent 事实")}>
         {study.facts?.map((fact, index) => (
           <article key={fact.label}>
             <span>{String(index + 1).padStart(2, "0")}</span>
@@ -71,7 +72,7 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
       <section className="finance-tools-section" aria-labelledby="finance-tools-title">
         <header className="finance-section-heading is-compact">
           <div>
-            <p className="section-eyebrow">{bilingual(language, "MCP Capability Surface", financeZh.tools.eyebrow)}</p>
+            <p className="section-eyebrow">{bilingual(language, "MCP Tooling", financeZh.tools.eyebrow)}</p>
             <h2 id="finance-tools-title">{bilingual(language, "Eight registered tool families", financeZh.tools.title)}</h2>
           </div>
           <p>{bilingual(language, "Each family is present in the repository tool registration layer; this is a capability map, not a performance claim.", financeZh.tools.lead)}</p>
@@ -81,7 +82,7 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
             <article key={tool}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               {index % 3 === 0 ? <Database aria-hidden="true" size={20} /> : index % 3 === 1 ? <Layers3 aria-hidden="true" size={20} /> : <Code2 aria-hidden="true" size={20} />}
-              <strong>{tool}</strong>
+              <strong>{language === "zh" ? financeZh.tools.families[index] ?? tool : tool}</strong>
             </article>
           ))}
         </div>
@@ -97,10 +98,10 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
             <small>{bilingual(language, "Markdown / no fabricated investment result", financeZh.reportNote)}</small>
           </header>
           <div className="finance-markdown-body">
-            <span className="finance-md-h1"># A-share Company Analysis</span>
+            <span className="finance-md-h1"># {bilingual(language, "A-share Company Analysis", financeZh.reportTitle)}</span>
             {reportSections.map((section, index) => (
               <div className="finance-md-section" key={section}>
-                <strong>## {section}</strong>
+                <strong>## {language === "zh" ? financeZh.reportSections[index] ?? section : section}</strong>
                 <i style={{ width: `${82 - (index % 3) * 11}%` }} />
                 <i style={{ width: `${61 + (index % 2) * 17}%` }} />
               </div>
@@ -121,7 +122,7 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
               <Code2 aria-hidden="true" size={20} />
               <div>
                 <span>{bilingual(language, "EXPERIMENTAL SIDE TRACK", financeZh.output.experimental)}</span>
-                <p>{study.experimentalNote}</p>
+                <p>{bilingual(language, study.experimentalNote, financeZh.experimentalNote)}</p>
               </div>
             </aside>
           ) : null}

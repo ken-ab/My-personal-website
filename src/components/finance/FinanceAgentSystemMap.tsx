@@ -29,9 +29,10 @@ export function FinanceAgentSystemMap({
 }: FinanceAgentSystemMapProps) {
   const { language } = useLanguage();
   const agentZh = ["基本面", "技术面", "估值", "新闻"];
+  const displayQuery = language === "zh" && query === "Analyze BYD (002594)" ? "分析比亚迪（002594）" : query;
   return (
     <div
-      aria-label="Finance-Agent workflow from natural-language query through MCP tools, parallel specialist agents, summary, evaluation, reflection, and Markdown output"
+      aria-label={bilingual(language, "Finance-Agent workflow from natural-language query through MCP tools, parallel specialist agents, summary, evaluation, reflection, and Markdown output", "Finance-Agent 从自然语言查询，经 MCP 工具、并行专业智能体、汇总、评估和反思到 Markdown 输出的工作流")}
       className={`finance-system-map${compact ? " is-compact" : ""}`}
     >
       <svg aria-hidden="true" className="finance-system-wires" preserveAspectRatio="none" viewBox="0 0 1200 520">
@@ -60,7 +61,7 @@ export function FinanceAgentSystemMap({
       <article className="finance-system-node finance-query-node">
         <span>01 / {bilingual(language, "INPUT", "输入")}</span>
         <Search aria-hidden="true" size={compact ? 17 : 22} />
-        <strong>{query}</strong>
+        <strong>{displayQuery}</strong>
         <p>{bilingual(language, "Natural-language stock request", "自然语言股票研究请求")}</p>
       </article>
 
@@ -74,7 +75,7 @@ export function FinanceAgentSystemMap({
         </div>
       </article>
 
-      <section className="finance-agent-cluster" aria-label="Parallel specialist agents">
+      <section className="finance-agent-cluster" aria-label={bilingual(language, "Parallel specialist agents", "并行专业智能体")}>
         <header>
           <span>03 / {bilingual(language, "PARALLEL REASONING", "并行推理")}</span>
           <strong>{bilingual(language, "Specialist agents", "专业智能体")}</strong>

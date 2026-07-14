@@ -1,23 +1,25 @@
 import { ArrowRight, ChartNoAxesCombined, House, Medal, UserRoundCog } from "lucide-react";
 import olympicModelComparisonRadar from "../../assets/case-studies/olympic-model-comparison-radar-cropped.png";
+import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 
 export function OlympicMethodRoute() {
+  const { language } = useLanguage();
   return (
     <div className="olympic-method-experience">
       <figure className="olympic-technical-map">
         <div className="olympic-map-header">
           <div>
-            <span>Paper-faithful technical map</span>
-            <strong>Olympic history first, K-means second, then two model-specific routes.</strong>
+            <span>{bilingual(language, "Paper-faithful technical map", "忠于论文的技术路线")}</span>
+            <strong>{bilingual(language, "Olympic history first, K-means second, then two model-specific routes.", "奥运历史先进入 K-means，再分为两条模型路线。")}</strong>
           </div>
-          <span className="olympic-live-indicator"><i aria-hidden="true" /> data flow</span>
+          <span className="olympic-live-indicator"><i aria-hidden="true" /> {bilingual(language, "data flow", "数据流")}</span>
         </div>
 
         <div className="olympic-svg-scroll" role="img" aria-labelledby="olympic-map-title olympic-map-description">
           <svg className="olympic-route-svg" viewBox="0 0 1400 720" xmlns="http://www.w3.org/2000/svg">
-            <title id="olympic-map-title">Corrected technical route for the Olympic medal prediction paper</title>
+            <title id="olympic-map-title">{bilingual(language, "Corrected technical route for the Olympic medal prediction paper", "奥运奖牌预测论文技术路线")}</title>
             <desc id="olympic-map-description">
-              Olympic history enters K-means clustering, which creates four country groups. The first three medal-winning groups, alpha one through alpha three, enter MPXG, while alpha four, the non-medal-winning group, enters FMPM.
+              {bilingual(language, "Olympic history enters K-means clustering, which creates four country groups. The first three medal-winning groups, alpha one through alpha three, enter MPXG, while alpha four, the non-medal-winning group, enters FMPM.", "奥运历史数据进入 K-means 并形成四类国家。α1 至 α3 三类既往获奖国家进入 MPXG，α4 未获奖国家进入 FMPM。")}
             </desc>
             <defs>
               <pattern id="olympic-paper-grid" width="28" height="28" patternUnits="userSpaceOnUse">
@@ -36,11 +38,11 @@ export function OlympicMethodRoute() {
 
             <g className="olympic-svg-section-tag">
               <rect height="42" rx="21" width="388" x="466" y="42" />
-              <text x="490" y="69">ROUTE A - MPXG / MEDAL-WINNING COUNTRIES</text>
+              <text x="490" y="69">{bilingual(language, "ROUTE A - MPXG / MEDAL-WINNING COUNTRIES", "路线 A - MPXG / 既往获奖国家")}</text>
             </g>
             <g className="olympic-svg-section-tag is-fmpm">
               <rect height="42" rx="21" width="424" x="466" y="642" />
-              <text x="490" y="669">ROUTE B - FMPM / NON-MEDAL-WINNING COUNTRIES</text>
+              <text x="490" y="669">{bilingual(language, "ROUTE B - FMPM / NON-MEDAL-WINNING COUNTRIES", "路线 B - FMPM / 从未获奖国家")}</text>
             </g>
 
             <path className="olympic-svg-connector is-ghost" d="M190 358 H230" />
@@ -72,11 +74,11 @@ export function OlympicMethodRoute() {
 
             <g className="olympic-svg-input" filter="url(#olympic-pencil)">
               <rect height="140" rx="24" width="160" x="30" y="285" />
-              <text className="olympic-svg-role" x="52" y="314">INPUT</text>
+              <text className="olympic-svg-role" x="52" y="314">{bilingual(language, "INPUT", "输入")}</text>
               <ellipse cx="82" cy="347" rx="31" ry="9" />
               <path d="M51 347v31c0 7 14 10 31 10s31-3 31-10v-31" />
               <path d="M51 363c0 7 14 10 31 10s31-3 31-10" />
-              <text className="olympic-svg-title" x="52" y="405">Olympic History</text>
+              <text className="olympic-svg-title" x="52" y="405">{bilingual(language, "Olympic History", "奥运历史")}</text>
               <text className="olympic-svg-note" x="52" y="421">1896-2024</text>
               <path className="olympic-svg-spark" d="M145 320l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" />
             </g>
@@ -84,34 +86,34 @@ export function OlympicMethodRoute() {
             <g className="olympic-cluster-node" filter="url(#olympic-pencil)">
               <rect height="190" rx="25" width="180" x="230" y="260" />
               <text className="olympic-svg-role" x="252" y="289">K-MEANS</text>
-              <text className="olympic-svg-title" x="252" y="312">4 country groups</text>
+              <text className="olympic-svg-title" x="252" y="312">{bilingual(language, "4 country groups", "4 类国家")}</text>
               <g className="olympic-cluster-row is-medal">
                 <circle cx="266" cy="342" r="17" /><circle cx="311" cy="342" r="17" /><circle cx="356" cy="342" r="17" />
                 <text x="258" y="347">α1</text><text x="303" y="347">α2</text><text x="348" y="347">α3</text>
               </g>
-              <text className="olympic-cluster-caption is-medal" x="252" y="374">prior medal winners</text>
+              <text className="olympic-cluster-caption is-medal" x="252" y="374">{bilingual(language, "prior medal winners", "既往获奖国家")}</text>
               <g className="olympic-cluster-row is-none">
                 <circle cx="266" cy="404" r="17" />
                 <text x="258" y="409">α4</text>
               </g>
-              <text className="olympic-cluster-caption is-none" x="291" y="409">no prior medal</text>
+              <text className="olympic-cluster-caption is-none" x="291" y="409">{bilingual(language, "no prior medal", "从未获奖")}</text>
             </g>
 
             <g className="olympic-branch-note is-medal">
               <rect height="30" rx="15" width="174" x="426" y="224" />
-              <text x="442" y="244">α1-α3: medal-winning</text>
+              <text x="442" y="244">{bilingual(language, "α1-α3: medal-winning", "α1-α3：既往获奖")}</text>
             </g>
             <g className="olympic-branch-note is-none">
               <rect height="30" rx="15" width="161" x="426" y="451" />
-              <text x="442" y="471">α4: no prior medal</text>
+              <text x="442" y="471">{bilingual(language, "α4: no prior medal", "α4：从未获奖")}</text>
             </g>
 
-            <SvgNode detail="10 factors -> 3" label={["Factor", "Analysis"]} x={470} y={124} />
-            <SvgNode detail="forecast 2028 factors" label={["ARIMA", "time series"]} x={640} y={124} />
+            <SvgNode detail={bilingual(language, "10 factors -> 3", "10 个因子 -> 3 个主成分")} label={[bilingual(language, "Factor", "因子"), bilingual(language, "Analysis", "分析")]} x={470} y={124} />
+            <SvgNode detail={bilingual(language, "forecast 2028 factors", "预测 2028 因子")} label={["ARIMA", bilingual(language, "time series", "时间序列")]} x={640} y={124} />
 
             <g className="olympic-model-compare" filter="url(#olympic-pencil)">
               <rect height="140" rx="22" width="260" x="810" y="104" />
-              <text className="olympic-svg-role" x="830" y="130">COMPARE 4 MODELS</text>
+              <text className="olympic-svg-role" x="830" y="130">{bilingual(language, "COMPARE 4 MODELS", "比较 4 个模型")}</text>
               <ModelPill label="Random Forest" x={828} y={145} />
               <ModelPill label="BPNN" x={946} y={145} />
               <ModelPill best label="XGBoost" x={828} y={190} />
@@ -133,64 +135,64 @@ export function OlympicMethodRoute() {
 
             <g className="olympic-best-badge" filter="url(#olympic-pencil)">
               <rect height="64" rx="18" width="124" x="1092" y="142" />
-              <text className="olympic-svg-role" x="1113" y="163">BEST</text>
+              <text className="olympic-svg-role" x="1113" y="163">{bilingual(language, "BEST", "最佳")}</text>
               <text className="olympic-svg-title" x="1113" y="188">XGBoost</text>
               <path d="M1195 153l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" />
             </g>
 
             <g className="olympic-svg-output is-medal" filter="url(#olympic-pencil)">
               <rect height="130" rx="24" width="130" x="1240" y="109" />
-              <text className="olympic-svg-role" x="1262" y="137">OUTPUT</text>
+              <text className="olympic-svg-role" x="1262" y="137">{bilingual(language, "OUTPUT", "输出")}</text>
               <text className="olympic-svg-title is-output" x="1262" y="174">2028</text>
-              <text className="olympic-svg-note is-strong" x="1262" y="198">medal forecast</text>
-              <text className="olympic-svg-note" x="1262" y="217">90% interval</text>
+              <text className="olympic-svg-note is-strong" x="1262" y="198">{bilingual(language, "medal forecast", "奖牌预测")}</text>
+              <text className="olympic-svg-note" x="1262" y="217">{bilingual(language, "90% interval", "90% 区间")}</text>
             </g>
 
-            <SvgNode detail="α4: 1896-2024" label={["Participation", "records"]} x={470} y={500} width={145} />
-            <SvgNode detail="2028 participants" label={["ARIMA", "forecast"]} x={645} y={500} width={145} />
-            <SvgNode detail="Dense 64 -> 32 -> 1" label={["Three-layer", "FCNN"]} x={820} y={500} width={175} />
-            <SvgNode detail="model output" label={["First-medal", "probability"]} x={1025} y={500} width={165} />
+            <SvgNode detail="α4: 1896-2024" label={[bilingual(language, "Participation", "参赛"), bilingual(language, "records", "记录")]} x={470} y={500} width={145} />
+            <SvgNode detail={bilingual(language, "2028 participants", "2028 参赛人数")} label={["ARIMA", bilingual(language, "forecast", "预测")]} x={645} y={500} width={145} />
+            <SvgNode detail="Dense 64 -> 32 -> 1" label={[bilingual(language, "Three-layer", "三层"), "FCNN"]} x={820} y={500} width={175} />
+            <SvgNode detail={bilingual(language, "model output", "模型输出")} label={[bilingual(language, "First-medal", "首次获奖"), bilingual(language, "probability", "概率")]} x={1025} y={500} width={165} />
 
             <g className="olympic-svg-output is-first-medal" filter="url(#olympic-pencil)">
               <rect height="130" rx="24" width="150" x="1220" y="485" />
-              <text className="olympic-svg-role" x="1242" y="513">OUTPUT</text>
+              <text className="olympic-svg-role" x="1242" y="513">{bilingual(language, "OUTPUT", "输出")}</text>
               <text className="olympic-svg-title is-output" x="1242" y="550">2028</text>
-              <text className="olympic-svg-note is-strong" x="1242" y="574">first-medal</text>
-              <text className="olympic-svg-note" x="1242" y="593">probability</text>
+              <text className="olympic-svg-note is-strong" x="1242" y="574">{bilingual(language, "first-medal", "首次获奖")}</text>
+              <text className="olympic-svg-note" x="1242" y="593">{bilingual(language, "probability", "概率")}</text>
             </g>
           </svg>
         </div>
         <figcaption>
-          The sequence is fixed: Olympic history enters K-means first; groups α1-α3 follow MPXG, while α4 follows FMPM.
+          {bilingual(language, "The sequence is fixed: Olympic history enters K-means first; groups α1-α3 follow MPXG, while α4 follows FMPM.", "固定顺序为：奥运历史先进入 K-means；α1—α3 进入 MPXG，α4 进入 FMPM。")}
         </figcaption>
       </figure>
 
       <section className="olympic-findings" aria-labelledby="olympic-findings-title">
         <header className="olympic-findings-header">
           <div>
-            <span>SECOND TECHNICAL ROUTE</span>
-            <h3 id="olympic-findings-title">Two interesting findings</h3>
+            <span>{bilingual(language, "SECOND TECHNICAL ROUTE", "第二条技术路线")}</span>
+            <h3 id="olympic-findings-title">{bilingual(language, "Two interesting findings", "两个重要发现")}</h3>
           </div>
-          <p>Separate effect analyses explain what can shift the predicted medal outcomes.</p>
+          <p>{bilingual(language, "Separate effect analyses explain what can shift the predicted medal outcomes.", "独立效应分析解释哪些因素会改变奖牌预测结果。")}</p>
         </header>
 
         <div className="olympic-finding-lanes">
           <FindingLane
-            description="Gold, silver, and bronze are scored 13, 12, and 10; the host formula is evaluated across the last eight editions."
+            description={bilingual(language, "Gold, silver, and bronze are scored 13, 12, and 10; the host formula is evaluated across the last eight editions.", "金、银、铜牌分别计 13、12、10 分；东道主公式在最近八届奥运会上进行评估。")}
             icon={House}
-            label="FINDING 01"
-            result="+74% host-medal gain"
-            steps={["Medal scoring", "Host-effect formula", "Last 8 editions"]}
-            title="Host Effect"
+            label={bilingual(language, "FINDING 01", "发现 01")}
+            result={bilingual(language, "+74% host-medal gain", "东道主奖牌增益 +74%")}
+            steps={language === "zh" ? ["奖牌计分", "东道主效应公式", "最近八届"] : ["Medal scoring", "Host-effect formula", "Last 8 editions"]}
+            title={bilingual(language, "Host Effect", "东道主效应")}
             tone="host"
           />
           <FindingLane
-            description="Coach status, project scope, athlete value, and country-group weight are combined before the 2028 estimate."
+            description={bilingual(language, "Coach status, project scope, athlete value, and country-group weight are combined before the 2028 estimate.", "在 2028 估计前，模型综合教练状态、项目范围、运动员价值和国家分组权重。")}
             icon={UserRoundCog}
-            label="FINDING 02"
-            result="+0.2–0.5 medals / athlete"
-            steps={["C.E. score", "AWP", "Country weight", "Bayesian regression"]}
-            title="Great Coach Effect"
+            label={bilingual(language, "FINDING 02", "发现 02")}
+            result={bilingual(language, "+0.2–0.5 medals / athlete", "每名运动员 +0.2–0.5 枚奖牌")}
+            steps={language === "zh" ? ["教练效应评分", "AWP", "国家权重", "贝叶斯回归"] : ["C.E. score", "AWP", "Country weight", "Bayesian regression"]}
+            title={bilingual(language, "Great Coach Effect", "优秀教练效应")}
             tone="coach"
           />
         </div>

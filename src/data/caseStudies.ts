@@ -125,7 +125,7 @@ export const caseStudies: CaseStudy[] = [
     id: "moe",
     methodVisualization: "moe",
     eyebrow: "Research Brief / MoE Architecture",
-    title: "Exploring and Enhancing Advanced MoE Models: From DeepSpeed-MoE to DeepSeek-V3",
+    title: "Exploring and Enhancing Advanced MoE Models: From Deepspeed-MoE to DeepSeek-V3",
     subtitle: "A first-author conference paper reviewing advanced Mixture-of-Experts architectures and their performance-efficiency trade-offs.",
     tone: "research",
     period: "03/2025",
@@ -178,14 +178,14 @@ export const caseStudies: CaseStudy[] = [
       "Builds a unified Token to Router to Top-k Experts to Weighted Aggregation view across Switch Transformer, DeepSpeed-MoE, PR-MoE, Mixtral, GLaM, DBRX, and DeepSeek-V3.",
       "Synthesizes five benchmark families and identifies sparse activation, pyramid-residual layouts, adaptive expert sizing, and shared-expert isolation as efficiency mechanisms; the paper reports at least 50% lower inference computation while preserving performance.",
     ],
-    links: [{ label: "Back to Publications", href: "/publications" }],
+    links: [{ label: "Back to Research", href: "/research" }],
   },
   {
     kind: "agent-project",
     id: "finance-agent",
     visualization: "finance-agent",
     eyebrow: "Project Brief / Agentic AI System",
-    title: "Finance-Agent / A-share Investment Advisor Agent System",
+    title: "Finance-Agent: A Multi-Agent System for A-share Investment Research",
     subtitle: "A multi-agent prototype that decomposes A-share research into specialist analysis branches and produces traceable Markdown reports.",
     tone: "systems",
     period: "2025.10 - 2026.01",
@@ -255,7 +255,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     links: [
       { label: "GitHub", href: "https://github.com/ken-ab/Finance-Agent", external: true },
-      { label: "Back to Projects", href: "/development-projects" },
+      { label: "Back to Engineering", href: "/engineering" },
     ],
   },
   {
@@ -324,7 +324,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     links: [
       { label: "Paper", href: "https://doi.org/10.3390/app15147793", external: true },
-      { label: "Back to Publications", href: "/publications" },
+      { label: "Back to Research", href: "/research" },
     ],
   },
   {
@@ -398,7 +398,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     links: [
       { label: "Paper", href: "https://doi.org/10.3390/su17156753", external: true },
-      { label: "Back to Publications", href: "/publications" },
+      { label: "Back to Research", href: "/research" },
     ],
   },
   {
@@ -406,13 +406,13 @@ export const caseStudies: CaseStudy[] = [
     id: "robot-vision",
     methodVisualization: "robot-vision",
     eyebrow: "Research Brief / Review",
-    title: "Research Progress on the Integration of Robot Vision, Computer Vision, and Machine Learning: Technological Evolution, Challenges, and Industrial Applications",
+    title: "Research Progress on the Integration of Robot Vision, Computer Vision and Machine Learning: Technological Evolution, Challenges and Industrial Applications",
     subtitle: "A review paper on technological evolution, challenges, and industrial applications.",
     tone: "research",
     period: "04/2025",
     role: "Second Author",
     keywords: ["Robot Vision", "Computer Vision", "Machine Learning", "Object Detection", "3D Reconstruction", "Industrial Applications"],
-    authors: ["Yujie Gao", "Zhenkai Zhang", "Xiao Zhu", "Shuran Ding"],
+    authors: ["Yujie Gao", "Zhengkai Zhang", "Xiao Zhu", "Shuran Ding"],
     abstract:
       "This paper systematically reviews the technological progress of the integration of robot vision, computer vision (CV) and machine learning (ML), focusing on the design paradigms of global vision system, local embedded vision, hybrid cloud edge architecture, as well as target detection, 3D reconstruction, Algorithm innovation of CV technology such as dynamic scene understanding. Combining the seven major trends of IDC 2025 embodied intelligent robots with the China machine vision market research report, this paper analyzes solutions to challenges such as real-time, data scarcity and multi-modal fusion and proposes solutions based on lightweight models, federated learning and neural symbolic systems. Future direction. By citing top conference papers and industry white papers such as CVPR, ICRA and NeurIPS, this paper builds a technology-scenario-industry closed-loop academic framework to provide theoretical support for the intelligent upgrade of robot vision.",
     paperUrl: "https://doi.org/10.30967/IJCRSET/Yujie-Gao/174",
@@ -460,7 +460,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     links: [
       { label: "Paper", href: "https://doi.org/10.30967/IJCRSET/Yujie-Gao/174", external: true },
-      { label: "Back to Publications", href: "/publications" },
+      { label: "Back to Research", href: "/research" },
     ],
   },
   {
@@ -521,7 +521,7 @@ export const caseStudies: CaseStudy[] = [
       "Combines a stochastic frontier gravity model for 36 countries with two mediation paths: service value added as a share of GDP and the Digital Technology Index.",
       "Adds an XGBoost plus genetic-algorithm forecasting extension, connecting historical mechanism analysis with forward-looking 2022-2028 policy estimates.",
     ],
-    links: [{ label: "Back to Publications", href: "/publications" }],
+    links: [{ label: "Back to Research", href: "/research" }],
   },
   {
     kind: "competition-project",
@@ -623,7 +623,7 @@ export const caseStudies: CaseStudy[] = [
       "The calibration is U.S.-centric and assumes stable task traits over the modeling horizon.",
       "AI capability is simplified into a hardware-led trajectory and may miss algorithmic breakthroughs or societal resistance.",
     ],
-    links: [{ label: "Back to Projects", href: "/projects" }],
+    links: [{ label: "Back to Experience", href: "/experience" }],
   },
   {
     kind: "mini-program",
@@ -638,9 +638,9 @@ export const caseStudies: CaseStudy[] = [
     keywords: ["WeChat Mini Program", "uni-app", "Vue 3", "Pinia", "Express", "Healthy Ageing"],
     qrCode: wangMiniProgramQr,
     proofCopy: {
-      eyebrow: "RECENTLY LAUNCHED",
-      title: "Loved by its early users",
-      supporting: "The first operating snapshot shows meaningful reach and daily engagement.",
+      eyebrow: "DEPLOYED PRODUCT",
+      title: "872 cumulative users in the recorded operating snapshot",
+      supporting: "The dated WeAnalysis snapshot reports reach and daily usage without inferring user sentiment.",
     },
     metricGroups: [
       {
@@ -686,7 +686,7 @@ export const caseStudies: CaseStudy[] = [
         flow: ["Classify", "Retrieve", "Guardrails", "Generate", "Stream"],
       },
     ],
-    links: [{ label: "Back to Projects", href: "/development-projects" }],
+    links: [{ label: "Back to Engineering", href: "/engineering" }],
   },
   {
     kind: "mini-program",
@@ -778,7 +778,7 @@ export const caseStudies: CaseStudy[] = [
         body: "The administration system supports bulk imports, validation feedback, error receipts, and reversible import tasks.",
       },
     ],
-    links: [{ label: "Back to Projects", href: "/development-projects" }],
+    links: [{ label: "Back to Engineering", href: "/engineering" }],
   },
 ];
 

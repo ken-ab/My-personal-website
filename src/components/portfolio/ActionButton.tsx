@@ -1,20 +1,20 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import type { MouseEvent, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 type ActionButtonProps = {
   href: string;
   children: ReactNode;
   external?: boolean;
+  download?: boolean | string;
   variant?: "primary" | "secondary" | "quiet";
   className?: string;
 };
 
-export function ActionButton({ href, children, external, variant = "secondary", className = "" }: ActionButtonProps) {
+export function ActionButton({ href, children, external, download, variant = "secondary", className = "" }: ActionButtonProps) {
   const classes = ["action-button", `action-button-${variant}`, className].filter(Boolean).join(" ");
   const Icon = external ? ArrowUpRight : ArrowRight;
-  const isInternalRoute = href.startsWith("/") && !external;
-  const isPlaceholder = href === "#";
+  const isInternalRoute = href.startsWith("/") && !external && !download;
 
   const content = (
     <>
@@ -34,16 +34,12 @@ export function ActionButton({ href, children, external, variant = "secondary", 
   return (
     <a
       className={classes}
+      download={download}
       href={href}
-      onClick={isPlaceholder ? preventPlaceholderNavigation : undefined}
       rel={external ? "noreferrer" : undefined}
       target={external ? "_blank" : undefined}
     >
       {content}
     </a>
   );
-}
-
-function preventPlaceholderNavigation(event: MouseEvent<HTMLAnchorElement>) {
-  event.preventDefault();
 }

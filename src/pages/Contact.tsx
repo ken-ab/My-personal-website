@@ -1,6 +1,7 @@
 import { GitBranch, Mail, MapPin } from "lucide-react";
 import { ActionButton } from "../components/portfolio/ActionButton";
 import { profile } from "../data/portfolio";
+import { publicCvUrl } from "../data/publicAssets";
 import { profileZh } from "../i18n/content";
 import { bilingual, useLanguage } from "../i18n/LanguageContext";
 
@@ -22,7 +23,7 @@ export function Contact() {
             <span className="profile-initials">K</span>
             <div>
               <h2>{profile.name}</h2>
-              <p>{profile.headline}</p>
+              <p>{bilingual(language, profile.headline, "AI 研究者与系统开发者")}</p>
             </div>
           </div>
 
@@ -56,7 +57,7 @@ export function Contact() {
             </div>
             <div>
               <dt>{bilingual(language, "Focus", "方向")}</dt>
-              <dd>{bilingual(language, profile.focus, profileZh.focus)}</dd>
+              <dd>{bilingual(language, "Cost-aware Model Routing · Multimodal Reasoning · Agentic AI Evaluation", "成本感知模型路由 · 多模态推理 · 智能体评测")}</dd>
             </div>
           </dl>
 
@@ -66,6 +67,9 @@ export function Contact() {
             </ActionButton>
             <ActionButton external href={profile.github}>
               GitHub
+            </ActionButton>
+            <ActionButton download="Ken_Zhang_Public_CV.pdf" href={publicCvUrl}>
+              {bilingual(language, "Download CV", "下载 CV")}
             </ActionButton>
             <ActionButton href="/" variant="quiet">
               {bilingual(language, "Back to Home", "返回首页")}
