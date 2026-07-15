@@ -10,50 +10,31 @@ import {
   routerBenchMini,
   selectedPublications,
 } from "../data/siteStructure";
+import { homeZh } from "../i18n/content";
 import { bilingual, useLanguage } from "../i18n/LanguageContext";
 
 export function Home() {
   const { language } = useLanguage();
   const localize = (text: { en: string; zh: string }) => bilingual(language, text.en, text.zh);
+  const introduction = bilingual(language, profile.intro, homeZh.intro).split("\n\n");
 
   return (
     <main className="page-shell phase1-home page-enter">
       <section className="phase1-hero" aria-labelledby="home-title">
         <div className="phase1-hero-copy">
-          <p className="hero-kicker">{bilingual(language, "AI RESEARCH · SYSTEM BUILDING", "AI 研究 · 系统构建")}</p>
-          <h1 id="home-title">
-            {bilingual(
-              language,
-              "I research AI, build systems, and learn from both.",
-              "我研究 AI，也构建系统，并从两者中持续学习。",
-            )}
-          </h1>
-          <p className="phase1-hero-subtitle">
-            {bilingual(
-              language,
-              "Incoming MSc Data Science & Analytics student at PolyU, currently exploring cost-aware model routing, multimodal reasoning, and agentic AI evaluation.",
-              "即将就读香港理工大学数据科学与分析硕士，当前关注成本感知模型路由、多模态推理与智能体评测。",
-            )}
+          <p className="hero-kicker">
+            {bilingual(language, "GENERATIVE AI · DATA MODELING · MODEL ROUTING", "生成式 AI · 数据建模 · 模型路由")}
           </p>
-          <div className="phase1-hero-intro">
-            <p>
-              {bilingual(
-                language,
-                "Research is my current priority: I care about careful baselines, transparent evaluation, and conclusions that match the evidence.",
-                "科研是我当前的主线：我重视严谨的基线、透明的评测，以及与证据相匹配的结论。",
-              )}
-            </p>
-            <p>
-              {bilingual(
-                language,
-                "Engineering is a complementary strength that lets me turn ideas into working systems without presenting those systems as direct products of my papers.",
-                "工程能力是我的补充优势，它帮助我把想法做成可运行系统，但我不会把这些系统包装成论文成果的直接转化。",
-              )}
-            </p>
+          <h1 className="phase1-hero-motto" id="home-title">
+            <span>{bilingual(language, "Good research takes time", "好的研究需要时间，")}</span>
+            <span>{bilingual(language, "Good systems take care", "好的系统需要用心。")}</span>
+          </h1>
+          <div className="phase1-hero-summary">
+            {introduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
 
           <div className="hero-actions" aria-label={bilingual(language, "Primary actions", "主要操作")}>
-            <ActionButton href="/brief/routerbench-mini" variant="primary">
+            <ActionButton href="/research" variant="primary">
               {bilingual(language, "Current Research", "当前研究")}
             </ActionButton>
             <ActionButton download="Ken_Zhang_Public_CV.pdf" href={publicCvUrl}>CV</ActionButton>
@@ -67,8 +48,9 @@ export function Home() {
       <section className="home-section phase1-selected-research" aria-labelledby="selected-research-title">
         <header className="phase1-section-heading">
           <div>
-            <p className="section-eyebrow">{bilingual(language, "Selected Research", "精选研究")}</p>
-            <h2 id="selected-research-title">{bilingual(language, "A current question, then the evidence behind it.", "从当前问题出发，再看支撑它的研究证据。")}</h2>
+            <p className="section-eyebrow" id="selected-research-title">
+              {bilingual(language, "Selected Research", "精选研究")}
+            </p>
           </div>
           <Link to="/research">
             {bilingual(language, "All research", "查看全部研究")} <ArrowRight aria-hidden="true" size={16} />
@@ -114,8 +96,9 @@ export function Home() {
       <section className="home-section" aria-labelledby="engineering-systems-title">
         <header className="phase1-section-heading">
           <div>
-            <p className="section-eyebrow">{bilingual(language, "Engineering & Systems", "工程与系统")}</p>
-            <h2 id="engineering-systems-title">{bilingual(language, "Systems built, tested, and delivered.", "完成设计、开发与交付的系统。")}</h2>
+            <p className="section-eyebrow" id="engineering-systems-title">
+              {bilingual(language, "Engineering & Systems", "工程与系统")}
+            </p>
           </div>
           <Link to="/engineering">
             {bilingual(language, "Engineering work", "查看工程项目")} <ArrowRight aria-hidden="true" size={16} />
@@ -136,7 +119,7 @@ export function Home() {
       <section className="home-experience-strip" aria-labelledby="experience-recognition-title">
         <div>
           <p className="section-eyebrow">{bilingual(language, "Experience & Recognition", "经历与荣誉")}</p>
-          <h2 id="experience-recognition-title">{bilingual(language, "Evidence beyond the project pages.", "项目之外的经历证据。")}</h2>
+          <h2 id="experience-recognition-title">{bilingual(language, "Experience beyond projects.", "项目之外的经历。")}</h2>
         </div>
         {experienceHighlights.map((item) => (
           <article key={item.title.en}>

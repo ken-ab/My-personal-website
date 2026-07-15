@@ -29,10 +29,7 @@ export const routerBenchMini: ResearchProjectCaseStudy = {
   kind: "research-project",
   id: "routerbench-mini",
   title: { en: "RouterBench-Mini", zh: "RouterBench-Mini" },
-  status: [
-    { en: "Current Research", zh: "当前研究" },
-    { en: "Independent Research Project", zh: "独立研究项目" },
-  ],
+  status: [{ en: "Recent Research", zh: "近期研究" }],
   summary: {
     en: "A cost-aware multimodal routing study that asks when a cheaper model is sufficient—and when a stronger model is worth the extra cost and latency.",
     zh: "一项成本感知的多模态模型路由研究：判断何时较低成本模型已经足够，何时应为更强模型支付额外的成本与延迟。",
