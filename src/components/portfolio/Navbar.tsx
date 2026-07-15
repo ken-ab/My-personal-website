@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 
 const navItems = [
-  { en: "Research", zh: "研究", href: "/research" },
+  { en: "Research", zh: "研究项目", href: "/research" },
   { en: "Engineering", zh: "工程项目", href: "/engineering" },
   { en: "Experience", zh: "经历", href: "/experience" },
 ];
