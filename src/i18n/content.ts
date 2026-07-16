@@ -129,8 +129,7 @@ export const financeZh = {
     eyebrow: "系统架构",
   },
   tools: {
-    eyebrow: "MCP 工具",
-    families: ["股票市场", "财务报告", "指数", "市场概览", "宏观经济", "日期工具", "分析工具", "新闻抓取"],
+    eyebrow: "模型与系统效果",
   },
   output: {
     eyebrow: "评估与反思",
