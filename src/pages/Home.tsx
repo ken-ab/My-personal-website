@@ -1,14 +1,13 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ActionButton } from "../components/portfolio/ActionButton";
 import { ProfileCard } from "../components/portfolio/ProfileCard";
+import { SelectedResearchShowcase } from "../components/portfolio/SelectedResearchShowcase";
 import { profile } from "../data/portfolio";
 import { publicCvUrl } from "../data/publicAssets";
 import {
   experienceHighlights,
   homepageEngineering,
-  routerBenchMini,
-  selectedPublications,
 } from "../data/siteStructure";
 import { homeZh } from "../i18n/content";
 import { bilingual, useLanguage } from "../i18n/LanguageContext";
@@ -72,57 +71,7 @@ export function Home() {
           </Link>
         </header>
 
-        <Link className="routerbench-home-card" to="/brief/routerbench-mini">
-          <div className="routerbench-home-copy">
-            <div className="status-pills">
-              {routerBenchMini.status.map((status) => <span key={status.en}>{localize(status)}</span>)}
-            </div>
-            <h3>{bilingual(language, routerBenchMini.title.en, "面向多模态任务的成本感知模型路由研究")}</h3>
-            <p>
-              {bilingual(
-                language,
-                routerBenchMini.question.en,
-                "在向 AI 提问时，能否根据问题难度动态选择不同能力和成本的模型，在尽量保持准确率的同时降低调用成本与响应延迟？",
-              )}
-            </p>
-          </div>
-          <div className="routerbench-home-result">
-            <small>{bilingual(language, "Independent Research Project", "独立研究项目")}</small>
-            <strong>−22.5% <span>{bilingual(language, "calling cost", "调用成本")}</span></strong>
-            <p>{bilingual(language, "Frozen Task-Aware vs. Always Strong", "固定 Task-Aware 对比 Always Strong")}</p>
-          </div>
-          <ArrowUpRight aria-hidden="true" className="card-corner-arrow" size={20} />
-        </Link>
-
-        <div className="home-publication-pair">
-          {selectedPublications.map((publication) => (
-            <Link
-              className={`home-publication-card is-${publication.id} is-${language}`}
-              key={publication.id}
-              to={`/brief/${publication.briefId}`}
-            >
-              <span>{localize(publication.publicationType)}</span>
-              <h3>{language === "zh" ? publication.titleZh : publication.canonicalTitle}</h3>
-              {publication.homeVisual ? (
-                <div className="home-publication-visual-slot">
-                  <img
-                    alt={localize(publication.homeVisual.alt)}
-                    className="home-publication-visual"
-                    decoding="async"
-                    height={publication.homeVisual.height}
-                    src={publication.homeVisual.src}
-                    width={publication.homeVisual.width}
-                  />
-                </div>
-              ) : null}
-              <p>{localize(publication.summary)}</p>
-              <footer>
-                <strong>{localize(publication.result)}</strong>
-                <ArrowUpRight aria-hidden="true" size={18} />
-              </footer>
-            </Link>
-          ))}
-        </div>
+        <SelectedResearchShowcase />
       </section>
 
       <section className="home-section" aria-labelledby="engineering-systems-title">

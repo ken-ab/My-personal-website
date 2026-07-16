@@ -6316,9 +6316,9 @@ img {
   padding-block: 32px;
 }
 
-.phase1-selected-research .phase1-section-heading { order: 1; }
-.phase1-selected-research .home-publication-pair { order: 2; margin-top: 32px; }
-.phase1-selected-research .routerbench-home-card { order: 3; margin-top: 32px; }
+.selected-research-showcase { margin-top: 32px; }
+.selected-research-showcase .home-publication-pair { margin-top: 0; }
+.selected-research-showcase .routerbench-home-card { margin-top: 32px; }
 
 .research-page-v2 {
   display: flex;
@@ -6662,13 +6662,6 @@ img {
   margin-top: 13px;
   color: var(--muted-light);
   font-size: 10px;
-}
-
-.card-corner-arrow {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--research-blue);
 }
 
 .home-publication-pair {
@@ -7094,6 +7087,19 @@ img {
   border-bottom: 1px solid var(--phase1-line);
 }
 
+.home-publication-actions,
+.routerbench-home-result > .routerbench-home-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.routerbench-home-result > .routerbench-home-actions {
+  margin-top: 18px;
+}
+
 .additional-visual {
   display: grid;
   place-items: center;
@@ -7346,6 +7352,7 @@ img {
   .home-publication-card { min-height: 235px; }
   .home-publication-card h3 { min-height: 0; }
   .home-publication-visual-slot { height: auto; }
+  .home-publication-card footer { align-items: flex-start; flex-direction: column; }
   .home-experience-strip > div, .home-experience-strip article { min-height: 102px; }
   .phase1-page-hero h1 { font-size: 44px; }
   .secondary-page-title { padding: 34px 0 2px; }

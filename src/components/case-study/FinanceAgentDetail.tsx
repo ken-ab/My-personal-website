@@ -223,9 +223,9 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
         <div className="finance-output-copy">
           <h2 className="finance-section-label" id="finance-output-title">{bilingual(language, "Evaluation & Reflection", financeZh.output.eyebrow)}</h2>
           <ol>
-            <li><ShieldCheck aria-hidden="true" size={20} /><span><strong>{bilingual(language, "Evaluate", "评估")}</strong> {bilingual(language, "section coverage, logic, and task alignment.", financeZh.output.steps[0])}</span></li>
-            <li><RefreshCw aria-hidden="true" size={20} /><span><strong>{bilingual(language, "Reflect", "反思")}</strong> {bilingual(language, "with a replan instruction only when the evaluator requests revision.", financeZh.output.steps[1])}</span></li>
-            <li><CheckCircle2 aria-hidden="true" size={20} /><span><strong>{bilingual(language, "Terminate", "终止")}</strong> {bilingual(language, "after a passing report or the single bounded retry.", financeZh.output.steps[2])}</span></li>
+            <li><ShieldCheck aria-hidden="true" size={20} /><span><strong>{bilingual(language, "Evaluate", "评估")}</strong> {bilingual(language, "Combine structured rule checks with an LLM reviewer to assess report completeness, logical consistency, and alignment with the original task.", financeZh.output.steps[0])}</span></li>
+            <li><RefreshCw aria-hidden="true" size={20} /><span><strong>{bilingual(language, "Reflect & Replan", "反思与重规划")}</strong> {bilingual(language, "When evaluation fails, the system summarizes missing information and logical issues into targeted instructions for the next analysis round.", financeZh.output.steps[1])}</span></li>
+            <li><CheckCircle2 aria-hidden="true" size={20} /><span><strong>{bilingual(language, "Retry & Verify", "重试与验证")}</strong> {bilingual(language, "The revised guidance is fed back to the fundamental, technical, valuation, and news agents. They rerun the analysis and regenerate the report, with execution stopping after a passing result or one bounded retry.", financeZh.output.steps[2])}</span></li>
           </ol>
           {study.experimentalNote ? (
             <aside className="finance-experimental-note">
