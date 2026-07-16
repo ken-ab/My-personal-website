@@ -1,9 +1,11 @@
-import { ArrowRight, BookOpenText, CircleAlert, FileCheck2, Layers3, Scale } from "lucide-react";
+import { BookOpenText, CircleAlert, FileCheck2, Layers3, Scale } from "lucide-react";
 import type { PublicationCaseStudy } from "../../data/caseStudies";
 import { publicationZh } from "../../i18n/content";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 import { ActionButton } from "../portfolio/ActionButton";
-import { MoeRoutingBackgroundMap, ResearchMethodMap } from "./ResearchMethodMaps";
+import { MoeRoutingBackgroundMap } from "./ResearchMethodMaps";
+import { MoeSystemTimeline } from "./MoeSystemTimeline";
+import "./MoeReviewDetail.css";
 
 function splitAbstractIntoParagraphs(text: string, breakAfter: string[] = []) {
   if (breakAfter.length === 0) return [text];
@@ -29,7 +31,6 @@ export function MoeReviewDetail({ study }: { study: PublicationCaseStudy }) {
 
   if (!review) return null;
 
-  const flowSteps = localizedReview?.flowSteps ?? review.flowSteps;
   const comparisonHeaders = language === "zh"
     ? ["系统", "路由与专家设计", "激活参数量", "主要综述结论", "定量综合状态"]
     : ["System", "Routing / Expert Design", "Active Parameters", "Main Review Takeaway", "Quantitative Synthesis Status"];
@@ -60,17 +61,18 @@ export function MoeReviewDetail({ study }: { study: PublicationCaseStudy }) {
         ) : null}
       </section>
 
-      <section className="moe-review-overview" aria-label={bilingual(language, "Comparative review workflow", "比较性综述流程")}>
-        <div className="moe-review-overview-flow">
-          {flowSteps.map((step, index) => (
-            <div className="moe-review-overview-step" key={step}>
-              <span>0{index + 1}</span>
-              <strong>{step}</strong>
-              {index < flowSteps.length - 1 ? <ArrowRight aria-hidden="true" size={18} /> : null}
-            </div>
+      <section
+        className="moe-evolution-section moe-evolution-section--hero"
+        aria-label={bilingual(language, "Evolution context", "演进背景")}
+      >
+        <div className="paper-visual-gallery">
+          {study.visuals.map((visual, visualIndex) => (
+            <figure className="paper-visual-frame moe-evolution-figure" key={visual.src}>
+              <img alt={localized?.visualAlts[visualIndex] ?? visual.alt} decoding="async" loading="eager" src={visual.src} />
+              <figcaption>{localized?.visualCaptions?.[visualIndex] ?? visual.caption}</figcaption>
+            </figure>
           ))}
         </div>
-        <p>{localizedReview?.positioningNote ?? review.positioningNote}</p>
       </section>
 
       <section className="paper-abstract-section moe-review-abstract" aria-labelledby="paper-abstract-title">
@@ -86,29 +88,6 @@ export function MoeReviewDetail({ study }: { study: PublicationCaseStudy }) {
         ) : abstractParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       </section>
 
-      <section className="moe-review-section moe-evolution-section" aria-labelledby="moe-evolution-title">
-        <header className="moe-review-section-heading">
-          <p className="section-eyebrow">{bilingual(language, "Literature Landscape", "文献脉络")}</p>
-          <h2 id="moe-evolution-title">{bilingual(language, "Evolution Context", "演进背景")}</h2>
-        </header>
-        <div className="paper-visual-gallery">
-          {study.visuals.map((visual, visualIndex) => (
-            <figure className="paper-visual-frame moe-evolution-figure" key={visual.src}>
-              <img alt={localized?.visualAlts[visualIndex] ?? visual.alt} decoding="async" loading="eager" src={visual.src} />
-              <figcaption>{localized?.visualCaptions?.[visualIndex] ?? visual.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="moe-review-section" aria-labelledby="moe-framework-title">
-        <header className="moe-review-section-heading">
-          <p className="section-eyebrow">{bilingual(language, "Comparative Framework", "比较框架")}</p>
-          <h2 id="moe-framework-title">{bilingual(language, "Review Scope and Comparative Framework", "综述范围与比较框架")}</h2>
-        </header>
-        <ResearchMethodMap kind="moe" />
-      </section>
-
       <section className="moe-review-section moe-background-section" aria-label={bilingual(language, "Sparse MoE routing background", "稀疏 MoE 路由背景知识")}>
         <MoeRoutingBackgroundMap />
         <aside className="moe-literature-finding">
@@ -121,10 +100,10 @@ export function MoeReviewDetail({ study }: { study: PublicationCaseStudy }) {
       </section>
 
       <section className="moe-review-section" aria-labelledby="moe-comparison-title">
-        <header className="moe-review-section-heading">
-          <p className="section-eyebrow">{bilingual(language, "Seven-System Taxonomy", "七类系统分类")}</p>
-          <h2 id="moe-comparison-title">{bilingual(language, "Architecture Comparison Matrix", "代表性架构比较矩阵")}</h2>
+        <header className="moe-taxonomy-heading">
+          <h2 id="moe-comparison-title">{bilingual(language, "Seven-System Taxonomy", "七类系统分类")}</h2>
         </header>
+        <MoeSystemTimeline />
         <div className="moe-comparison-table-wrap">
           <table className="moe-comparison-table">
             <thead><tr>{comparisonHeaders.map((header) => <th key={header} scope="col">{header}</th>)}</tr></thead>

@@ -1,0 +1,143 @@
+.moe-evolution-section--hero {
+  max-width: 980px;
+  margin: 30px auto 0;
+}
+
+.moe-evolution-section--hero .paper-visual-gallery {
+  margin: 0;
+}
+
+.moe-evolution-section--hero .moe-evolution-figure {
+  margin: 0;
+}
+
+.moe-taxonomy-heading {
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.moe-taxonomy-heading h2 {
+  color: var(--moe-wine);
+  font-family: Georgia, "Times New Roman", "Songti SC", serif;
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+.moe-system-timeline {
+  position: relative;
+  margin-bottom: 26px;
+  padding: 18px 12px 20px;
+  border-top: 1px solid color-mix(in srgb, var(--moe-wine) 18%, var(--paper-line));
+  border-bottom: 1px solid color-mix(in srgb, var(--moe-wine) 18%, var(--paper-line));
+}
+
+.moe-system-timeline ol {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.moe-system-timeline ol::before {
+  position: absolute;
+  top: 10px;
+  right: 7%;
+  left: 7%;
+  height: 1px;
+  content: "";
+  background: color-mix(in srgb, var(--moe-wine) 48%, var(--paper-line));
+}
+
+.moe-system-timeline li {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  padding-top: 27px;
+  text-align: center;
+}
+
+.moe-system-timeline li::before {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  content: "";
+  background: var(--moe-wine);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--moe-wine) 52%, var(--paper-line));
+}
+
+.moe-system-timeline time {
+  color: var(--moe-gold);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.045em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.moe-system-timeline strong {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .moe-evolution-section--hero {
+    margin-top: 22px;
+  }
+
+  .moe-taxonomy-heading {
+    margin-bottom: 20px;
+  }
+
+  .moe-system-timeline {
+    padding: 18px 16px 10px;
+  }
+
+  .moe-system-timeline ol {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-left: 18px;
+  }
+
+  .moe-system-timeline ol::before {
+    top: 8px;
+    right: auto;
+    bottom: 16px;
+    left: 5px;
+    width: 1px;
+    height: auto;
+  }
+
+  .moe-system-timeline li {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 14px;
+    align-items: baseline;
+    min-height: 52px;
+    padding: 0 0 18px 12px;
+    text-align: left;
+  }
+
+  .moe-system-timeline li::before {
+    top: 4px;
+    left: -17px;
+  }
+
+  .moe-system-timeline strong {
+    font-size: 15px;
+  }
+}
