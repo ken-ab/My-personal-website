@@ -1,5 +1,6 @@
 import { ArrowRight, Database, LockKeyhole, Workflow } from "lucide-react";
 import { Link } from "react-router-dom";
+import energyQuantNewspaperComic from "../assets/project-details/energyquant-newspaper-comic.png";
 import financeAgentArchitecture from "../assets/project-details/finance-agent-system-architecture.png";
 import { ZoomableImage } from "../components/media/ZoomableImage";
 import { ActionButton } from "../components/portfolio/ActionButton";
@@ -62,28 +63,46 @@ export function Engineering() {
             <LockKeyhole aria-hidden="true" size={23} />
           </header>
           <h2>EnergyQuant</h2>
-          <p>
-            {bilingual(
-              language,
-              "An enterprise pre-investment workflow covering AI-assisted material classification, RBAC, three parallel review tracks, file handling, human confirmation, Docker delivery, and private offline deployment.",
-              "企业投前工作流，覆盖 AI 辅助材料分类、RBAC、三条并行审查链路、文件处理、人工确认、Docker 交付与私有化离线部署。",
-            )}
-          </p>
-          <div className="engineering-capability-row">
-            <span><Database aria-hidden="true" size={16} /> {bilingual(language, "AI classification", "AI 材料分类")}</span>
-            <span><Workflow aria-hidden="true" size={16} /> {bilingual(language, "RBAC + workflows", "RBAC + 工作流")}</span>
-            <span><LockKeyhole aria-hidden="true" size={16} /> {bilingual(language, "Private deployment", "私有化部署")}</span>
+          <div className="energyquant-preview-copy">
+            <p>
+              {bilingual(
+                language,
+                "The public repository extracts the AI-assisted material-classification workflow from the larger enterprise system. A task can receive individual files, folders, or archives, then send them through a batch classification pipeline.",
+                "公开仓库将完整企业系统中的 AI 辅助材料分类链路单独提取出来：创建任务后，可上传单文件、文件夹或压缩包，并统一进入批量分类流程。",
+              )}
+            </p>
+            <p>
+              {bilingual(
+                language,
+                "Classification is not treated as the final decision. Unrecognized or uncertain results enter human confirmation, after which files can be previewed, downloaded, deleted, and archived.",
+                "自动分类并非最终判断：未识别或不确定的结果会进入人工确认，确认后可继续完成文件预览、下载、删除与归档。",
+              )}
+            </p>
           </div>
-          <aside>
-            {bilingual(
-              language,
-              "Public description is deliberately limited and anonymized: no client identity, accounts, server addresses, business files, deployment packages, or unauthorized screenshots are exposed.",
-              "公开说明经过有意限制与脱敏：不展示客户身份、账号、服务器地址、业务文件、部署包或未经授权的截图。",
-            )}
-          </aside>
+          <figure className="energyquant-preview-visual">
+            <ZoomableImage
+              alt={bilingual(
+                language,
+                "EnergyQuant AI file-classification workflow from upload through human confirmation and archive.",
+                "EnergyQuant AI 文件分类流程：从材料上传、AI 分类到人工确认与文件归档。",
+              )}
+              decoding="async"
+              loading="lazy"
+              src={energyQuantNewspaperComic}
+            />
+          </figure>
+          <div className="engineering-capability-row">
+            <span><Database aria-hidden="true" size={16} /> {bilingual(language, "Files · folders · archives", "文件 · 文件夹 · 压缩包")}</span>
+            <span><Workflow aria-hidden="true" size={16} /> {bilingual(language, "Batch AI classification", "批量 AI 分类")}</span>
+            <span><LockKeyhole aria-hidden="true" size={16} /> {bilingual(language, "Human confirmation · archive", "人工确认 · 归档")}</span>
+          </div>
+          <div className="energyquant-preview-action">
+            <ActionButton external href="https://github.com/ken-ab/Energyquant" variant="primary">GitHub</ActionButton>
+          </div>
         </article>
 
         <article className="engineering-medium-card is-laowang">
+          <p className="engineering-medium-kicker">03 · {bilingual(language, "Mini Program Development", "小程序开发")}</p>
           {laoWangShowcase ? (
             <MiniProgramProjectShowcase
               compact

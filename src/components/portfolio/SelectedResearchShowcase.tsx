@@ -1,5 +1,6 @@
-import { FileText, Search } from "lucide-react";
+import { Code2, FileText, Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import routerBenchOverview from "../../assets/case-studies/routerbench-cost-aware-routing.png";
 import { routerBenchMini, selectedPublications, type PublicationSummary } from "../../data/siteStructure";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 import { ZoomableImage } from "../media/ZoomableImage";
@@ -67,13 +68,25 @@ export function SelectedResearchShowcase() {
           </p>
         </div>
         <div className="routerbench-home-result">
-          <small>{bilingual(language, "Independent Research Project", "独立研究项目")}</small>
-          <strong>−22.5% <span>{bilingual(language, "calling cost", "调用成本")}</span></strong>
-          <p>{bilingual(language, "Frozen Task-Aware vs. Always Strong", "固定 Task-Aware 对比 Always Strong")}</p>
+          <figure className="routerbench-home-visual">
+            <ZoomableImage
+              alt={bilingual(
+                language,
+                "Cost-aware model routing research for multimodal tasks.",
+                "面向多模态任务的成本感知模型路由研究图。",
+              )}
+              decoding="async"
+              loading="lazy"
+              src={routerBenchOverview}
+            />
+          </figure>
           <div className="routerbench-home-actions">
             <Link className="research-action-pill" to="/brief/routerbench-mini">
               <Search aria-hidden="true" size={15} /> DETAIL
             </Link>
+            <a className="research-action-pill" href="https://github.com/ken-ab/routerbench-mini" rel="noreferrer" target="_blank">
+              <Code2 aria-hidden="true" size={15} /> GITHUB
+            </a>
           </div>
         </div>
       </article>
