@@ -2,6 +2,7 @@ import benchmarkFigureOne from "../../assets/case-studies/moe-benchmark-figure-1
 import benchmarkFigureTwo from "../../assets/case-studies/moe-benchmark-figure-2.png";
 import type { LocalizedText } from "../../i18n/LanguageContext";
 import { useLanguage } from "../../i18n/LanguageContext";
+import { ZoomableImage } from "../media/ZoomableImage";
 
 const benchmarkFigures: Array<{
   alt: LocalizedText;
@@ -65,7 +66,13 @@ export function MoeBenchmarkEvidence() {
       <div className="moe-benchmark-figures">
         {benchmarkFigures.map((figure) => (
           <figure key={figure.src}>
-            <img alt={figure.alt[language]} decoding="async" loading="lazy" src={figure.src} />
+            <ZoomableImage
+              alt={figure.alt[language]}
+              caption={figure.caption[language]}
+              decoding="async"
+              loading="lazy"
+              src={figure.src}
+            />
             <figcaption>{figure.caption[language]}</figcaption>
           </figure>
         ))}

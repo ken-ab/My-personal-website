@@ -3,6 +3,7 @@ import type { PublicationCaseStudy } from "../../data/caseStudies";
 import { publicationZh } from "../../i18n/content";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
 import { ActionButton } from "../portfolio/ActionButton";
+import { ZoomableImage } from "../media/ZoomableImage";
 import { MoeBenchmarkEvidence, moeReviewContributions } from "./MoeBenchmarkEvidence";
 import { MoeRoutingBackgroundMap } from "./ResearchMethodMaps";
 import { MoeSystemTimeline } from "./MoeSystemTimeline";
@@ -68,7 +69,13 @@ export function MoeReviewDetail({ study }: { study: PublicationCaseStudy }) {
         <div className="paper-visual-gallery">
           {study.visuals.map((visual, visualIndex) => (
             <figure className="paper-visual-frame moe-evolution-figure" key={visual.src}>
-              <img alt={localized?.visualAlts[visualIndex] ?? visual.alt} decoding="async" loading="eager" src={visual.src} />
+              <ZoomableImage
+                alt={localized?.visualAlts[visualIndex] ?? visual.alt}
+                caption={localized?.visualCaptions?.[visualIndex] ?? visual.caption}
+                decoding="async"
+                loading="eager"
+                src={visual.src}
+              />
               <figcaption>{localized?.visualCaptions?.[visualIndex] ?? visual.caption}</figcaption>
             </figure>
           ))}

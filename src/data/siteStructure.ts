@@ -25,6 +25,9 @@ export type PublicationSummary = {
   publicationType: LocalizedText;
   authorRole: LocalizedText;
   venue: string;
+  homepageCitation?:
+    | { kind: "journal"; journal: string; year: string; volume: string; article: string }
+    | { kind: "conference"; name: string };
   summary: LocalizedText;
   result: LocalizedText;
   homeVisual?: {
@@ -107,6 +110,7 @@ export const selectedPublications: PublicationSummary[] = [
     publicationType: { en: "First-Author Machine Learning Research", zh: "第一作者 · 机器学习研究" },
     authorRole: { en: "First Author", zh: "第一作者" },
     venue: "Applied Sciences 15(14), 7793 (2025)",
+    homepageCitation: { kind: "journal", journal: "Appl. Sci.", year: "2025", volume: "15", article: "7793" },
     summary: {
       en: "A complete applied-ML workflow spanning historical data preparation, country grouping, forecasting, model comparison, and effect quantification.",
       zh: "一项完整的应用机器学习研究，覆盖历史数据处理、国家分组、预测、模型比较与效应量化。",
@@ -134,6 +138,7 @@ export const selectedPublications: PublicationSummary[] = [
     publicationType: { en: "First-Author Review · Efficient AI", zh: "第一作者综述 · 高效 AI" },
     authorRole: { en: "First Author · Review", zh: "第一作者 · 综述" },
     venue: "IEEE AINIT 2025",
+    homepageCitation: { kind: "conference", name: "AINIT 2025" },
     summary: {
       en: "A structured review of sparse expert routing, architecture evolution, and performance-efficiency mechanisms in modern MoE systems.",
       zh: "围绕现代 MoE 系统的稀疏专家路由、架构演进与性能—效率机制展开的体系化综述。",

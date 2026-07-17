@@ -1,0 +1,44 @@
+.home-publication-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 13px;
+  align-items: baseline;
+}
+
+.home-publication-meta > span {
+  color: var(--wine);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.home-publication-citation {
+  margin: 0;
+  color: var(--wine);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.home-publication-citation em {
+  font-style: italic;
+}
+
+.home-publication-citation strong {
+  font-weight: 850;
+}
+
+@media (max-width: 620px) {
+  .home-publication-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+}

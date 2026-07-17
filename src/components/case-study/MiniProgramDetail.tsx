@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2, QrCode, ShieldCheck, Smartphone, Workflow } f
 import type { MiniProgramCaseStudy } from "../../data/caseStudies";
 import { miniProgramZh } from "../../i18n/content";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
+import { ZoomableImage } from "../media/ZoomableImage";
 
 export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
   const { language } = useLanguage();
@@ -135,14 +136,26 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
           {study.screenshots.map((shot, shotIndex) => (
             <figure className={`mini-phone-shot${shot.featured ? " is-featured" : ""}`} key={shot.label}>
               <div className="mini-phone-chrome"><i /><i /><i /></div>
-              <img
-                alt={localized?.screenshotAlts[shotIndex] ?? shot.alt}
-                decoding="async"
-                height={shot.height}
-                loading={shot.featured ? "eager" : "lazy"}
-                src={shot.src}
-                width={shot.width}
-              />
+              {isLaoWang ? (
+                <ZoomableImage
+                  alt={localized?.screenshotAlts[shotIndex] ?? shot.alt}
+                  caption={localized?.screenshotLabels[shotIndex] ?? shot.label}
+                  decoding="async"
+                  height={shot.height}
+                  loading={shot.featured ? "eager" : "lazy"}
+                  src={shot.src}
+                  width={shot.width}
+                />
+              ) : (
+                <img
+                  alt={localized?.screenshotAlts[shotIndex] ?? shot.alt}
+                  decoding="async"
+                  height={shot.height}
+                  loading={shot.featured ? "eager" : "lazy"}
+                  src={shot.src}
+                  width={shot.width}
+                />
+              )}
               <figcaption>{localized?.screenshotLabels[shotIndex] ?? shot.label}</figcaption>
             </figure>
           ))}

@@ -1,0 +1,100 @@
+.routerbench-paper-hero {
+  max-width: 980px;
+  padding-bottom: 24px;
+}
+
+.routerbench-paper-hero .paper-keywords {
+  color: var(--wine);
+}
+
+.routerbench-paper-hero h1 {
+  max-width: 900px;
+  margin-inline: auto;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+}
+
+.routerbench-paper-hero .paper-authors {
+  margin-top: 18px;
+}
+
+.routerbench-paper-positioning {
+  max-width: 720px;
+  margin: 11px auto 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.routerbench-paper-hero .paper-primary-action {
+  margin-top: 20px;
+}
+
+.routerbench-paper-visual {
+  max-width: 980px;
+  margin-top: 15px;
+}
+
+.routerbench-paper-figure {
+  width: 100%;
+  max-width: 920px;
+  border-color: rgba(143, 46, 42, 0.22);
+  background: #ffffff;
+}
+
+.routerbench-paper-figure img {
+  width: 100%;
+  max-height: none;
+}
+
+.routerbench-paper-visual .paper-visual-summary {
+  margin: 12px auto 0;
+  color: var(--muted);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 0.045em;
+  line-height: 1.55;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.routerbench-paper-abstract {
+  max-width: 920px;
+  margin-top: 50px;
+}
+
+.routerbench-paper-abstract strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+@media (max-width: 620px) {
+  .routerbench-paper-hero {
+    padding-top: 30px;
+  }
+
+  .routerbench-paper-hero h1 {
+    font-size: 30px;
+    line-height: 1.08;
+  }
+
+  .routerbench-paper-positioning {
+    max-width: 330px;
+    font-size: 11.5px;
+  }
+
+  .routerbench-paper-visual {
+    margin-top: 8px;
+  }
+
+  .routerbench-paper-visual .paper-visual-summary {
+    padding-inline: 8px;
+    text-align: left;
+  }
+
+  .routerbench-paper-abstract {
+    margin-top: 38px;
+  }
+}

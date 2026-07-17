@@ -1,7 +1,9 @@
 import { FileText, Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import { routerBenchMini, selectedPublications } from "../../data/siteStructure";
+import { routerBenchMini, selectedPublications, type PublicationSummary } from "../../data/siteStructure";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
+import { ZoomableImage } from "../media/ZoomableImage";
+import "./SelectedResearchShowcase.css";
 
 export function SelectedResearchShowcase() {
   const { language } = useLanguage();
@@ -15,11 +17,14 @@ export function SelectedResearchShowcase() {
             className={`home-publication-card is-${publication.id} is-${language}`}
             key={publication.id}
           >
-            <span>{localize(publication.publicationType)}</span>
+            <div className="home-publication-meta">
+              <span>{localize(publication.publicationType)}</span>
+              {publication.homepageCitation ? <HomepageCitation citation={publication.homepageCitation} /> : null}
+            </div>
             <h3>{language === "zh" ? publication.titleZh : publication.canonicalTitle}</h3>
             {publication.homeVisual ? (
               <div className="home-publication-visual-slot">
-                <img
+                <ZoomableImage
                   alt={localize(publication.homeVisual.alt)}
                   className="home-publication-visual"
                   decoding="async"
@@ -73,5 +78,20 @@ export function SelectedResearchShowcase() {
         </div>
       </article>
     </div>
+  );
+}
+
+function HomepageCitation({ citation }: { citation: NonNullable<PublicationSummary["homepageCitation"]> }) {
+  if (citation.kind === "conference") {
+    return <cite className="home-publication-citation"><strong>{citation.name}</strong></cite>;
+  }
+
+  return (
+    <cite className="home-publication-citation">
+      <em>{citation.journal}</em>{" "}
+      <strong>{citation.year}</strong>,{" "}
+      <em>{citation.volume}</em>,{" "}
+      {citation.article}
+    </cite>
   );
 }

@@ -1,9 +1,12 @@
-import { ArrowRight, CheckCircle2, Database, LockKeyhole, Workflow } from "lucide-react";
+import { ArrowRight, Database, LockKeyhole, Workflow } from "lucide-react";
 import { Link } from "react-router-dom";
+import financeAgentArchitecture from "../assets/project-details/finance-agent-system-architecture.png";
+import { ZoomableImage } from "../components/media/ZoomableImage";
 import { ActionButton } from "../components/portfolio/ActionButton";
 import { MiniProgramProjectShowcase } from "../components/portfolio/MiniProgramProjectShowcase";
 import { developmentProjects } from "../data/portfolio";
 import { bilingual, useLanguage } from "../i18n/LanguageContext";
+import "./Engineering.css";
 
 export function Engineering() {
   const { language } = useLanguage();
@@ -35,22 +38,20 @@ export function Engineering() {
           </div>
         </div>
 
-        <div className="engineering-agent-evidence" aria-label="Finance-Agent verified architecture facts">
-          <div className="agent-flow-mini">
-            <span>{bilingual(language, "Query", "查询")}</span>
-            <ArrowRight aria-hidden="true" size={16} />
-            <span>MCP</span>
-            <ArrowRight aria-hidden="true" size={16} />
-            <span>{bilingual(language, "4 Agents", "4 个 Agent")}</span>
-            <ArrowRight aria-hidden="true" size={16} />
-            <span>{bilingual(language, "Report", "报告")}</span>
-          </div>
-          <dl>
-            <div><dt>4</dt><dd>{bilingual(language, "specialist agents", "专业分析 Agent")}</dd></div>
-            <div><dt>8</dt><dd>{bilingual(language, "MCP tool families", "MCP 工具族")}</dd></div>
-            <div><dt>1</dt><dd>{bilingual(language, "bounded reflection", "有界反思轮次")}</dd></div>
-          </dl>
-          <p><CheckCircle2 aria-hidden="true" size={17} /> {bilingual(language, "Source-visible architecture; no investment-return claims.", "架构可由代码核验，不宣称投资收益。")}</p>
+        <div className="engineering-agent-evidence is-architecture-preview">
+          <ZoomableImage
+            alt={bilingual(
+              language,
+              "Financial Research Multi-Agent System Architecture with MCP tools, four specialist agents, evaluation, and bounded reflection.",
+              "金融研究多智能体系统架构图，包含 MCP 工具、四个专业 Agent、评估器与有界反思回路。",
+            )}
+            className="finance-agent-architecture-preview"
+            decoding="async"
+            height={1024}
+            loading="eager"
+            src={financeAgentArchitecture}
+            width={1535}
+          />
         </div>
       </section>
 

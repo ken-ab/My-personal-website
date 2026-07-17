@@ -1,0 +1,23 @@
+.engineering-agent-evidence.is-architecture-preview {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  overflow: hidden;
+  padding: 9px;
+  background: #ffffff;
+}
+
+.finance-agent-architecture-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(31, 52, 86, 0.09);
+}
+
+@media (max-width: 760px) {
+  .engineering-agent-evidence.is-architecture-preview {
+    padding: 5px;
+  }
+}

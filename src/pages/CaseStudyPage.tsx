@@ -6,6 +6,7 @@ import { MiniProgramDetail } from "../components/case-study/MiniProgramDetail";
 import { McmProjectDetail } from "../components/case-study/McmProjectDetail";
 import { MoeReviewDetail } from "../components/case-study/MoeReviewDetail";
 import { ResearchMethodMap } from "../components/case-study/ResearchMethodMaps";
+import { ZoomableImage } from "../components/media/ZoomableImage";
 import { ActionButton } from "../components/portfolio/ActionButton";
 import { getCaseStudy } from "../data/caseStudies";
 import type { AgentProjectCaseStudy, PublicationCaseStudy } from "../data/caseStudies";
@@ -145,7 +146,17 @@ function PublicationIntro({ study }: { study: PublicationCaseStudy }) {
         <div className={`paper-visual-gallery${study.visuals && study.visuals.length > 1 ? " has-multiple" : ""}`}>
           {study.visuals?.map((visual, visualIndex) => (
             <figure className="paper-visual-frame" key={visual.src}>
-              <img alt={localized?.visualAlts[visualIndex] ?? visual.alt} decoding="async" loading="eager" src={visual.src} />
+              {visualIndex === 0 ? (
+                <ZoomableImage
+                  alt={localized?.visualAlts[visualIndex] ?? visual.alt}
+                  caption={localized?.visualAlts[visualIndex] ?? visual.caption}
+                  decoding="async"
+                  loading="eager"
+                  src={visual.src}
+                />
+              ) : (
+                <img alt={localized?.visualAlts[visualIndex] ?? visual.alt} decoding="async" loading="eager" src={visual.src} />
+              )}
             </figure>
           ))}
         </div>

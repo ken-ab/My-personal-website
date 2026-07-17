@@ -1,44 +1,46 @@
 import {
-  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Check,
   Code2,
   Database,
   Route,
   ShieldCheck,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import routerBenchPareto from "../../assets/case-studies/routerbench-set-b-pareto.png";
-import { routerBenchMini } from "../../data/siteStructure";
 import type { LocalizedText } from "../../i18n/LanguageContext";
 import { bilingual, useLanguage } from "../../i18n/LanguageContext";
+import { ZoomableImage } from "../media/ZoomableImage";
+import { ActionButton } from "../portfolio/ActionButton";
+import "./RouterBenchDetail.css";
 
 const repositoryUrl = "https://github.com/ken-ab/routerbench-mini";
 const reportUrl = "https://github.com/ken-ab/routerbench-mini#readme";
 
-const studyScale: Array<{ value: string; label: LocalizedText }> = [
-  { value: "2", label: { en: "Unified Multimodal Models", zh: "统一多模态模型" } },
-  { value: "600", label: { en: "Unique Tasks", zh: "不重复任务" } },
-  { value: "3", label: { en: "Task Families", zh: "任务类型" } },
-  { value: "8", label: { en: "Benchmark Datasets", zh: "基准数据集" } },
-  { value: "5", label: { en: "Evaluation Strategies", zh: "评估策略" } },
-  { value: "4", label: { en: "Core Metrics", zh: "核心指标" } },
-];
+const overviewIntroLead: LocalizedText = {
+  en: "Large language model systems frequently face a model-routing decision in real applications: should a task be handled by a lower-cost model, or escalated to a more accurate but more expensive and slower strong model? In multimodal and agentic settings, this decision is more complex because task difficulty can be influenced simultaneously by textual instructions, visual inputs, tool-use requirements, and the quality of the initial response. This paper introduces ",
+  zh: "大语言模型系统在实际应用中经常面临一个模型路由问题：一个任务应由成本较低的模型处理，还是升级调用准确率更高、但成本与延迟也更高的强模型。在多模态和智能体场景中，这一问题更加复杂，因为任务难度可能同时受到文本指令、视觉输入、工具调用需求以及初始回答质量的影响。本文介绍 ",
+};
 
-const modelPool: Array<{ role: string; model: string; description: LocalizedText }> = [
-  {
-    role: "Cheap",
-    model: "Qwen3.5-35B-A3B",
-    description: { en: "Lower-cost unified text, vision and tool-use model", zh: "低成本的文本、视觉与工具调用统一模型" },
-  },
-  {
-    role: "Strong",
-    model: "Qwen3.5-397B-A17B",
-    description: { en: "Higher-capability model with higher call cost", zh: "能力更强、调用成本也更高的统一模型" },
-  },
-];
+const overviewIntroTail: LocalizedText = {
+  en: ", an independent experimental study of cost-aware model routing across text, vision, and tool-calling tasks. It compares two routing paradigms: request-side routing, which selects a model before generation using observable task features; and response-side escalation, which first calls a low-cost model and then decides whether to invoke the strong model based on answer format, confidence, self-check signals, and structural features.",
+  zh: "，一项面向文本、视觉与工具调用任务的成本感知模型路由独立实验研究。研究比较了两类路由范式：一类是在生成前依据任务的可观察特征选择模型的请求侧路由；另一类是先调用低成本模型，再结合回答格式、置信度、自检结果与结构特征判断是否升级调用强模型的响应侧升级策略。",
+};
+
+const overviewResultLead: LocalizedText = {
+  en: "Across four experimental iterations, the study compares fixed task-aware rules, calibrated response-side routing, learned quality-gap prediction, and reflection-based escalation. With limited development data, more complex learned or reflective strategies did not consistently outperform simple routing rules; some showed overfitting or unstable transfer across evaluation sets. In contrast, the frozen Task-Aware baseline remained more stable across two non-overlapping held-out evaluations. On the pooled 300-task evaluation, its accuracy was only ",
+  zh: "通过四个版本的迭代实验，本文比较了固定任务感知规则、经过校准的响应侧路由、学习式质量差预测以及基于反思的升级策略。实验表明，在开发数据有限的情况下，更复杂的学习式或反思式策略并未稳定优于简单路由规则，部分方法还表现出过拟合或跨评测集迁移不稳定的问题。相比之下，固定的任务感知基线在两批互不重叠的留出评测中表现更为稳定。在合并的300道评测任务上，该策略的准确率仅比 Always Strong 低 ",
+};
+
+const overviewCostBridge: LocalizedText = {
+  en: " while reducing estimated call cost by ",
+  zh: "，同时将估算调用成本降低 ",
+};
+
+const overviewLatencyBridge: LocalizedText = {
+  en: " and observed latency by ",
+  zh: "、观测延迟降低 ",
+};
 
 const methodCards = [
   {
@@ -114,82 +116,71 @@ export function RouterBenchDetail() {
 
   return (
     <main className="page-shell routerbench-detail-page page-enter">
-      <section className="routerbench-detail-hero" aria-labelledby="routerbench-detail-title">
-        <div className="routerbench-hero-main">
-          <p className="routerbench-report-kicker">
-            {bilingual(language, "Independent Research Experiment · Multimodal Model Routing", "独立研究实验 · 多模态模型路由")}
-          </p>
-          <h1 id="routerbench-detail-title">RouterBench-Mini</h1>
-          <p className="routerbench-hero-summary">{localize(routerBenchMini.summary)}</p>
-          <dl className="routerbench-hero-meta">
-            <div><dt>{bilingual(language, "Date", "时间")}</dt><dd>July 2026</dd></div>
-            <div><dt>{bilingual(language, "Project", "项目")}</dt><dd>{bilingual(language, "Independent Research Project", "独立研究项目")}</dd></div>
-            <div><dt>{bilingual(language, "Role", "角色")}</dt><dd>{bilingual(language, "Experiment Design, Implementation and Analysis", "实验设计、实现与分析")}</dd></div>
-          </dl>
-          <div className="routerbench-hero-actions">
-            <a className="routerbench-action is-primary" href={repositoryUrl} target="_blank" rel="noreferrer">
-              <Code2 aria-hidden="true" size={16} /> {bilingual(language, "View GitHub Repository", "查看 GitHub 仓库")}
-            </a>
-            <a className="routerbench-action" href={reportUrl} target="_blank" rel="noreferrer">
-              <BookOpen aria-hidden="true" size={16} /> {bilingual(language, "Read Full Experimental Report", "阅读完整实验报告")}
-            </a>
-            <Link className="routerbench-action is-text" to="/research">
-              <ArrowLeft aria-hidden="true" size={15} /> {bilingual(language, "Back to Research", "返回研究页")}
-            </Link>
-          </div>
+      <section className="paper-brief-hero routerbench-paper-hero" aria-labelledby="routerbench-detail-title">
+        <p className="paper-keywords">
+          {bilingual(
+            language,
+            "Cost-Aware Routing · Multimodal Tasks · Agentic AI",
+            "成本感知模型路由 · 多模态任务 · 智能体系统",
+          )}
+        </p>
+        <h1 id="routerbench-detail-title">
+          {bilingual(language, "RouterBench-Mini", "面向多模态任务的成本感知模型路由研究")}
+        </h1>
+        <p className="paper-authors"><span className="is-owner">Zhenkai Zhang</span></p>
+        <p className="routerbench-paper-positioning">
+          {bilingual(
+            language,
+            "An ongoing independent research project, currently presented as an experimental report and intended for continued expansion and refinement.",
+            "一项正在持续推进的独立研究，目前以实验报告形式呈现，后续将继续扩展并完善。",
+          )}
+        </p>
+        <div className="paper-primary-action">
+          <ActionButton external href={repositoryUrl} variant="primary">
+            <Code2 aria-hidden="true" size={16} /> GitHub
+          </ActionButton>
         </div>
-        <aside className="routerbench-hero-note">
-          <ShieldCheck aria-hidden="true" size={24} />
-          <span>{bilingual(language, "Controlled evidence", "受控实验证据")}</span>
-          <strong>{bilingual(language, "One model family. Shared prompts. Untouched confirmation set.", "同一模型家族、统一提示、未触碰确认集。")}</strong>
-          <p>{bilingual(language, "A compact experimental report—not a claim of a new routing theory.", "一份简洁实验报告，不宣称提出新的路由理论。")}</p>
-        </aside>
       </section>
 
-      <section className="routerbench-question" aria-labelledby="routerbench-question-title">
-        <header className="routerbench-section-heading">
-          <p className="section-eyebrow">01 · {bilingual(language, "Research Question", "研究问题")}</p>
-          <h2 id="routerbench-question-title">{localize(routerBenchMini.question)}</h2>
-        </header>
-
-        <div className="routerbench-scale-grid" aria-label={bilingual(language, "Study scale", "实验规模")}>
-          {studyScale.map((item) => (
-            <article key={item.label.en}><strong>{item.value}</strong><span>{localize(item.label)}</span></article>
-          ))}
+      <section className="paper-visual-section routerbench-paper-visual" aria-label={bilingual(language, "RouterBench-Mini result overview", "RouterBench-Mini 结果概览")}>
+        <div className="paper-visual-gallery">
+          <figure className="paper-visual-frame routerbench-paper-figure">
+            <ZoomableImage
+              alt={bilingual(
+                language,
+                "Pareto chart comparing Set B routing accuracy and average API cost.",
+                "Set B 各路由策略准确率与平均 API 调用成本的 Pareto 对比图。",
+              )}
+              caption={bilingual(
+                language,
+                "Set B routing accuracy and average API cost",
+                "Set B 路由准确率与平均 API 调用成本",
+              )}
+              decoding="async"
+              loading="eager"
+              src={routerBenchPareto}
+            />
+          </figure>
         </div>
+        <p className="paper-visual-summary">
+          {bilingual(
+            language,
+            "Set B Pareto comparison of routing accuracy and average API cost · Repository experiment output.",
+            "Set B 各路由策略准确率与平均 API 调用成本的 Pareto 对比 · 实验仓库输出。",
+          )}
+        </p>
+      </section>
 
-        <div className="routerbench-study-frame">
-          <div className="routerbench-model-pool">
-            <p className="section-eyebrow">{bilingual(language, "Model Pool", "模型池")}</p>
-            {modelPool.map((model) => (
-              <article key={model.role}>
-                <span>{model.role}</span>
-                <strong>{model.model}</strong>
-                <p>{localize(model.description)}</p>
-              </article>
-            ))}
-          </div>
-          <div className="routerbench-study-tags">
-            <div>
-              <p className="section-eyebrow">{bilingual(language, "Task Families", "任务类型")}</p>
-              <div className="routerbench-tag-row">
-                {["Text Reasoning", "Vision Understanding", "Tool Calling"].map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-            <div>
-              <p className="section-eyebrow">{bilingual(language, "Datasets", "数据集")}</p>
-              <div className="routerbench-tag-row">
-                {["GSM8K", "CommonsenseQA", "BBH", "ScienceQA", "MMMU", "ChartQA", "OCR-VQA", "BFCL"].map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-            <div>
-              <p className="section-eyebrow">{bilingual(language, "Metrics", "指标")}</p>
-              <div className="routerbench-tag-row is-metrics">
-                {["Accuracy", "Average Cost", "Observed Latency", "Strong Model Use"].map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="paper-abstract-section routerbench-paper-abstract" aria-labelledby="routerbench-overview-title">
+        <h2 id="routerbench-overview-title">{bilingual(language, "Overview", "中文概述")}</h2>
+        <p>
+          {localize(overviewIntroLead)}<strong>RouterBench-Mini</strong>{localize(overviewIntroTail)}
+        </p>
+        <p>
+          {localize(overviewResultLead)}
+          <strong>{bilingual(language, "0.67 percentage points below Always Strong", "0.67个百分点")}</strong>
+          {localize(overviewCostBridge)}<strong>22.5%</strong>{localize(overviewLatencyBridge)}<strong>26.6%</strong>{bilingual(language, ".", "。")}
+        </p>
       </section>
 
       <section className="routerbench-methods" aria-labelledby="routerbench-methods-title">

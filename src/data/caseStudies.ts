@@ -16,6 +16,7 @@ import wangPosterScreenshot from "../assets/project-details/laowang-poster-detai
 import wangMiniProgramQr from "../assets/project-details/wang-mini-program-qr.png";
 import mcmCareerTrajectories from "../assets/project-details/mcm-career-trajectories.webp";
 import mcmReportUrl from "../assets/reports/2026-mcm-final.pdf";
+import type { LocalizedText } from "../i18n/LanguageContext";
 import type { PortfolioLink, Tone } from "./portfolio";
 
 type MethodStep = {
@@ -83,17 +84,40 @@ export type CompetitionProjectCaseStudy = CaseStudyBase & {
   kind: "competition-project";
   keywords: string[];
   award: string;
+  awardZh: string;
   problemLabel: string;
+  titleZh: string;
+  subtitleZh: string;
   reportUrl: string;
-  facts: Array<{ value: string; label: string; note: string }>;
-  problemAddressed: string[];
-  innovations: string[];
-  trajectoryVisual: { src: string; alt: string; caption: string };
-  careerResults: Array<{ title: string; signal: string; body: string; tone: "blue" | "green" | "wine" }>;
-  ablations: Array<{ model: string; title: string; body: string }>;
-  ranking: Array<{ institution: string; score: string; rank: number }>;
-  strategies: Array<{ institution: string; archetype: string; body: string }>;
-  limitations: string[];
+  contribution: {
+    period: LocalizedText;
+    role: LocalizedText;
+    body: LocalizedText;
+  };
+  facts: Array<{ value: string; label: LocalizedText; note: LocalizedText }>;
+  challenge: {
+    question: LocalizedText;
+    tasks: Array<{ label: string; title: LocalizedText; body: LocalizedText }>;
+  };
+  conciseAnswer: { title: LocalizedText; body: LocalizedText };
+  architectureSteps: Array<{
+    step: string;
+    title: LocalizedText;
+    question: LocalizedText;
+    methods: LocalizedText[];
+    output: LocalizedText;
+  }>;
+  feedbackPath: LocalizedText[];
+  trajectoryVisual: { src: string; alt: LocalizedText; caption: LocalizedText };
+  careerResults: Array<{ title: LocalizedText; signal: LocalizedText; body: LocalizedText; tone: "blue" | "green" | "wine" }>;
+  findingSummary: { title: LocalizedText; body: LocalizedText; implication: LocalizedText };
+  coreInnovation: { title: LocalizedText; body: LocalizedText; loop: LocalizedText[] };
+  supportingContributions: Array<{ title: LocalizedText; body: LocalizedText }>;
+  ablations: Array<{ model: string; title: LocalizedText; body: LocalizedText }>;
+  robustnessEvidence: LocalizedText[];
+  ranking: Array<{ strategy: LocalizedText; archetype: LocalizedText; score: string; rank: number }>;
+  strategies: Array<{ institutionType: LocalizedText; title: LocalizedText; body: LocalizedText }>;
+  limitations: LocalizedText[];
 };
 
 export type AgentProjectCaseStudy = CaseStudyBase & {
@@ -645,98 +669,280 @@ export const caseStudies: CaseStudy[] = [
     title: "Compete or Coevolve: An Evolutionary Macro-Micro Framework for AI-Era Educational Policy",
     subtitle:
       "A four-module modeling framework that connects task-level AI exposure, labor-market evolution, curriculum rewiring, and institution-specific policy selection.",
+    titleZh: "竞争还是共生：面向 AI 时代教育政策的宏微观演化框架",
+    subtitleZh: "一个连接任务级 AI 暴露、劳动力市场演化、课程网络重构与院校政策选择的宏微观建模框架。",
     tone: "career",
     period: "02/2026",
-    role: "Mathematical Modeling Project",
+    role: "Technical Writing Lead & Framework Integrator",
     keywords: ["MCM 2026", "Problem F", "O*NET", "E-MMCAS", "DMPSO", "VIKOR"],
     award: "Meritorious Winner (M Award)",
+    awardZh: "Meritorious Winner · M 奖",
     problemLabel: "Problem F / AI-era post-secondary education",
     reportUrl: mcmReportUrl,
     oneLineSummary:
-      "The project models whether AI substitutes for or complements a career, then rewires curricula and ranks robust education policies for research, vocational, and arts institutions.",
+      "The project diagnoses how generative AI reshapes three careers, couples curriculum reform with labor-market evolution, and turns robust policy rankings into institution-specific action.",
+    contribution: {
+      period: { en: "February 2026", zh: "2026 年 2 月" },
+      role: { en: "Technical Writing Lead & Framework Integrator", zh: "论文主笔 / 框架整合" },
+      body: {
+        en: "Led the report structure and technical narrative, integrated the four competition tasks into a unified macro–micro framework, and completed the core writing, figure organization, result interpretation, and final polishing of the submission.",
+        zh: "负责论文整体结构与技术叙事，将四项比赛任务、模型公式、仿真结果和院校政策建议整合为统一的宏微观框架，并完成核心正文写作、图表编排、结果解释与全文润色。",
+      },
+    },
     facts: [
-      { value: "3", label: "Career trajectories", note: "STEM, trade, and arts pathways" },
-      { value: "245", label: "Monte Carlo scenarios", note: "AI and policy uncertainty" },
-      { value: "6", label: "Evaluation criteria", note: "Employability through ethics" },
-      { value: "3", label: "Institutional archetypes", note: "Pioneer, pragmatic, transformative" },
+      { value: "3", label: { en: "Career Trajectories", zh: "类职业轨迹" }, note: { en: "Data Scientist, Electrician, and Graphic Designer", zh: "数据科学家、电工和平面设计师" } },
+      { value: "245", label: { en: "Monte Carlo Scenarios", zh: "个蒙特卡洛情景" }, note: { en: "AI capability and policy uncertainty", zh: "AI 能力与政策不确定性" } },
+      { value: "6", label: { en: "Policy Criteria", zh: "项政策指标" }, note: { en: "Employability, adaptability, innovation, interdisciplinarity, environment, and ethics", zh: "就业、适应、创新、跨学科、环境与伦理" } },
+      { value: "3", label: { en: "Institutional Archetypes", zh: "类院校原型" }, note: { en: "Research, technical-vocational, and arts education", zh: "研究型、职业技术型与艺术教育" } },
     ],
-    problemAddressed: [
-      "Task-level AI exposure, employment dynamics, curriculum design, and multi-objective policy evaluation are usually modeled in isolation.",
-      "Post-secondary institutions need differentiated, uncertainty-aware strategies rather than one universal response to generative AI.",
+    challenge: {
+      question: {
+        en: "How should post-secondary institutions redesign curricula and enrollment policies when generative AI substitutes some occupational tasks, augments others, and leaves physically or socially embedded work relatively immune?",
+        zh: "当生成式 AI 对不同职业产生替代、增强与免疫三种不同作用时，高等教育机构应如何调整课程与招生政策，才能提升毕业生的长期就业能力与职业韧性？",
+      },
+      tasks: [
+        {
+          label: "Task 1",
+          title: { en: "Diagnose Career Exposure", zh: "识别职业 AI 暴露" },
+          body: {
+            en: "Select representative careers from STEM, trade, and arts, analyze their task structures and skill requirements, and forecast how generative AI changes labor demand.",
+            zh: "选择数据科学家、电工和平面设计师三类代表性职业，分析其任务结构和技能需求，并预测生成式 AI 如何改变劳动力需求。",
+          },
+        },
+        {
+          label: "Task 2",
+          title: { en: "Simulate Educational Adaptation", zh: "模拟教育系统调整" },
+          body: {
+            en: "Build a dynamic policy model to evaluate how curriculum reform and enrollment decisions affect long-term employment outcomes.",
+            zh: "建立动态政策模型，评估课程改革和招生决策如何影响长期就业结果。",
+          },
+        },
+        {
+          label: "Task 3",
+          title: { en: "Select Robust Policies", zh: "选择稳健政策" },
+          body: {
+            en: "Evaluate competing policies under uncertainty across employability, adaptability, innovation, interdisciplinarity, environmental impact, and ethical compliance.",
+            zh: "在就业能力、适应性、创新、跨学科合作、环境影响和伦理合规六项指标下，对不确定环境中的政策进行评价。",
+          },
+        },
+        {
+          label: "Task 4",
+          title: { en: "Translate Models into Action", zh: "将模型转化为行动" },
+          body: {
+            en: "Convert optimized outcomes into actionable strategies for research universities, technical-vocational institutions, and arts schools.",
+            zh: "将优化结果转化为研究型大学、职业技术院校和艺术院校可以执行的教育策略。",
+          },
+        },
+      ],
+    },
+    conciseAnswer: {
+      title: { en: "Our Answer in One Sentence", zh: "我们的一句话回答" },
+      body: {
+        en: "We connect task-level AI exposure, labor-market evolution, curriculum rewiring, and robust policy selection in one macro–micro feedback framework.",
+        zh: "我们将任务级 AI 暴露、劳动力市场演化、课程网络重构和稳健政策选择连接成一个宏微观反馈系统。",
+      },
+    },
+    architectureSteps: [
+      {
+        step: "00",
+        title: { en: "Data and Evidence", zh: "数据与证据" },
+        question: { en: "What evidence grounds the analysis?", zh: "哪些证据支撑分析？" },
+        methods: [
+          { en: "O*NET task data", zh: "O*NET 职业任务" },
+          { en: "MIT · Lincoln Tech · RISD curricula", zh: "MIT · Lincoln Tech · RISD 课程" },
+          { en: "Labor-market data", zh: "劳动力市场数据" },
+          { en: "AI capability indicators", zh: "AI 能力指标" },
+        ],
+        output: { en: "Structured task, skill, curriculum, and labor evidence.", zh: "形成结构化的任务、技能、课程与就业证据。" },
+      },
+      {
+        step: "01",
+        title: { en: "Career Exposure Diagnosis", zh: "职业 AI 暴露诊断" },
+        question: { en: "Does AI substitute, augment, or fail to replace this occupation?", zh: "AI 对该职业主要产生替代、增强还是免疫效应？" },
+        methods: [
+          { en: "Sentence-BERT", zh: "Sentence-BERT" },
+          { en: "Substitution · Augmentation · Immunity", zh: "替代 · 增强 · 免疫驱动力" },
+          { en: "Tug-of-War mechanism", zh: "三驱动力拉锯机制" },
+        ],
+        output: { en: "Career exposure profiles and three occupational trajectories.", zh: "职业暴露画像与三条职业演化轨迹。" },
+      },
+      {
+        step: "02",
+        title: { en: "Educational Policy Optimization", zh: "教育政策优化" },
+        question: { en: "How should curricula and enrollment adapt?", zh: "课程结构和招生政策应当如何调整？" },
+        methods: [
+          { en: "E-MMCAS", zh: "E-MMCAS" },
+          { en: "Course-skill bipartite network", zh: "课程—技能二部网络" },
+          { en: "Modified Lotka–Volterra", zh: "改进 Lotka–Volterra 动力学" },
+          { en: "Pruning · grafting · bi-level DMPSO", zh: "剪枝 · 嫁接 · 双层 DMPSO" },
+        ],
+        output: { en: "Optimized curriculum and enrollment policy trajectories.", zh: "优化后的课程与招生政策轨迹。" },
+      },
+      {
+        step: "03",
+        title: { en: "Robust Policy Evaluation", zh: "稳健政策评估" },
+        question: { en: "Which strategy remains balanced under uncertainty?", zh: "在不确定性和多目标冲突下，哪种策略最稳健？" },
+        methods: [
+          { en: "245 Monte Carlo scenarios", zh: "245 个 Monte Carlo 情景" },
+          { en: "Six policy criteria", zh: "六项政策指标" },
+          { en: "Entropy weighting · VIKOR", zh: "熵权法 · VIKOR" },
+        ],
+        output: { en: "Uncertainty-aware policy ranking.", zh: "面向不确定性的政策策略排名。" },
+      },
+      {
+        step: "04",
+        title: { en: "Institutional Strategies", zh: "院校行动策略" },
+        question: { en: "What should different types of institutions actually do?", zh: "不同类型院校最终应当采取什么具体行动？" },
+        methods: [
+          { en: "Structural similarity", zh: "结构相似性" },
+          { en: "Institutional archetypes", zh: "院校原型" },
+          { en: "Local calibration", zh: "本地校准" },
+        ],
+        output: { en: "Research, vocational, and arts education strategies.", zh: "研究型、职业技术型与艺术教育策略。" },
+      },
     ],
-    innovations: [
-      "Defines a Tug-of-War mechanism with substitution, augmentation, and immunity drivers to explain heterogeneous career exposure.",
-      "Couples modified Lotka-Volterra employment dynamics with a course-skill bipartite network in the E-MMCAS framework.",
-      "Uses pruning, grafting, and bi-level DMPSO to search curriculum and enrollment policy trajectories.",
-      "Combines 245 Monte Carlo scenarios, entropy weighting, and VIKOR, then generalizes policies through structural institutional similarity.",
+    feedbackPath: [
+      { en: "Employment Gap", zh: "就业缺口" },
+      { en: "Policy Adjustment", zh: "政策调整" },
+      { en: "Curriculum Rewiring", zh: "课程重构" },
+      { en: "Updated AI–Labor Interaction", zh: "更新 AI—劳动交互" },
     ],
     trajectoryVisual: {
       src: mcmCareerTrajectories,
-      alt: "Original MCM report figures comparing labor supply-demand dynamics and workforce-gap projections for data scientists, electricians, and graphic designers.",
-      caption: "Original Figures 3 and 4 from the report: three careers diverge as augmentation, physical immunity, and substitution become dominant.",
+      alt: {
+        en: "Original MCM report Figures 3 and 4 comparing labor supply-demand dynamics and workforce-gap projections for data scientists, electricians, and graphic designers.",
+        zh: "美赛报告原始 Figure 3/4：数据科学家、电工和平面设计师的供需动态与人才缺口预测。",
+      },
+      caption: {
+        en: "Original Figures 3 and 4 from the report. The evidence is scaled for web reading but not redrawn or numerically altered.",
+        zh: "报告原始 Figure 3/4。网页仅对证据图缩放展示，未重画或修改任何数值。",
+      },
     },
     careerResults: [
       {
-        title: "Data Scientist",
-        signal: "Augmentation-led growth",
-        body: "High augmentation (about 0.9) outweighs substantial semantic exposure, creating rapid demand growth and a widening talent gap.",
+        title: { en: "Data Scientist", zh: "数据科学家" },
+        signal: { en: "Augmentation-led Growth", zh: "增强驱动增长" },
+        body: {
+          en: "High augmentation potential outweighs substantial AI exposure, producing rapid demand growth and a widening talent gap.",
+          zh: "较高的增强潜力抵消了显著的 AI 暴露，职业需求快速增长，并形成持续扩大的专业人才缺口。",
+        },
         tone: "blue",
       },
       {
-        title: "Electrician",
-        signal: "Robust steady state",
-        body: "Physical immunity (about 0.95) acts as a structural firewall, keeping the occupation stable under AI volatility.",
+        title: { en: "Electrician", zh: "电工" },
+        signal: { en: "Physical-Immunity Stability", zh: "实体免疫稳定" },
+        body: {
+          en: "Physical dexterity and on-site work form a structural barrier to end-to-end automation, keeping demand comparatively stable.",
+          zh: "实体操作和现场工作形成端到端自动化的结构性屏障，使职业需求保持相对稳定。",
+        },
         tone: "green",
       },
       {
-        title: "Graphic Designer",
-        signal: "Structural displacement",
-        body: "High substitution (about 0.9) and low immunity (about 0.2) create declining demand and bifurcation risk.",
+        title: { en: "Graphic Designer", zh: "平面设计师" },
+        signal: { en: "Structural Displacement", zh: "结构性位移" },
+        body: {
+          en: "High substitution pressure and low physical immunity reduce demand unless creative value shifts toward judgment, curation, and authorship.",
+          zh: "高替代压力和较低实体免疫导致需求下降，除非创意价值转向审美判断、策展和人类作者权。",
+        },
         tone: "wine",
+      },
+    ],
+    findingSummary: {
+      title: { en: "What the Model Ultimately Shows", zh: "模型最终说明了什么？" },
+      body: {
+        en: "Career resilience is not determined by AI exposure alone. It depends on whether human skills remain complementary, physically embedded, socially dependent, or transferable to higher-level judgment and orchestration.",
+        zh: "职业韧性并不只由 AI 暴露程度决定，而取决于人类技能是否能与 AI 形成互补，是否依赖实体环境和社会互动，以及能否向更高层次的判断、协调与系统编排迁移。",
+      },
+      implication: {
+        en: "The educational objective is therefore not simply to teach students how to use AI, but to redesign skill structures so that AI becomes a complement rather than a substitute.",
+        zh: "因此，教育目标不应只是教学生使用 AI，而应重新设计技能结构，使 AI 从替代力量转化为互补力量。",
+      },
+    },
+    coreInnovation: {
+      title: { en: "An Endogenous Macro–Micro Feedback System", zh: "内生的宏微观反馈系统" },
+      body: {
+        en: "Curriculum structure is not treated as a passive background variable. Course-skill topology changes the AI–labor interaction coefficient, which changes employment trajectories; the resulting employment gap then drives the next round of policy and curriculum adjustment.",
+        zh: "课程结构不再是被动背景变量。课程—技能拓扑改变 AI 与劳动之间的交互系数，交互系数进一步改变就业轨迹，而就业缺口又反向驱动下一轮政策和课程调整。",
+      },
+      loop: [
+        { en: "Course-skill topology", zh: "课程—技能拓扑" },
+        { en: "AI–labor coefficient", zh: "AI—劳动交互系数" },
+        { en: "Employment trajectory", zh: "就业轨迹" },
+        { en: "Employment gap", zh: "就业缺口" },
+        { en: "Policy & curriculum adjustment", zh: "政策与课程调整" },
+      ],
+    },
+    supportingContributions: [
+      {
+        title: { en: "Substitution–Augmentation–Immunity Diagnosis", zh: "替代—增强—免疫诊断" },
+        body: {
+          en: "A three-driver Tug-of-War mechanism explains why occupations with similar AI exposure can still follow very different employment trajectories.",
+          zh: "三驱动力拉锯机制解释了为什么 AI 暴露程度相近的职业，仍可能形成完全不同的就业轨迹。",
+        },
+      },
+      {
+        title: { en: "Curriculum Reform as Network Rewiring", zh: "将课程改革表示为网络重连" },
+        body: {
+          en: "Educational reform is modeled as pruning vulnerable course-skill links and grafting high-potential bridge skills.",
+          zh: "通过剪除高风险课程—技能连接，并嫁接具有增强潜力的桥接技能，对课程改革进行结构化建模。",
+        },
+      },
+      {
+        title: { en: "Uncertainty-Aware Policy Selection", zh: "面向不确定性的政策选择" },
+        body: {
+          en: "Monte Carlo simulation, entropy weighting, and VIKOR are combined to select balanced policies rather than maximizing a single objective.",
+          zh: "通过 Monte Carlo 仿真、熵权法和 VIKOR，在多目标冲突下选择综合权衡方案，而不是只优化单一指标。",
+        },
       },
     ],
     ablations: [
       {
         model: "M1",
-        title: "Naive macro model",
-        body: "Removing curriculum topology causes the model to incorrectly predict collapse in physically intensive occupations.",
+        title: { en: "Naive Macro Model", zh: "朴素宏观模型" },
+        body: { en: "Removing curriculum topology causes the model to incorrectly predict collapse in physically intensive occupations.", zh: "移除课程拓扑后，模型会错误预测实体劳动密集型职业崩溃。" },
       },
       {
         model: "M2",
-        title: "Passive model",
-        body: "Disabling curriculum adaptation produces persistent structural unemployment and misses transition-enabling bridge skills.",
+        title: { en: "Passive Model", zh: "被动模型" },
+        body: { en: "Disabling curriculum adaptation produces persistent structural unemployment and misses transition-enabling bridge skills.", zh: "关闭课程适应后，模型持续预测结构性失业，也找不到转型所需的桥接技能。" },
       },
       {
         model: "M3",
-        title: "Fully coupled E-MMCAS",
-        body: "Dynamic topology and DMPSO preserve immune occupations and enable adaptive transformation in vulnerable pathways.",
+        title: { en: "Fully Coupled E-MMCAS", zh: "完整耦合 E-MMCAS" },
+        body: { en: "Dynamic topology and DMPSO preserve immune occupations and enable adaptive transformation in vulnerable pathways.", zh: "动态拓扑与 DMPSO 保留免疫职业的稳定性，并帮助高风险路径完成适应性转型。" },
       },
     ],
+    robustnessEvidence: [
+      { en: "245 Monte Carlo scenarios", zh: "245 个 Monte Carlo 情景" },
+      { en: "Sensitivity analysis", zh: "敏感性分析" },
+      { en: "Confidence intervals", zh: "置信区间" },
+      { en: "Parameter perturbation · stable policy orientation", zh: "参数扰动 · 政策方向保持稳定" },
+    ],
     ranking: [
-      { institution: "MIT", score: "0.212", rank: 1 },
-      { institution: "RISD", score: "0.345", rank: 2 },
-      { institution: "Lincoln Tech", score: "0.560", rank: 3 },
+      { strategy: { en: "P1 — System-Orchestration Strategy", zh: "P1 — 系统编排策略" }, archetype: { en: "MIT Archetype", zh: "MIT 代表型" }, score: "0.212", rank: 1 },
+      { strategy: { en: "P3 — Human-Judgment Transformation", zh: "P3 — 人类判断转型策略" }, archetype: { en: "RISD Archetype", zh: "RISD 代表型" }, score: "0.345", rank: 2 },
+      { strategy: { en: "P2 — Physical-Skill Resilience", zh: "P2 — 实体技能韧性策略" }, archetype: { en: "Lincoln Tech Archetype", zh: "Lincoln Tech 代表型" }, score: "0.560", rank: 3 },
     ],
     strategies: [
       {
-        institution: "MIT",
-        archetype: "Pioneer",
-        body: "Move from low-level coding toward system architecture, causal reasoning, energy-aware development, and AI orchestration.",
+        institutionType: { en: "Research Universities", zh: "研究型大学" },
+        title: { en: "From Task Execution to System Orchestration", zh: "从任务执行转向系统编排" },
+        body: { en: "Shift from low-level code implementation toward system architecture, causal reasoning, AI orchestration, and energy-aware development.", zh: "课程应从低层代码实现转向系统架构、因果推理、AI 编排和节能开发。" },
       },
       {
-        institution: "Lincoln Tech",
-        archetype: "Pragmatic",
-        body: "Reinforce physical-skill immunity with AI-assisted diagnostics and critical-infrastructure maintenance.",
+        institutionType: { en: "Technical-Vocational Institutions", zh: "职业技术院校" },
+        title: { en: "Reinforce the Physical Stronghold", zh: "强化实体技能优势" },
+        body: { en: "Preserve physical-skill immunity while integrating AI-assisted diagnostics, infrastructure maintenance, and advanced technical systems.", zh: "保留实体技能免疫优势，同时引入 AI 辅助诊断、基础设施维护和先进技术系统训练。" },
       },
       {
-        institution: "RISD",
-        archetype: "Transformative",
-        body: "Shift from artifact production toward aesthetic judgment, curation, ethics, and human authorship.",
+        institutionType: { en: "Arts Institutions", zh: "艺术院校" },
+        title: { en: "From Artifact Production to Meaning and Authorship", zh: "从作品生产转向意义与作者权" },
+        body: { en: "Shift value from routine artifact production toward aesthetic judgment, curation, ethics, intellectual property, and human authorship.", zh: "将价值从常规作品生产转向审美判断、策展、伦理、知识产权和人类作者权。" },
       },
     ],
     limitations: [
-      "The calibration is U.S.-centric and assumes stable task traits over the modeling horizon.",
-      "AI capability is simplified into a hardware-led trajectory and may miss algorithmic breakthroughs or societal resistance.",
+      { en: "The calibration is U.S.-centric and assumes relatively stable occupational task traits over the modeling horizon.", zh: "模型主要使用美国数据进行校准，并假设建模期内职业任务特征相对稳定。" },
+      { en: "AI capability is simplified into a hardware-led trajectory and may miss algorithmic breakthroughs, adoption frictions, or societal resistance.", zh: "AI 能力被简化为硬件驱动的单变量趋势，可能遗漏算法突破、采用阻力与社会抵制。" },
     ],
     links: [{ label: "Back to Experience", href: "/experience" }],
   },
