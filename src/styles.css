@@ -3106,6 +3106,8 @@ img {
   border-top: 1px solid var(--mcm-line);
 }
 
+.mcm-question-answer + .mcm-task-section { border-top: 0; }
+
 .mcm-task-header {
   display: grid;
   grid-template-columns: 74px minmax(0, 1fr);
@@ -9802,9 +9804,16 @@ img {
 .recognition-award-panel > svg { margin-top: 28px; color: var(--gold); }
 .recognition-award-panel > strong { margin-top: 14px; color: var(--gold); font-family: Georgia, "Times New Roman", "Songti SC", serif; font-size: 46px; font-weight: 500; line-height: 1; }
 .recognition-project-panel { padding: 30px; border-left: 1px solid color-mix(in srgb, var(--gold) 24%, var(--phase1-line)); }
-.recognition-project-panel > span { color: var(--gold); font-size: 10px; font-weight: 850; text-transform: uppercase; }
-.recognition-card h3 { margin-top: 12px; font-size: 25px; line-height: 1.17; }
-.recognition-card p { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.62; }
+.recognition-strategy-preview { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.recognition-strategy-preview figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 24%, var(--phase1-line));
+  border-radius: 5px;
+  background: var(--paper-soft);
+}
+.recognition-strategy-preview img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.recognition-card h3 { margin-top: 20px; font-size: 25px; line-height: 1.17; }
 .recognition-project-panel > a { margin-top: 20px; }
 
 @media (max-width: 1024px) {

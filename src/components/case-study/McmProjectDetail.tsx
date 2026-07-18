@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, CheckCircle2, GitBranch, Medal, ShieldCheck, XCircle } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, GitBranch, ShieldCheck, XCircle } from "lucide-react";
 import type { ReactNode } from "react";
 import mcmArtsInstitutionStrategy from "../../assets/project-details/mcm-arts-institution-strategy.png";
 import mcmEmmcasFramework from "../../assets/project-details/mcm-emmcas-framework.png";
@@ -24,16 +24,12 @@ export function McmProjectDetail({ study }: { study: CompetitionProjectCaseStudy
     <>
       <section className="mcm-detail-hero" aria-labelledby="mcm-detail-title">
         <div>
-          <p className="paper-keywords">{study.keywords.join(" · ")}</p>
-          <div className="mcm-award-badge"><Medal aria-hidden="true" size={16} /> {bilingual(language, study.award, study.awardZh)}</div>
-          <h1 id="mcm-detail-title">{study.title}</h1>
-          {language === "zh" ? <p className="translated-title">{study.titleZh}</p> : null}
-          <p className="mcm-detail-lead">{bilingual(language, study.subtitle, study.subtitleZh)}</p>
+          <p className="paper-keywords">{(language === "zh" ? study.keywordsZh : study.keywords).join(" · ")}</p>
+          <h1 id="mcm-detail-title">{bilingual(language, study.title, study.titleZh)}</h1>
           <div className="mcm-hero-actions">
             <ActionButton external href={study.reportUrl} variant="primary">
               <BookOpen aria-hidden="true" size={15} /> {bilingual(language, "Full Report", "完整报告")}
             </ActionButton>
-            <span>{study.period} · {study.problemLabel}</span>
           </div>
         </div>
 

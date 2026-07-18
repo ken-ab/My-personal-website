@@ -166,7 +166,7 @@ export const additionalPublications: PublicationSummary[] = [
     briefId: "sustainability-bamboo",
     canonicalTitle:
       "Behavior Prediction of Connections in Eco-Designed Thin-Walled Steel–Ply–Bamboo Structures Based on Machine Learning for Mechanical Properties",
-    titleZh: "基于机械性能机器学习的生态设计薄壁钢—竹连接行为预测",
+    titleZh: "基于机器学习的薄壁钢—竹连接件机械性能的预测",
     publicationType: { en: "Machine Learning for Structural Connections", zh: "结构连接机器学习研究" },
     authorRole: { en: "Third Author", zh: "第三作者" },
     venue: "Sustainability 17(15), 6753 (2025)",

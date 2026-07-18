@@ -83,6 +83,7 @@ export type PublicationCaseStudy = CaseStudyBase & {
 export type CompetitionProjectCaseStudy = CaseStudyBase & {
   kind: "competition-project";
   keywords: string[];
+  keywordsZh: string[];
   award: string;
   awardZh: string;
   problemLabel: string;
@@ -707,12 +708,13 @@ export const caseStudies: CaseStudy[] = [
     title: "Compete or Coevolve: An Evolutionary Macro-Micro Framework for AI-Era Educational Policy",
     subtitle:
       "A four-module modeling framework that connects task-level AI exposure, labor-market evolution, curriculum rewiring, and institution-specific policy selection.",
-    titleZh: "竞争还是共生：面向 AI 时代教育政策的宏微观演化框架",
+    titleZh: "竞争还是共生：面向 AI 时代教育政策的宏观演化框架",
     subtitleZh: "一个连接任务级 AI 暴露、劳动力市场演化、课程网络重构与院校政策选择的宏微观建模框架。",
     tone: "career",
     period: "02/2026",
     role: "Technical Writing Lead & Framework Integrator",
-    keywords: ["MCM 2026", "Problem F", "O*NET", "E-MMCAS", "DMPSO", "VIKOR"],
+    keywords: ["MCM 2026", "Occupational AI Exposure", "E-MMCAS", "Multi-objective Policy Optimization", "Robust Policy Evaluation"],
+    keywordsZh: ["数学建模竞赛研究", "职业 AI 暴露", "宏微观耦合系统", "多目标政策优化", "稳健政策评价"],
     award: "Meritorious Winner (M Award)",
     awardZh: "Meritorious Winner · M 奖",
     problemLabel: "Problem F / AI-era post-secondary education",

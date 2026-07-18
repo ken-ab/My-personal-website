@@ -1,8 +1,36 @@
 import { Award, FileSearch, ServerCog } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ZoomableImage } from "../components/media/ZoomableImage";
 import { bilingual, useLanguage } from "../i18n/LanguageContext";
 import polyuLogo from "../assets/institutions/polyu-logo.png";
 import njtechLogo from "../assets/institutions/njtech-logo.png";
+import mcmArtsInstitutionStrategy from "../assets/project-details/mcm-arts-institution-strategy.png";
+import mcmResearchUniversityStrategy from "../assets/project-details/mcm-research-university-strategy.png";
+import mcmVocationalInstitutionStrategy from "../assets/project-details/mcm-vocational-institution-strategy.png";
+
+const mcmInstitutionVisuals = [
+  {
+    src: mcmResearchUniversityStrategy,
+    alt: {
+      en: "Research-university strategy: moderate expansion and deep curriculum restructuring.",
+      zh: "研究型大学：适度扩张与深度重构。",
+    },
+  },
+  {
+    src: mcmVocationalInstitutionStrategy,
+    alt: {
+      en: "Technical-vocational strategy: stable enrollment and targeted capability reinforcement.",
+      zh: "职业技术院校：规模稳定与定向强化。",
+    },
+  },
+  {
+    src: mcmArtsInstitutionStrategy,
+    alt: {
+      en: "Design-and-arts strategy: moderate contraction and structural transformation.",
+      zh: "设计艺术类院校：适度收缩与结构转型。",
+    },
+  },
+];
 
 export function Experience() {
   const { language } = useLanguage();
@@ -71,16 +99,23 @@ export function Experience() {
             <strong>{bilingual(language, "M Award", "M 奖")}</strong>
           </div>
           <div className="recognition-project-panel">
-            <span>{bilingual(language, "Competition Research", "竞赛研究项目")}</span>
-            <h3>Compete or Coevolve: An Evolutionary Macro–Micro Framework for AI-Era Educational Policy</h3>
-            {language === "zh" ? <p className="translated-title">竞争还是共生：面向 AI 时代教育政策的宏微观演化框架</p> : null}
-            <p>
-              {bilingual(
-                language,
-                "Co-developed a four-module modeling framework for AI-era education and labor-market policy. This is presented as competition research, not a formal publication.",
-                "共同构建面向 AI 时代教育与劳动力市场政策的四模块建模框架。本项目作为竞赛研究展示，不视为正式发表成果。",
-              )}
-            </p>
+            <div className="recognition-strategy-preview" aria-label={bilingual(language, "Institution-specific education strategies", "三类院校教育策略")}>
+              {mcmInstitutionVisuals.map((visual) => (
+                <figure key={visual.src}>
+                  <ZoomableImage
+                    alt={bilingual(language, visual.alt.en, visual.alt.zh)}
+                    decoding="async"
+                    loading="lazy"
+                    src={visual.src}
+                  />
+                </figure>
+              ))}
+            </div>
+            <h3>{bilingual(
+              language,
+              "Compete or Coevolve: An Evolutionary Macro Framework for Education in the AI Era",
+              "竞争还是共生：面向 AI 时代教育的宏观演化框架",
+            )}</h3>
             <Link className="research-action-pill" to="/brief/mcm-2026"><FileSearch aria-hidden="true" size={15} /> DETAIL</Link>
           </div>
         </article>

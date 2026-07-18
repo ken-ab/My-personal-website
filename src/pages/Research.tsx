@@ -46,8 +46,7 @@ export function Research() {
               ) : null}
               <div className="additional-main">
                 <p>{localize(publication.publicationType)} · {localize(publication.authorRole)}</p>
-                <h3>{publication.canonicalTitle}</h3>
-                {language === "zh" ? <span className="translated-title">{publication.titleZh}</span> : null}
+                <h3>{language === "zh" ? publication.titleZh : publication.canonicalTitle}</h3>
                 <small>{publication.venue}</small>
               </div>
               <p className="additional-summary">{localize(publication.summary)}</p>

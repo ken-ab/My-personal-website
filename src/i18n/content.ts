@@ -199,7 +199,7 @@ export const publicationZh: Record<string, PublicationTranslation> = {
     innovations: ["将 234 个国家分为 α1-α4，分别使用 MPXG 与 FMPM 双路径建模。", "把 XGBoost、FCNN 结果与 74% 东道主增益率及 0.2-0.5 枚教练效应连接起来。"],
   },
   "sustainability-bamboo": {
-    title: "基于机械性能机器学习的生态设计薄壁钢—竹连接行为预测",
+    title: "基于机器学习的薄壁钢—竹连接件机械性能的预测",
     keywords: ["薄壁钢—竹结构", "因子分析", "机器学习", "随机森林", "贝叶斯优化"],
     summary: "以机器学习和超参数优化预测薄壁钢-竹结构连接的机械行为。",
     abstractSummary: "研究将 51 个薄壁钢—竹连接试件产生的 249 组机械性能记录转化为可复用的连接类型预测流程。方法先通过因子分析形成综合排序，再比较八类机器学习模型和五种调参方法，最终将预测结果反馈到试件选择与结构设计。",
