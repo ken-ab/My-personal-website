@@ -11,7 +11,7 @@ const navItems = [
 ];
 
 export function Navbar() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language } = useLanguage();
   const { pathname } = useLocation();
   const briefId = pathname.startsWith("/brief/") ? pathname.split("/")[2] : undefined;
   const briefStudy = getCaseStudy(briefId);
@@ -48,16 +48,6 @@ export function Navbar() {
         </div>
 
         <div className="nav-actions">
-          <button
-            aria-label={bilingual(language, "Switch to Chinese", "切换为英文")}
-            className="language-toggle"
-            onClick={toggleLanguage}
-            type="button"
-          >
-            <span className={language === "zh" ? "is-active" : ""}>中</span>
-            <i aria-hidden="true" />
-            <span className={language === "en" ? "is-active" : ""}>EN</span>
-          </button>
           <Link className="contact-pill" to="/contact">
             <span>{bilingual(language, "Get in touch", "联系我")}</span>
             <ArrowUpRight aria-hidden="true" size={16} strokeWidth={1.9} />

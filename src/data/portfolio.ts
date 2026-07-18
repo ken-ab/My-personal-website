@@ -381,12 +381,12 @@ export const developmentProjects: DevelopmentProject[] = [
     type: "AI Agent / Finance / Multi-agent System",
     description:
       "Built on the MCP framework, the system coordinates multiple agents to provide structured references for investment decisions.",
-    tags: ["MCP", "LangGraph", "ReAct", "Multi-Agent", "A-share", "Qwen3-8B", "LoRA", "News Factor Model", "Markdown Report"],
+    tags: ["MCP", "LangGraph", "ReAct", "Multi-Agent", "A-share", "Qwen3-2.5B", "LoRA", "News Factor Model", "Markdown Report"],
     highlights: [
       "Covered 4000+ A-share stocks.",
       "Built multiple specialized agents: fundamental, technical, valuation and news analysis.",
       "Added summary agent, evaluator agent and reflection-based replanning loop.",
-      "Integrated Qwen3-8B LoRA news factor model.",
+      "Integrated Qwen3-2.5B LoRA news factor model.",
     ],
     actions: [
       { label: "View Brief", href: "/brief/finance-agent" },

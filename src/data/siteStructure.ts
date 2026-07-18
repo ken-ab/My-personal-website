@@ -107,7 +107,7 @@ export const selectedPublications: PublicationSummary[] = [
     canonicalTitle:
       "Predicting Olympic Medal Performance for 2028: Machine Learning Models and the Impact of Host and Coaching Effects",
     titleZh: "2028年奥运奖牌表现预测：机器学习模型及东道主与教练效应",
-    publicationType: { en: "First-Author Machine Learning Research", zh: "第一作者 · 机器学习研究" },
+    publicationType: { en: "First-Author Research", zh: "一作研究" },
     authorRole: { en: "First Author", zh: "第一作者" },
     venue: "Applied Sciences 15(14), 7793 (2025)",
     homepageCitation: { kind: "journal", journal: "Appl. Sci.", year: "2025", volume: "15", article: "7793" },
@@ -135,7 +135,7 @@ export const selectedPublications: PublicationSummary[] = [
     briefId: "moe",
     canonicalTitle: "Exploring and Enhancing Advanced MoE Models: From Deepspeed-MoE to DeepSeek-V3",
     titleZh: "MoE模型的探索与增强：从 Deepspeed-MoE 到 DeepSeek-V3",
-    publicationType: { en: "First-Author Review · Efficient AI", zh: "第一作者综述 · 高效 AI" },
+    publicationType: { en: "First-Author Review", zh: "一作综述" },
     authorRole: { en: "First Author · Review", zh: "第一作者 · 综述" },
     venue: "IEEE AINIT 2025",
     homepageCitation: { kind: "conference", name: "AINIT 2025" },
@@ -231,13 +231,6 @@ export const additionalPublications: PublicationSummary[] = [
 ];
 
 export const homepageEngineering = [
-  {
-    id: "finance-agent",
-    title: { en: "MCP-Based A-share Intelligent Analysis System", zh: "基于 MCP 协议的 A 股智能分析系统" },
-    summary: { en: "Multi-agent A-share research and reporting system", zh: "多 Agent 协作的 A 股研究与报告系统" },
-    evidence: { en: "4 specialist agents · 8 MCP tool families", zh: "4 个专业 Agent · 8 类 MCP 工具" },
-    href: "/brief/finance-agent",
-  },
   {
     id: "energyquant",
     title: "EnergyQuant",

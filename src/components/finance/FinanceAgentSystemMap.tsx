@@ -40,8 +40,8 @@ export function FinanceAgentSystemMap({
     <div
       aria-label={bilingual(
         language,
-        "Finance-Agent workflow from a natural-language query through MCP tools and four parallel specialist agents. The news agent separates sentiment and risk scoring, with a LoRA-tuned Qwen3-8B model in the risk branch, before summary, evaluation, reflection, and Markdown output.",
-        "Finance-Agent 从自然语言查询进入 MCP 工具与四个并行专业智能体；新闻智能体进一步拆分情感分析和风险评估，风险分支使用经 LoRA 微调的 Qwen3-8B 模型，最后进入汇总、评估、反思与 Markdown 输出。",
+        "Finance-Agent workflow from a natural-language query through MCP tools and four parallel specialist agents. The news agent separates sentiment and risk scoring, with a LoRA-tuned Qwen3-2.5B model in the risk branch, before summary, evaluation, reflection, and Markdown output.",
+        "Finance-Agent 从自然语言查询进入 MCP 工具与四个并行专业智能体；新闻智能体进一步拆分情感分析和风险评估，风险分支使用经 LoRA 微调的 Qwen3-2.5B 模型，最后进入汇总、评估、反思与 Markdown 输出。",
       )}
       className={`finance-system-map${compact ? " is-compact" : ""}`}
     >
@@ -118,7 +118,7 @@ export function FinanceAgentSystemMap({
                 </div>
               </div>
               <div className="finance-training-method">
-                <span>Qwen3-8B + LoRA {bilingual(language, "fine-tuning", "微调")}</span>
+                <span>Qwen3-2.5B + LoRA {bilingual(language, "fine-tuning", "微调")}</span>
               </div>
               <div className="finance-training-output">
                 <strong>{bilingual(language, "Two scoring adapters", "两套评分适配器")}</strong>

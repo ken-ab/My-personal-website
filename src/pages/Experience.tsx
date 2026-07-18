@@ -61,7 +61,7 @@ export function Experience() {
             <div className="institution-copy">
               <h3>{bilingual(language, "Nanjing Tech University", "南京工业大学")}</h3>
               <p>{bilingual(language, "B.Sc. in Data Science and Big Data Technology", "数据科学与大数据技术 · 理学学士")}</p>
-              <strong>{bilingual(language, "Average Score: 88/100", "平均分：88/100")}</strong>
+              <strong>{bilingual(language, "GPA: 3.9/4.0", "绩点：3.9/4.0")}</strong>
             </div>
             <time dateTime="2022/2026">2022–2026</time>
           </article>

@@ -397,7 +397,7 @@ export const caseStudies: CaseStudy[] = [
       "Source trace",
     ],
     experimentalNote:
-      "Experimental side track: Qwen LoRA scripts explore news sentiment and risk scoring, but they are not presented as a mandatory stage in the core LangGraph runtime.",
+      "Experimental side track: Qwen3-2.5B LoRA scripts explore news sentiment and risk scoring, but they are not presented as a mandatory stage in the core LangGraph runtime.",
     methodTitle: "LangGraph + MCP + evaluator-reflection loop",
     methodLead:
       "The repository implements a graph-style workflow where data tools feed specialist agents before a summary, evaluation, and bounded reflection stage.",

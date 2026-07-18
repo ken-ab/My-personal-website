@@ -259,7 +259,7 @@ export const financeZh = {
   reportNote: "Markdown / 不包含虚构投资结果",
   reportTitle: "A 股公司分析",
   reportSections: ["执行摘要", "基本面分析", "技术面分析", "估值分析", "新闻与风险", "综合评估", "来源追踪"],
-  experimentalNote: "实验支线：Qwen LoRA 脚本用于探索新闻情绪和风险评分，但不作为核心 LangGraph 运行时中的强制阶段。",
+  experimentalNote: "实验支线：Qwen3-2.5B LoRA 脚本用于探索新闻情绪和风险评分，但不作为核心 LangGraph 运行时中的强制阶段。",
 };
 
 type MiniProgramTranslation = {
