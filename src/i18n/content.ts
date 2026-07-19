@@ -234,7 +234,7 @@ export const financeZh = {
   subtitle: "多智能体 A 股研究原型：把公司研究拆分为专业分析分支，并生成可追踪的 Markdown 报告。",
   summary: "这是一个基于 LangGraph、MCP 和 ReAct 构建的多智能体金融研究系统。系统通过独立 MCP Server 提供 8 类金融数据工具，由基本面、技术面、估值和新闻 4 个专业 Agent 并行分析，再由 Summary Agent 汇总为结构化 Markdown 报告。报告生成后，Evaluator Agent 检查完整性与任务匹配度；若需要修订，Reflection Agent 会生成重新规划指令，并最多触发一次有界反思后输出最终报告。",
   responsibility: "主要负责数据源工具化封装、股票分析工作流的设计，以及模型训练与微调工作。",
-  responsibilityEn: "Focused on packaging data sources as tools, designing the stock-analysis workflow, and training and fine-tuning models.",
+  responsibilityEn: "I focused on packaging data sources as MCP tools, designing the stock-analysis workflow, and training and fine-tuning models.",
   facts: [
     { label: "专业分析智能体", note: "基本面、技术面、估值与新闻分析" },
     { label: "MCP工具类别", note: "覆盖市场、财报、指数、宏观、分析与新闻" },

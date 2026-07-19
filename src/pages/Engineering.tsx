@@ -29,7 +29,7 @@ export function Engineering() {
           <p>
             {bilingual(
               language,
-              "Built on the MCP framework, the system coordinates multiple agents to provide structured references for investment decisions.",
+              "Built on MCP, the system coordinates specialist agents and produces structured reports for investment analysis.",
               "该系统基于 MCP 框架构建多 Agent 协作架构，能够为用户提供结构化的投资决策参考。",
             )}
           </p>
@@ -68,14 +68,14 @@ export function Engineering() {
             <p>
               {bilingual(
                 language,
-                "The public repository extracts the AI-assisted material-classification workflow from the larger enterprise system. A task can receive individual files, folders, or archives, then send them through a batch classification pipeline.",
+                "The public repository contains the AI-assisted material-classification module from a larger enterprise system. Users can upload individual files, folders, or archives for batch classification.",
                 "公开仓库将完整企业系统中的 AI 辅助材料分类链路单独提取出来：创建任务后，可上传单文件、文件夹或压缩包，并统一进入批量分类流程。",
               )}
             </p>
             <p>
               {bilingual(
                 language,
-                "Classification is not treated as the final decision. Unrecognized or uncertain results enter human confirmation, after which files can be previewed, downloaded, deleted, and archived.",
+                "AI classification does not determine the final result. Unrecognized or uncertain files are sent for human review, after which users can preview, download, delete, or archive them.",
                 "自动分类并非最终判断：未识别或不确定的结果会进入人工确认，确认后可继续完成文件预览、下载、删除与归档。",
               )}
             </p>
@@ -128,7 +128,7 @@ export function Engineering() {
             <p>
               {bilingual(
                 language,
-                "A delivered cooperation catalogue with a mini program, administration dashboard, project and policy access, and governed batch import.",
+                "A deployed university–industry collaboration platform with a mini program, administration dashboard, project and policy access, and governed batch imports.",
                 "已交付的产学研合作目录，包含小程序、管理后台、项目与政策访问，以及可治理的批量导入。",
               )}
             </p>

@@ -16,12 +16,12 @@ const repositoryUrl = "https://github.com/ken-ab/routerbench-mini";
 const reportUrl = "https://github.com/ken-ab/routerbench-mini/tree/codex/v5-frozen-evaluation";
 
 const overviewIntroLead: LocalizedText = {
-  en: "Large language model systems frequently face a model-routing decision in real applications: should a task be handled by a lower-cost model, or escalated to a more accurate but more expensive and slower strong model? In multimodal and agentic settings, this decision is more complex because task difficulty can be influenced simultaneously by textual instructions, visual inputs, tool-use requirements, and the quality of the initial response. This paper introduces ",
+  en: "Deployed large language model systems often need to decide whether a lower-cost model is sufficient or whether a more accurate model justifies higher cost and latency. In multimodal and agentic settings, this decision also depends on the text instruction, visual input, tool requirements, and quality of the initial response. This project presents ",
   zh: "大语言模型系统在实际应用中经常面临一个模型路由问题：一个任务应由成本较低的模型处理，还是升级调用准确率更高、但成本与延迟也更高的强模型。在多模态和智能体场景中，这一问题更加复杂，因为任务难度可能同时受到文本指令、视觉输入、工具调用需求以及初始回答质量的影响。本文介绍 ",
 };
 
 const overviewIntroTail: LocalizedText = {
-  en: ", an independent experimental study of cost-aware model routing across text, vision, and tool-calling tasks. It compares two routing paradigms: request-side routing, which selects a model before generation using observable task features; and response-side escalation, which first calls a low-cost model and then decides whether to invoke the strong model based on answer format, confidence, self-check signals, and structural features.",
+  en: ", an independent experimental study of cost-aware model routing across text, vision, and tool-calling tasks. It compares two routing paradigms: request-side routing, which selects a model before generation using observable task features, and response-side escalation, which first calls a low-cost model and then decides whether to invoke the Strong model based on answer format, confidence, self-check signals, and structural features.",
   zh: "，一项面向文本、视觉与工具调用任务的成本感知模型路由独立实验研究。研究比较了两类路由范式：一类是在生成前依据任务的可观察特征选择模型的请求侧路由；另一类是先调用低成本模型，再结合回答格式、置信度、自检结果与结构特征判断是否升级调用强模型的响应侧升级策略。",
 };
 
@@ -365,7 +365,7 @@ export function RouterBenchDetail() {
         <p className="routerbench-paper-positioning">
           {bilingual(
             language,
-            "An ongoing independent research project, currently presented as an experimental report and intended for continued expansion and refinement.",
+            "An ongoing independent research project, currently documented as an experimental report and planned for further evaluation.",
             "一项正在持续推进的独立研究，目前以实验报告形式呈现，后续将继续扩展并完善。",
           )}
         </p>
@@ -412,7 +412,7 @@ export function RouterBenchDetail() {
             <p>
               {bilingual(
                 language,
-                "The latest protocol contains 4,000 tasks: 3,200 examples for development and training, plus an 800-task final test. Both partitions cover text, vision and tool-calling tasks, with a dedicated hard subset for routing and confirmation.",
+                "The latest protocol contains 4,000 tasks: 3,200 examples for development and training, plus an 800-task final test. Both partitions cover text, vision, and tool-calling tasks, with a dedicated hard subset for routing and confirmation.",
                 "最新版实验共包含 4,000 道题：3,200 道用于开发与训练，800 道用于最终测试。两部分均覆盖文本、视觉与工具调用任务，并设置独立的困难样本用于路由学习与最终确认。",
               )}
             </p>
@@ -450,7 +450,7 @@ export function RouterBenchDetail() {
           <p>
             {bilingual(
               language,
-              "The experiment is divided into two strictly separated phases. Phase 1 caches Cheap solves, Strong solves and Strong reviews on 3,200 development tasks; constructs quality-gap and response-confidence labels; and uses predefined five-fold out-of-fold predictions to compare representations and select thresholds. The manifest hashes, source code, prompts, model configuration, feature and scoring rules, trained estimators and thresholds are then frozen while the test API-call count is still zero. Phase 2 loads those frozen artifacts and evaluates five policies once on the untouched 800-task test set, followed by matched Random, matched Oracle, Global Oracle and paired-bootstrap diagnostics. No test result is used to retune a method.",
+              "The experiment has two strictly separated phases. In Phase 1, the system caches Cheap answers, Strong answers, and Strong reviews for 3,200 development tasks. It constructs quality-gap and response-confidence labels, then uses predefined five-fold out-of-fold predictions to compare feature representations and select thresholds. Before any test API call, the manifest hashes, source code, prompts, model settings, features, scoring rules, trained estimators, and thresholds are frozen. Phase 2 loads only those frozen artifacts and evaluates five policies once on the untouched 800-task test set. Matched Random, matched Oracle, Global Oracle, and paired-bootstrap analyses provide diagnostics; no test result is used for tuning.",
               "整个实验被严格划分为两个阶段。Phase 1 在 3,200 道开发题上缓存 Cheap 独立回答、Strong 独立回答和 Strong review，构造质量差与回答置信度标签，并依据预先固定的五折 OOF 预测比较特征表示、选择路由阈值。随后，在测试 API 调用数仍为 0 时，统一冻结 Manifest 哈希、源码、提示词、模型配置、特征与评分规则、训练后的估计器和阈值。Phase 2 只加载这些冻结产物，在未触碰的 800 道测试题上一次性评估五种策略，再使用同升级率 Random、同预算 Oracle、Global Oracle 与配对 Bootstrap 进行诊断；测试结果不会回流用于重新调参。",
             )}
           </p>
@@ -492,25 +492,25 @@ export function RouterBenchDetail() {
         <div className="routerbench-v5-result-reading">
           <div>
             <p className="section-eyebrow">{bilingual(language, "Result Reading", "结果描述")}</p>
-            <h3>{bilingual(language, "More data did not make the complex router more stable.", "扩大数据规模后，复杂路由仍未表现得更稳定。")}</h3>
+            <h3>{bilingual(language, "The more complex routers did not become more stable with additional data.", "扩大数据规模后，复杂路由仍未表现得更稳定。")}</h3>
             <p>
               {bilingual(
                 language,
-                "Always Strong records the highest accuracy at 72.75%. Frozen Task-Aware answers 577 of 800 tasks correctly and reaches 72.12%—only 0.63 percentage points lower—while reducing average cost by 13.9%, average latency by 14.0%, and Strong usage to 69.88%.",
+                "Always Strong achieved the highest accuracy, 72.75%. Frozen Task-Aware answered 577 of 800 tasks correctly and reached 72.12%, 0.63 percentage points lower, while reducing average cost by 13.9%, average latency by 14.0%, and Strong-model usage to 69.88%.",
                 "Always Strong 以 72.75% 获得最高准确率。Frozen Task-Aware 在 800 道题中答对 577 道，准确率为 72.12%，仅低 0.63 个百分点；同时平均成本降低 13.9%、平均延迟降低 14.0%，Strong 使用率降至 69.88%。",
               )}
             </p>
             <p>
               {bilingual(
                 language,
-                "Learned Combined and Reflection each answer 576 tasks correctly. Learned Combined sends 95.88% of requests to Strong but still trails Task-Aware by one answer; Reflection lowers model-call cost, yet its review cascade raises average latency to 1,750.9 ms. Under the current evidence, Frozen Task-Aware remains the most defensible cost-aware policy.",
+                "Learned Combined and Reflection each answered 576 tasks correctly. Learned Combined sent 95.88% of requests to Strong but still trailed Task-Aware by one answer. Reflection reduced model-call cost, but its review cascade increased average latency to 1,750.9 ms. Under the current evidence, Frozen Task-Aware is the best-supported cost-aware policy in these experiments.",
                 "Learned Combined 与 Reflection 均答对 576 道题。Learned Combined 将 95.88% 的请求交给 Strong，却仍比 Task-Aware 少答对 1 道；Reflection 降低了模型调用成本，但级联 review 将平均延迟推高到 1,750.9 ms。基于当前证据，Frozen Task-Aware 仍是更稳妥的成本感知策略。",
               )}
             </p>
             <p>
               {bilingual(
                 language,
-                "The Global Oracle diagnostic reaches 76.25% accuracy with only 8% Strong usage. This shows that the central challenge is not buying more Strong calls, but identifying the 64 test tasks where escalation is genuinely beneficial while avoiding cases where Strong regresses.",
+                "The Global Oracle diagnostic reached 76.25% accuracy with only 8% Strong-model usage. This indicates that the central challenge is not using the Strong model more often, but identifying the 64 test tasks for which escalation is beneficial while avoiding cases in which Strong performs worse.",
                 "Global Oracle 诊断只使用 8% 的 Strong 调用便达到 76.25% 准确率。这说明核心难点不是增加 Strong 调用数量，而是准确识别 64 道升级确实有收益的测试题，同时避开 Strong 发生回退的样本。",
               )}
             </p>

@@ -234,7 +234,7 @@ export function FinanceAgentDetail({ study }: { study: AgentProjectCaseStudy }) 
             <aside className="finance-experimental-note">
               <Code2 aria-hidden="true" size={20} />
               <div>
-                <span>{bilingual(language, "EXPERIMENTAL SIDE TRACK", financeZh.output.experimental)}</span>
+                <span>{bilingual(language, "EXPERIMENTAL COMPONENT", financeZh.output.experimental)}</span>
                 <p>{bilingual(language, study.experimentalNote, financeZh.experimentalNote)}</p>
               </div>
             </aside>

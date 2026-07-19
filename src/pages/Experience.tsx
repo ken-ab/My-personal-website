@@ -50,7 +50,7 @@ export function Experience() {
             </div>
             <div className="institution-copy">
               <h3>{bilingual(language, "The Hong Kong Polytechnic University", "香港理工大学")}</h3>
-              <p>{bilingual(language, "Incoming MSc Student in Data Science & Analytics", "数据科学与分析硕士即将入学")}</p>
+              <p>{bilingual(language, "Incoming MSc student in Data Science & Analytics", "数据科学与分析硕士即将入学")}</p>
             </div>
             <time dateTime="2026">2026</time>
           </article>
@@ -60,7 +60,7 @@ export function Experience() {
             </div>
             <div className="institution-copy">
               <h3>{bilingual(language, "Nanjing Tech University", "南京工业大学")}</h3>
-              <p>{bilingual(language, "B.Sc. in Data Science and Big Data Technology", "数据科学与大数据技术 · 理学学士")}</p>
+              <p>{bilingual(language, "BSc in Data Science and Big Data Technology", "数据科学与大数据技术 · 理学学士")}</p>
               <strong>{bilingual(language, "GPA: 3.9/4.0", "绩点：3.9/4.0")}</strong>
             </div>
             <time dateTime="2022/2026">2022–2026</time>
@@ -81,7 +81,7 @@ export function Experience() {
             </div>
             <time dateTime="2025-07/2025-09">2025.07–2025.09</time>
           </header>
-          <strong>{bilingual(language, "230K-scale PDB / FASTA records", "23 万规模 PDB / FASTA 记录")}</strong>
+          <strong>{bilingual(language, "Approximately 230,000 PDB / FASTA records", "23 万规模 PDB / FASTA 记录")}</strong>
           <ul>
             <li>{bilingual(language, "Parallel processing, chain reorganization, structural consistency checks, and abnormal-data cleaning.", "并行处理、链重组、结构一致性检查与异常数据清洗。")}</li>
             <li>{bilingual(language, "HADDOCK3-score execution and Spearman correlation analysis.", "HADDOCK3-score 执行与 Spearman 相关分析。")}</li>
@@ -91,12 +91,12 @@ export function Experience() {
       </section>
 
       <section className="experience-section" aria-labelledby="recognition-title">
-        <header><span>03</span><h2 id="recognition-title">{bilingual(language, "Competition Awards", "竞赛奖项")}</h2></header>
+        <header><span>03</span><h2 id="recognition-title">{bilingual(language, "Competition Award", "竞赛奖项")}</h2></header>
         <article className="recognition-card">
           <div className="recognition-award-panel">
             <span>MCM/ICM 2026</span>
             <Award aria-hidden="true" size={35} />
-            <strong>{bilingual(language, "M Award", "M 奖")}</strong>
+            <strong>{bilingual(language, "Meritorious Winner", "M 奖")}</strong>
           </div>
           <div className="recognition-project-panel">
             <div className="recognition-strategy-preview" aria-label={bilingual(language, "Institution-specific education strategies", "三类院校教育策略")}>

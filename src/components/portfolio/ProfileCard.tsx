@@ -9,7 +9,7 @@ export function ProfileCard() {
       label: bilingual(language, "Current status", "当前状态"),
       value: bilingual(
         language,
-        "Incoming MSc Student in Data Science at PolyU",
+        "Incoming MSc student in Data Science & Analytics at PolyU (2026 entry)",
         "香港理工大学数据科学硕士生（2026年入学）",
       ),
     },
@@ -22,10 +22,10 @@ export function ProfileCard() {
       ),
     },
     {
-      label: bilingual(language, "Open collaboration", "开放合作"),
+      label: bilingual(language, "Collaboration", "开放合作"),
       value: bilingual(
         language,
-        "Research Assistantships · Research Collaboration · Academic Exchange",
+        "Research assistantships · Research collaboration · Academic exchange",
         "研究助理 · 科研合作 · 学术交流",
       ),
     },

@@ -104,7 +104,7 @@ const researchMapZh: Record<string, string> = {
   "Weighted expert outputs": "专家输出加权",
   "The paper combines frontier estimation, machine-learning forecasting, and two mediation paths to explain and project digital-service export potential across Belt and Road countries.": "研究结合前沿估计、机器学习预测和两条中介路径，解释并预测“一带一路”国家的数字服务出口潜力。",
   "PANEL DATA → FRONTIER ESTIMATION → MEDIATION + FORECAST": "面板数据 → 前沿估计 → 中介 + 预测",
-  "Three analytical lanes, one export-potential decision system": "三条分析路线，一个出口潜力决策系统",
+  "Three analytical paths for estimating export potential": "三条分析路线，一个出口潜力决策系统",
   "PANEL INPUT": "面板输入",
   "countries": "个国家",
   "2013–2021 · bilateral data": "2013–2021 · 双边数据",
@@ -529,7 +529,7 @@ function DigitalTradeMethodMap() {
       description="The paper combines frontier estimation, machine-learning forecasting, and two mediation paths to explain and project digital-service export potential across Belt and Road countries."
       eyebrow="PANEL DATA → FRONTIER ESTIMATION → MEDIATION + FORECAST"
       figureClass="is-digital"
-      title="Three analytical lanes, one export-potential decision system"
+      title="Three analytical paths for estimating export potential"
     >
       <svg className="research-route-svg" viewBox="0 0 1320 690" xmlns="http://www.w3.org/2000/svg">
         <MapDefs accent="#315f89" id="digital" />

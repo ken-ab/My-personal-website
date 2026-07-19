@@ -12,12 +12,12 @@ export function Contact() {
         <div className="contact-copy contact-copy-editorial">
           <p className="section-eyebrow">{bilingual(language, "Contact", "联系我")}</p>
           <h1 id="contact-title">
-            {bilingual(language, "Have a research idea? Let’s talk.", "有研究想法，欢迎来信交流。")}
+            {bilingual(language, "Research inquiries and collaboration", "有研究想法，欢迎来信交流。")}
           </h1>
           <p>
             {bilingual(
               language,
-              "If you are working on efficient AI, generative AI, multimodal learning, or agentic systems, feel free to reach out by email.",
+              "I welcome email inquiries about research assistantships and collaboration in efficient AI, generative models, multimodal learning, and agentic systems.",
               "如果您正在开展 Efficient AI、Generative AI、多模态或智能体相关研究，欢迎通过邮件与我联系。",
             )}
           </p>
@@ -28,7 +28,7 @@ export function Contact() {
           <a className="contact-email-address" href={`mailto:${profile.email}`}>{profile.email}</a>
           <div className="contact-primary-action">
             <ActionButton href={`mailto:${profile.email}`} variant="primary">
-              {bilingual(language, "Email Me", "发邮件联系")}
+              {bilingual(language, "Email me", "发邮件联系")}
             </ActionButton>
           </div>
           <nav aria-label={bilingual(language, "Additional links", "其他链接")} className="contact-secondary-links">
@@ -36,7 +36,7 @@ export function Contact() {
             <a download="Ken_Zhang_Public_CV.pdf" href={publicCvUrl}>{bilingual(language, "Download CV", "下载 CV")}</a>
           </nav>
           <p className="contact-status">
-            {bilingual(language, "Open to research assistantships and research collaboration.", "欢迎研究助理机会与科研合作。")}
+            {bilingual(language, "Available for research assistantships and research collaborations.", "欢迎研究助理机会与科研合作。")}
           </p>
         </aside>
       </section>

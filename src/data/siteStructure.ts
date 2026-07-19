@@ -49,7 +49,7 @@ export const routerBenchMini: ResearchProjectCaseStudy = {
     zh: "一项受控实验，研究低成本多模态模型何时已经足够，以及何时值得为更强模型付出额外的调用成本与延迟。",
   },
   question: {
-    en: "Can a multimodal agent determine when a lower-cost model is sufficient and when a stronger model provides enough additional value to justify its higher cost and latency?",
+    en: "Across text, vision, and tool-calling tasks, can a multimodal agent determine when a lower-cost model is sufficient and when the additional quality from a stronger model justifies its higher cost and latency?",
     zh: "在文本、视觉和工具调用任务中，多模态智能体能否判断低成本模型何时已经足够，以及强模型带来的额外质量提升是否值得更高的调用成本和延迟？",
   },
   methods: [
@@ -58,11 +58,11 @@ export const routerBenchMini: ResearchProjectCaseStudy = {
       zh: "在统一提示、评分与 API 成本核算下，比较 Always Cheap、Always Strong、Task-Aware、Learned Router 与 Reflection。",
     },
     {
-      en: "Used 300 original development tasks and set A for method and feature comparison, then froze the selected recipe before opening set B.",
+      en: "Used the original 300-task development set and set A to compare methods and features, then froze the selected configuration before opening set B.",
       zh: "使用原始 300 道开发题和 A 组进行方法与特征比较，并在查看 B 组前冻结最终方案。",
     },
     {
-      en: "Reserved set B as the untouched 150-task confirmation set for the final frozen method recipe.",
+      en: "Reserved set B as an untouched 150-task confirmation set for the final frozen method configuration.",
       zh: "将 B 组保留为 150 道完全未参与选择的最终确认集，用于评估冻结后的方法方案。",
     },
   ],
@@ -72,7 +72,7 @@ export const routerBenchMini: ResearchProjectCaseStudy = {
       zh: "在两批无重叠 held-out 评测中，固定的 Task-Aware 基线仅比 Always Strong 低 0.67 个百分点。",
     },
     {
-      en: "The same frozen comparison reduced calling cost by 22.5% and observed latency by 26.6%.",
+      en: "Under the same frozen evaluation, API-call cost fell by 22.5% and observed latency by 26.6%.",
       zh: "同一冻结基线比较中，调用成本降低 22.5%，观测延迟降低 26.6%。",
     },
   ],
@@ -112,11 +112,11 @@ export const selectedPublications: PublicationSummary[] = [
     venue: "Applied Sciences 15(14), 7793 (2025)",
     homepageCitation: { kind: "journal", journal: "Appl. Sci.", year: "2025", volume: "15", article: "7793" },
     summary: {
-      en: "A complete applied-ML workflow spanning historical data preparation, country grouping, forecasting, model comparison, and effect quantification.",
+      en: "An applied machine-learning workflow spanning historical data preparation, country grouping, forecasting, model comparison, and effect quantification.",
       zh: "一项完整的应用机器学习研究，覆盖历史数据处理、国家分组、预测、模型比较与效应量化。",
     },
     result: {
-      en: "XGBoost selected for medal forecasting · FCNN test accuracy 85.5%",
+      en: "400K+ Olympic records · 2 models · 2 quantified effects",
       zh: "40多万条奥赛记录 · 2个模型和2个有趣效应",
     },
     homeVisual: {
@@ -241,7 +241,7 @@ export const homepageEngineering = [
   {
     id: "laowang",
     title: { en: "Lao Wang", zh: "老王运动打卡" },
-    summary: { en: "Deployed exercise and health check-in mini program", zh: "用 AI 辅助独立开发的小程序" },
+    summary: { en: "An independently developed mini program built with AI assistance", zh: "用 AI 辅助独立开发的小程序" },
     evidence: { en: "872 cumulative users · 200+ daily active users", zh: "累计用户 872 · 日活用户 200+" },
     href: "/brief/laowang-checkin",
   },
@@ -250,7 +250,7 @@ export const homepageEngineering = [
 export const experienceHighlights = [
   {
     title: { en: "National Supercomputing Center in Wuxi", zh: "国家超级计算无锡中心" },
-    evidence: { en: "Algorithm Engineer Intern · 230K records", zh: "算法工程师实习生" },
+    evidence: { en: "Algorithm Engineer Intern", zh: "算法工程师实习生" },
   },
   {
     title: { en: "MCM/ICM 2026", zh: "MCM/ICM 2026" },

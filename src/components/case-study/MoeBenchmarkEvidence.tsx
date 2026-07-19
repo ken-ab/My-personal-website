@@ -39,7 +39,7 @@ const benchmarkScope: LocalizedText = {
 };
 
 const benchmarkResult: LocalizedText = {
-  en: "Result summary — DeepSeek-V2, DeepSeek-V3, and DBRX occupy the leading range across the four general and commonsense benchmarks. The advantage becomes clearer on code and mathematics: DeepSeek-V3 and DBRX post the strongest or near-strongest results on HumanEval, MBPP, MATH, and GSM8K, supporting the review's conclusion that fine-grained experts, shared-expert isolation, and sparse activation can combine strong capability with lower active computation.",
+  en: "Result summary — DeepSeek-V2, DeepSeek-V3, and DBRX generally score near the top on the four general and commonsense benchmarks. On code and mathematics, DeepSeek-V3 and DBRX record the highest or near-highest scores on HumanEval, MBPP, MATH, and GSM8K. This pattern is consistent with the review's discussion of fine-grained experts, shared-expert isolation, and sparse activation, but the results come from different source evaluations.",
   zh: "结果概括——DeepSeek-V2、DeepSeek-V3 和 DBRX 在四项综合与常识基准中整体位于较高区间；在代码和数学任务上优势更明显，DeepSeek-V3 与 DBRX 在 HumanEval、MBPP、MATH 和 GSM8K 上取得最高或接近最高的结果。这支持了本文的综述结论：细粒度专家、共享专家隔离与稀疏激活能够在降低激活计算的同时保持较强能力。",
 };
 
@@ -49,7 +49,7 @@ export const moeReviewContributions: LocalizedText[] = [
     zh: "将七类代表性 MoE 系统纳入统一架构比较，覆盖路由方式、专家粒度、激活参数规模、并行训练与系统级优化。",
   },
   {
-    en: "Synthesizes five benchmark dimensions against LLaMA, Mistral, Qwen, GPT, and Claude baselines; the collected results show competitive general reasoning and knowledge performance, with stronger MoE patterns in code and mathematics.",
+    en: "Synthesizes five benchmark dimensions using LLaMA, Mistral, Qwen, GPT, and Claude as reference baselines. The collected results indicate competitive general-reasoning and knowledge performance, with stronger MoE results in code and mathematics.",
     zh: "综合整理五类基准并与 LLaMA、Mistral、Qwen、GPT 和 Claude 等模型比较；汇总结果显示 MoE 在通用推理与知识任务上保持竞争力，并在代码和数学任务中呈现更突出表现。",
   },
   {

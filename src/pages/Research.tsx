@@ -11,7 +11,7 @@ export function Research() {
   return (
     <main className="page-shell research-page-v2 page-enter">
       <section className="secondary-page-title" aria-labelledby="research-title">
-        <h1 id="research-title">{bilingual(language, "My Publications", "研究与论文")}</h1>
+        <h1 id="research-title">{bilingual(language, "Research & Publications", "研究与论文")}</h1>
       </section>
 
       <section className="selected-publications-section" aria-labelledby="selected-publications-title">

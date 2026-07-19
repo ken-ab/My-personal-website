@@ -191,7 +191,7 @@ function ProjectIntro({ study }: { study: AgentProjectCaseStudy }) {
         <aside className="case-meta-card" aria-label="Case study metadata">
           <span>{study.period}</span>
           <strong>{study.role}</strong>
-          <p>{bilingual(language, "Technical project brief with traceable architecture and implementation evidence.", "以可追踪架构和实现证据呈现的技术项目简报。")}</p>
+          <p>{bilingual(language, "Technical project brief with architecture and implementation evidence.", "以可追踪架构和实现证据呈现的技术项目简报。")}</p>
         </aside>
       </section>
 
@@ -203,7 +203,7 @@ function ProjectIntro({ study }: { study: AgentProjectCaseStudy }) {
       <section className="case-section">
         <div className="case-section-heading">
           <p className="section-eyebrow">{bilingual(language, "Visual Abstract", "可视化概览")}</p>
-          <h2>{bilingual(language, "See the work before reading the project details", "先看懂项目，再进入技术细节")}</h2>
+          <h2>{bilingual(language, "Project workflow and implementation", "先看懂项目，再进入技术细节")}</h2>
         </div>
 
         <MethodDiagram compact steps={study.methodSteps} />

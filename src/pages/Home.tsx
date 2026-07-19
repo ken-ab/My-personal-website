@@ -104,7 +104,7 @@ export function Home() {
       <section className="home-experience-strip" aria-labelledby="experience-recognition-title">
         <div>
           <p className="section-eyebrow">{bilingual(language, "Experience & Recognition", "经历与荣誉")}</p>
-          <h2 id="experience-recognition-title">{bilingual(language, "Experience beyond projects.", "其他经历")}</h2>
+          <h2 id="experience-recognition-title">{bilingual(language, "Education, experience, and recognition.", "其他经历")}</h2>
         </div>
         {experienceHighlights.map((item) => (
           <article key={item.title.en}>

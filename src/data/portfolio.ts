@@ -109,9 +109,9 @@ export const profile = {
   githubLabel: "github.com/ken-ab",
   email: "zzk13373667812@gmail.com",
   wechat: "zzk13373667812",
-  currently: `Incoming Data Science student at PolyU
+  currently: `Incoming MSc student in Data Science & Analytics at PolyU
 Research focus: efficient GenAI, MoE, and model adaptation
-Building agentic AI and ML-system prototypes`,
+Developing prototypes for agentic AI and machine-learning systems`,
   researchInterests:
     "Efficient Generative AI · Mixture-of-Experts · Model Adaptation and Reuse · Multimodal and Agentic Learning",
   technicalFocus: "Python · PyTorch · TensorFlow · Transformers · BERT · ChatGLM · MoE · scikit-learn",
@@ -120,26 +120,26 @@ Building agentic AI and ML-system prototypes`,
   focus: "Multimodal / Multi-Agent AI Research · AI Systems Engineering",
   availability: "Research Assistantship · Research Collaboration",
   intro:
-    "I’m Zhenkai Zhang (Ken). I graduated from Nanjing Tech University with a bachelor’s degree and an Excellent honours classification, and I will soon begin the MSc in Data Science at The Hong Kong Polytechnic University.\n\nDuring my junior year, I devoted most of my time to research and published two SCI papers and two conference papers spanning machine learning, Mixture-of-Experts, and computer vision. In my senior year, I received the Meritorious Winner award in MCM/ICM 2026, continuing my exploration of modeling and research problems. At the same time, to understand more directly how large models and agentic systems operate in real settings, I extended part of my focus to engineering practice. I contributed to the development of a multi-agent system and an enterprise AI workflow, and independently built two mini programs with AI-assisted coding. Engineering taught me how to turn ideas into working systems, while making it clearer that what attracts me in the long term is the model architecture, routing mechanisms, and efficiency boundaries behind those systems.\n\nThese experiences did not take me away from research; instead, they helped me define my interests more clearly. I currently focus on Efficient AI, generative AI, model routing, and multimodal learning. I hope to contribute to related topics through a research assistantship or research collaboration, deepen my research ability through real projects, and support both project progress and paper development.",
+    "I’m Zhenkai Zhang (Ken). I earned a BSc in Data Science and Big Data Technology from Nanjing Tech University, with a GPA of 3.9/4.0. In September 2026, I will begin an MSc in Data Science & Analytics at The Hong Kong Polytechnic University.\n\nAs a third-year undergraduate, I focused on research and co-authored two peer-reviewed journal articles and two conference papers in machine learning, Mixture-of-Experts, and computer vision. In my final year, I received a Meritorious Winner award at MCM/ICM 2026 and gained further experience in mathematical modeling and problem-driven research. I also applied my research interests in engineering projects: I contributed to a multi-agent system and an enterprise AI workflow, and independently developed and deployed two WeChat mini programs. These projects helped me identify the questions that most interest me: how model architectures, routing mechanisms, and adaptation strategies affect the efficiency and capability limits of AI systems.\n\nMy current interests include efficient AI, generative models, model routing and reuse, and multimodal learning. I am seeking a research assistantship or collaboration in which I can contribute to rigorous experiments, system development, and publication-quality research while deepening my research skills.",
 };
 
 export const homeLanes = [
   {
     label: "Research",
-    title: "Current questions and selected evidence",
-    body: "Current experimental work, selected publications, and supporting research breadth.",
+    title: "Current research questions and selected evidence",
+    body: "Ongoing experiments, selected publications, and related research.",
     href: "/research",
   },
   {
     label: "Engineering",
-    title: "Working systems and delivery evidence",
-    body: "Agent systems, enterprise workflows, and deployed products presented as engineering work.",
+    title: "Implemented systems and deployment evidence",
+    body: "Agent systems, enterprise workflows, and deployed products, with implementation and deployment evidence.",
     href: "/engineering",
   },
   {
     label: "Experience",
     title: "Education, practice, and recognition",
-    body: "Academic preparation, technical experience, and competition research.",
+    body: "Education, technical experience, and competition-based research.",
     href: "/experience",
   },
 ];
@@ -214,7 +214,7 @@ export const applications: TimelineEntry[] = [
     role: "Second Author",
     type: "International Journal of Current Research in Science, Engineering & Technology, 2025",
     description:
-      "A review-oriented research work on robotic vision, computer vision, machine learning, technological evolution, challenges, and industrial applications.",
+      "A review of advances in robot vision, computer vision, and machine learning, including technical evolution, deployment challenges, and industrial applications.",
     tags: ["Computer Vision", "Robotics", "Perception", "Review"],
     cardVisuals: [
       {
@@ -289,7 +289,7 @@ export const projects: TimelineEntry[] = [
     chineseTitle: "国家超级计算无锡中心 / 算法工程师实习生",
     type: "Internship / Algorithm Engineering / Bioinformatics",
     description:
-      "Built high-throughput bioinformatics data pipelines for 230K-scale PDB/FASTA protein structure records, combining parallel processing, structural consistency checks, HADDOCK3-score execution, statistical correlation analysis and factor-based scoring.",
+      "Built high-throughput bioinformatics pipelines for approximately 230,000 PDB/FASTA protein-structure records, combining parallel processing, structural consistency checks, HADDOCK3-score execution, correlation analysis, and factor-based scoring.",
     tags: [
       "Python",
       "Multiprocessing",
@@ -301,9 +301,9 @@ export const projects: TimelineEntry[] = [
       "Factor Analysis",
     ],
     highlights: [
-      "Processed 230K-scale protein structure records.",
-      "Built chain reorganization, consistency check and abnormal data cleaning workflows.",
-      "Used Spearman correlation and factor analysis to build a comprehensive statistical scoring model.",
+      "Processed approximately 230,000 protein-structure records.",
+      "Built workflows for chain reorganization, consistency checks, and anomalous-data cleaning.",
+      "Combined Spearman correlation and factor analysis in a composite statistical scoring model.",
       "Identified samples with imbalanced energy features.",
     ],
     emphasis: "featured",
@@ -353,7 +353,7 @@ export const projects: TimelineEntry[] = [
     chineseTitle: "EnergyQuant 投前工作流系统",
     type: "Project Experience / Investment Workflow / AI Document Processing",
     description:
-      "A pre-investment workflow system for AI-assisted file classification, Track B material review, RBAC permission control and three-track parallel processing.",
+      "A pre-investment workflow system that supports AI-assisted file classification, Track B material review, RBAC, and three parallel processing tracks.",
     tags: [
       "AI File Classification",
       "Track B Review",
@@ -380,12 +380,12 @@ export const developmentProjects: DevelopmentProject[] = [
     chineseTitle: "基于 MCP 协议的 A 股智能分析系统",
     type: "AI Agent / Finance / Multi-agent System",
     description:
-      "Built on the MCP framework, the system coordinates multiple agents to provide structured references for investment decisions.",
+      "Built on MCP, the system coordinates multiple agents to produce structured research reports for investment analysis.",
     tags: ["MCP", "LangGraph", "ReAct", "Multi-Agent", "A-share", "Qwen3-2.5B", "LoRA", "News Factor Model", "Markdown Report"],
     highlights: [
-      "Covered 4000+ A-share stocks.",
-      "Built multiple specialized agents: fundamental, technical, valuation and news analysis.",
-      "Added summary agent, evaluator agent and reflection-based replanning loop.",
+      "Supports data access for more than 4,000 A-share stocks.",
+      "Implemented specialist agents for fundamental, technical, valuation, and news analysis.",
+      "Added a summary agent, an evaluator, and a reflection-based replanning loop.",
       "Integrated Qwen3-2.5B LoRA news factor model.",
     ],
     actions: [
@@ -423,13 +423,13 @@ export const developmentProjects: DevelopmentProject[] = [
     chineseTitle: "靖江市千帆靖发产学研用平台/小程序",
     type: "Mini Program / Admin System / Government-University Collaboration",
     description:
-      "A mini program and backend system for government-enterprise-university cooperation, including national project map, policy PDF display, project matching and batch data import governance.",
+      "A mini program and backend system for collaboration among government agencies, companies, and universities, including a national project map, policy PDFs, project matching, and governed batch imports.",
     tags: ["WeChat Mini Program", "Admin Dashboard", "Batch Import", "Error Receipt", "Project Map", "Policy PDF", "Data Governance"],
     highlights: [
       "Built mini program and management backend.",
       "Supported national project map and policy document display.",
       "Supported bulk data import with error feedback.",
-      "Served cooperation scenarios between government, enterprises and universities.",
+      "Supports collaboration among government agencies, companies, and universities.",
     ],
     actions: [{ label: "View Detail", href: "/brief/jingjiang-platform" }],
     emphasis: "medium",
@@ -457,7 +457,7 @@ export const developmentProjects: DevelopmentProject[] = [
     chineseTitle: "老王运动打卡小程序",
     type: "Mini Program / Health Check-in / AI Assistant",
     description:
-      "A deployed exercise, multi-mode check-in, community and AI-assisted sharing product built as a complete mini-program and backend workflow.",
+      "A deployed WeChat mini program that combines exercise tracking, multiple health check-ins, community features, and AI-assisted sharing, with a complete backend workflow.",
     tags: [
       "WeChat Mini Program",
       "AI Assistant",
@@ -470,9 +470,9 @@ export const developmentProjects: DevelopmentProject[] = [
     ],
     highlights: [
       "Built exercise check-in, metronome timing and health record features.",
-      "Added family contact and reminder mechanism.",
-      "Built community and admin management features.",
-      "Deployed online with backend services.",
+      "Added family-contact and reminder features.",
+      "Implemented community and administration features.",
+      "Deployed the mini program and backend services to production.",
     ],
     actions: [{ label: "View Detail", href: "/brief/laowang-checkin" }],
     emphasis: "medium",

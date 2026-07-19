@@ -215,7 +215,7 @@ export const caseStudies: CaseStudy[] = [
     methodVisualization: "moe",
     eyebrow: "Research Brief / MoE Architecture",
     title: "Exploring and Enhancing Advanced MoE Models: From DeepSpeed-MoE to DeepSeek-V3",
-    subtitle: "A first-author comparative review of seven representative Mixture-of-Experts systems and literature-reported performance-efficiency evidence.",
+    subtitle: "A first-author comparative review that compares seven representative Mixture-of-Experts systems and synthesizes published evidence on performance and efficiency.",
     tone: "research",
     period: "03/2025",
     role: "First Author",
@@ -226,7 +226,7 @@ export const caseStudies: CaseStudy[] = [
       "This study explores the application and optimization of Mixture of Experts (MoE) models in large-scale language models. We analyze the fundamental principles and limitations of the MoE architecture, followed by an in-depth examination of optimization strategies in advanced MoE architectures, including Switch Transformer, Deepspeed-MoE, PR-MoE, Mixtral 8x7B, Glam, DBRX and DeepSeek-V3. Through comprehensive benchmarks across five dimensions (popular aggregated results, commonsense reasoning, world knowledge, code and math), we compare these MoE models against the LLaMA family, Qwen 2.5 72B Base, GPT family and Claude family. Our findings indicate that MoE is a model architecture capable of maintaining high performance even under computational constraints. Techniques such as pyramid structures with residual connections, sparse activation, adaptive adjustment of expert numbers and sizes and shared expert isolation contribute to performance enhancement. Compared to standard Transformer models, MoE can achieve at least a 50% reduction in inference computation while preserving model performance. Furthermore, MoE achieves higher benchmark scores in mathematical and coding tasks. Open-source MoE models, exemplified by DeepSeek-V3, democratize AI research by lowering barriers to entry and fostering global collaboration. Community-driven initiatives, such as standardized simulation-to-real transfer protocols and resource-sharing platforms, address key challenges.",
     paperUrl: "https://doi.org/10.1109/AINIT65432.2025.11035928",
     oneLineSummary:
-      "A first-author comparative review of seven representative Mixture-of-Experts systems, synthesizing architectural choices and literature-reported performance–efficiency evidence.",
+      "A first-author comparative review that compares seven representative Mixture-of-Experts systems and synthesizes architectural choices with published evidence on performance and efficiency.",
     visuals: [
       {
         src: moeTimelineFigure,
@@ -269,7 +269,7 @@ export const caseStudies: CaseStudy[] = [
       "Extracts recurring efficiency mechanisms, including sparse activation, pyramid-residual organization, fine-grained experts and shared expert isolation.",
     ],
     comparativeReview: {
-      positioningNote: "A first-author comparative review of seven representative Mixture-of-Experts systems, synthesizing architectural choices and literature-reported performance–efficiency evidence.",
+      positioningNote: "A first-author comparative review that compares seven representative Mixture-of-Experts systems and synthesizes architectural choices with published evidence on performance and efficiency.",
       flowSteps: ["Literature scope", "Architecture taxonomy", "Evidence separation", "Findings and limitations"],
       comparisonRows: [
         {
@@ -330,7 +330,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       benchmark: {
-        evidenceNote: "Benchmark values were collected from original model papers, technical reports and public evaluation results. The models were not reproduced under one fully unified evaluation environment. The comparison is therefore intended to reveal broad performance–efficiency patterns rather than serve as a strict leaderboard.",
+        evidenceNote: "Benchmark values were collected from original model papers, technical reports, and public evaluation results. The models were not re-evaluated in a single, fully standardized environment. The comparison therefore identifies broad performance–efficiency patterns rather than providing a strict leaderboard.",
         dimensions: ["Aggregate", "Commonsense", "World Knowledge", "Code", "Math"],
         includedSystems: ["GLaM", "Mixtral 8×7B", "DBRX", "DeepSeek-V3"],
         architectureOnlySystems: ["Switch Transformer", "DeepSpeed-MoE", "PR-MoE"],
@@ -371,7 +371,7 @@ export const caseStudies: CaseStudy[] = [
     keywords: ["LangGraph", "MCP", "Multi-Agent", "ReAct", "Evaluation", "Reflection"],
     githubUrl: "https://github.com/ken-ab/Finance-Agent",
     oneLineSummary:
-      "This multi-agent financial research system is built with LangGraph, MCP, and ReAct. An independent MCP Server exposes eight financial-data tool families to four specialist agents for parallel fundamental, technical, valuation, and news analysis. A Summary Agent produces a structured Markdown report, an Evaluator Agent checks completeness and task alignment, and a Reflection Agent may issue one bounded replanning instruction before the final report is produced.",
+      "This multi-agent financial research system is built with LangGraph, MCP, and ReAct. An independent MCP server provides eight families of financial-data tools to four specialist agents, which run fundamental, technical, valuation, and news analyses in parallel. A summary agent produces a structured Markdown report, an evaluator checks completeness and task alignment, and a reflection agent may issue one bounded replanning instruction before the final report is produced.",
     facts: [
       { value: "4", label: "Specialist Agents", note: "Fundamental, technical, valuation, and news analysis" },
       { value: "8", label: "MCP Tool Families", note: "Market, reports, indices, macro, analysis, and news access" },
@@ -397,7 +397,7 @@ export const caseStudies: CaseStudy[] = [
       "Source trace",
     ],
     experimentalNote:
-      "Experimental side track: Qwen3-2.5B LoRA scripts explore news sentiment and risk scoring, but they are not presented as a mandatory stage in the core LangGraph runtime.",
+      "Experimental component: Qwen3-2.5B LoRA scripts explore news sentiment and risk scoring, but they are not presented as a required stage in the core LangGraph runtime.",
     methodTitle: "LangGraph + MCP + evaluator-reflection loop",
     methodLead:
       "The repository implements a graph-style workflow where data tools feed specialist agents before a summary, evaluation, and bounded reflection stage.",
@@ -415,7 +415,7 @@ export const caseStudies: CaseStudy[] = [
       {
         label: "Agents",
         title: "Parallel specialist analysis",
-        body: "Fundamental, technical, valuation, and news agents run as separated branches so each analysis view remains traceable.",
+        body: "Fundamental, technical, valuation, and news agents run in separate branches so that each analytical perspective remains traceable.",
       },
       {
         label: "Report",
@@ -464,7 +464,7 @@ export const caseStudies: CaseStudy[] = [
       {
         src: olympicModelFrameworkFigure,
         alt: "Olympic medal prediction framework covering MPXG, FMPM, host effects, and great-coach effects.",
-        caption: "Two prediction paths model medal-winning and first-medal countries, followed by host- and coach-effect analysis.",
+        caption: "Two prediction paths model established medal-winning countries and countries seeking a first medal, followed by host- and coach-effect analysis.",
       },
     ],
     methodTitle: "Medal prediction plus effect quantification",
@@ -541,7 +541,7 @@ export const caseStudies: CaseStudy[] = [
         caption: "The route connects specimen experiments, data processing, model comparison, hyperparameter tuning, and design feedback.",
       },
     ],
-    methodTitle: "Experimental data to optimized ML model",
+    methodTitle: "From experimental data to an optimized ML model",
     methodLead:
       "The study turns structural test data into a machine-learning workflow for connection-type evaluation and behavior prediction.",
     methodSteps: [
@@ -585,7 +585,7 @@ export const caseStudies: CaseStudy[] = [
     methodVisualization: "robot-vision",
     eyebrow: "Research Brief / Review",
     title: "Research Progress on the Integration of Robot Vision, Computer Vision and Machine Learning: Technological Evolution, Challenges and Industrial Applications",
-    subtitle: "A review paper on technological evolution, challenges, and industrial applications.",
+    subtitle: "A review of the evolution, deployment challenges, and industrial applications of robot vision.",
     tone: "research",
     period: "04/2025",
     role: "Second Author",
@@ -605,7 +605,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     methodTitle: "Technology map for vision-based robotics",
     methodLead:
-      "The page presents the review as a taxonomy rather than a long literature list, so readers can see how the fields connect.",
+      "The review uses a taxonomy to connect system architectures, perception tasks, deployment constraints, and industrial applications.",
     methodSteps: [
       {
         label: "Map",
@@ -666,9 +666,9 @@ export const caseStudies: CaseStudy[] = [
         caption: "The digital-trade ecosystem links new business models with infrastructure, data, skills, regulation, and emerging technologies.",
       },
     ],
-    methodTitle: "Digital economy to export potential",
+    methodTitle: "From digital-economy development to export potential",
     methodLead:
-      "The paper combines a stochastic frontier gravity model with mediation-pathway reasoning to explain trade potential.",
+      "The paper combines a stochastic frontier gravity model with mediation analysis to explain trade potential.",
     methodSteps: [
       {
         label: "Scope",
@@ -720,12 +720,12 @@ export const caseStudies: CaseStudy[] = [
     problemLabel: "Problem F / AI-era post-secondary education",
     reportUrl: mcmReportUrl,
     oneLineSummary:
-      "The project diagnoses how generative AI reshapes three careers, couples curriculum reform with labor-market evolution, and turns robust policy rankings into institution-specific action.",
+      "The project models how generative AI changes three occupations, links curriculum reform to labor-market evolution, and converts policy rankings into recommendations for three institutional types.",
     contribution: {
       period: { en: "February 2026", zh: "2026 年 2 月" },
       role: { en: "Technical Writing Lead & Framework Integrator", zh: "论文主笔 / 框架整合" },
       body: {
-        en: "Led the report structure and technical narrative, integrated the four competition tasks into a unified macro–micro framework, and completed the core writing, figure organization, result interpretation, and final polishing of the submission.",
+        en: "I led the report structure and technical narrative, integrated the four competition tasks into a unified macro–micro framework, and wrote and edited the core text, figures, and result interpretation for the final submission.",
         zh: "负责论文整体结构与技术叙事，将四项比赛任务、模型公式、仿真结果和院校政策建议整合为统一的宏微观框架，并完成核心正文写作、图表编排、结果解释与全文润色。",
       },
     },
@@ -894,7 +894,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     findingSummary: {
-      title: { en: "What the Model Ultimately Shows", zh: "模型最终说明了什么？" },
+      title: { en: "Career-Level Finding", zh: "模型最终说明了什么？" },
       body: {
         en: "Career resilience is not determined by AI exposure alone. It depends on whether human skills remain complementary, physically embedded, socially dependent, or transferable to higher-level judgment and orchestration.",
         zh: "职业韧性并不只由 AI 暴露程度决定，而取决于人类技能是否能与 AI 形成互补，是否依赖实体环境和社会互动，以及能否向更高层次的判断、协调与系统编排迁移。",
@@ -987,7 +987,7 @@ export const caseStudies: CaseStudy[] = [
       {
         institutionType: { en: "Technical-Vocational Institutions", zh: "职业技术院校" },
         policy: { en: "Stable Scale · Targeted Reinforcement", zh: "规模稳定 · 定向强化" },
-        title: { en: "Reinforce the Physical Stronghold", zh: "强化实体技能优势" },
+        title: { en: "Strengthen Physical and Technical Skills", zh: "强化实体技能优势" },
         body: { en: "Keep overall training capacity stable while adding AI to diagnosis, maintenance, and critical-infrastructure work.", zh: "保持总体培养规模稳定，在保留实体技能训练的同时，有针对性地强化诊断、维护与关键基础设施能力。" },
         actions: [
           { en: "Field operations", zh: "现场操作" },
@@ -1000,7 +1000,7 @@ export const caseStudies: CaseStudy[] = [
       {
         institutionType: { en: "Arts Institutions", zh: "设计艺术类院校" },
         policy: { en: "Moderate Contraction · Structural Transformation", zh: "适度收缩 · 结构转型" },
-        title: { en: "From Artifact Production to Meaning and Authorship", zh: "从作品生产转向意义、判断与作者责任" },
+        title: { en: "Shift from Production Skills to Judgment and Authorship", zh: "从作品生产转向意义、判断与作者责任" },
         body: { en: "Control conventional production-oriented enrollment while rebuilding the curriculum around judgment, direction, ethics, and authorship.", zh: "适度控制传统生产型专业的培养规模，并围绕判断、策划、伦理与作者责任推动课程体系结构性转型。" },
         actions: [
           { en: "Aesthetic judgment", zh: "审美判断" },
@@ -1055,7 +1055,7 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
         conclusion: {
-          en: "Static AI exposure is not destiny. The adaptability of curriculum and skill structures determines long-run employment outcomes, because institutions can actively reshape whether AI substitutes for or complements graduates.",
+          en: "Static AI-exposure estimates do not determine long-term outcomes. Curriculum and skill structures matter because institutions can reshape whether AI substitutes for or complements graduates.",
           zh: "静态的 AI 暴露不是最终命运，课程与技能结构的适应能力才决定长期就业结果；高校可以通过课程与招生改革，主动改变学生与 AI 的关系。",
         },
         ablationConclusion: {
@@ -1091,7 +1091,7 @@ export const caseStudies: CaseStudy[] = [
       },
       overall: {
         thesis: {
-          en: "Generative AI changes the structure of education rather than making education irrelevant. Higher education can actively reshape the relationship between students and AI through curriculum and enrollment reform instead of passively accepting occupational disruption.",
+          en: "Generative AI changes how education should be organized. Higher education can reshape the relationship between students and AI through curriculum and enrollment reform instead of passively accepting occupational disruption.",
           zh: "生成式 AI 改变的不是教育是否重要，而是教育应当如何组织。高校可以通过课程与招生改革，主动改变学生与 AI 的关系，而不是被动接受职业市场受到的冲击。",
         },
         chain: [
@@ -1121,16 +1121,16 @@ export const caseStudies: CaseStudy[] = [
     eyebrow: "Deployed Mini Program / Healthy Ageing",
     title: "Lao Wang Exercise Check-in Mini Program",
     subtitle:
-      "Lao Wang Exercise Check-in is an age-friendly WeChat mini program for older adults, offering a simple and warm experience for daily exercise tracking and health companionship. It integrates exercise check-ins, metronome timing, streak statistics, AI health Q&A, community interaction, check-in poster generation, and WeChat reminders. Built with Vue 3 and uni-app with a Node.js backend, it covers the complete path from product design and full-stack development to production deployment.",
+      "Lao Wang Exercise Check-in is an age-friendly WeChat mini program for older adults. It combines exercise and health check-ins, metronome timing, streak tracking, AI health Q&A, community features, poster generation, and WeChat reminders. I built the product with Vue 3, uni-app, and a Node.js backend, and handled interaction design, full-stack development, and deployment. I continue to refine the interface with larger type, clear feedback, and shorter task flows.",
     tone: "systems",
     period: "2026.05 - 2026.06",
-    role: "Independent Development",
+    role: "Independent Developer",
     keywords: ["WeChat Mini Program", "uni-app", "Vue 3", "Pinia", "Express", "Healthy Ageing"],
     qrCode: wangMiniProgramQr,
     proofCopy: {
       eyebrow: "DEPLOYED PRODUCT",
-      title: "872 cumulative users in the recorded operating snapshot",
-      supporting: "The dated WeAnalysis snapshot reports reach and daily usage without inferring user sentiment.",
+      title: "872 cumulative users in the recorded WeAnalysis snapshot",
+      supporting: "The dated WeAnalysis snapshot reports cumulative and daily usage only.",
     },
     metricGroups: [
       {
@@ -1148,7 +1148,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     oneLineSummary:
-      "Independently delivered the complete product—from interaction design and frontend implementation to backend services, API integration, and production deployment.",
+      "I designed, built, and deployed the product, including its interface, frontend, backend services, API integrations, and production environment.",
     screenshots: [
       { src: wangHomeScreenshot, alt: "Deployed Lao Wang mini-program home screen.", label: "Home", width: 1080, height: 2221, featured: true },
       { src: wangCommunityScreenshot, alt: "Feed-style Lao Wang exercise community in the deployed mini program.", label: "Community", width: 1080, height: 2238 },
@@ -1161,15 +1161,15 @@ export const caseStudies: CaseStudy[] = [
     featureBlocks: [
       {
         title: "Age-friendly interaction",
-        body: "Large targets, restrained navigation, warm green contrast, and short task paths reduce friction for older users.",
+        body: "Large targets, simple navigation, warm green contrast, and short task paths reduce friction for older users.",
       },
       {
-        title: "Exercise + multi-mode check-ins",
-        body: "One product links exercise timing with exercise, 16:8 diet, blood-pressure, and blood-glucose check-ins.",
+        title: "Exercise and health check-ins",
+        body: "The mini program combines exercise timing with exercise, 16:8 diet, blood-pressure, and blood-glucose check-ins.",
       },
       {
         title: "Familiar community sharing",
-        body: "After a check-in, users can generate a polished poster and Moments-ready or community-ready copy, then share through a familiar feed-style experience.",
+        body: "After a check-in, users can generate a poster and copy for WeChat Moments or the in-app community, then share them through a familiar feed-style interface.",
       },
       {
         title: "Lao Wang AI workflow",
@@ -1185,10 +1185,10 @@ export const caseStudies: CaseStudy[] = [
     eyebrow: "Deployed Mini Program / Public-sector Data Platform",
     title: "Jingjiang Qianfan Jingfa University–Industry–Research–Application Platform / Mini Program",
     subtitle:
-      "A mini program, API, and management system that makes university projects, regional coverage, policies, and challenge batches searchable and governable.",
+      "A mini program, API, and management system that makes university projects, regional coverage, policies, and challenge batches searchable and maintainable.",
     tone: "systems",
     period: "2026.04—2026.06",
-    role: "End-to-end System Development & Data Governance",
+    role: "End-to-end System Development and Data Governance",
     keywords: ["WeChat Mini Program", "Vue 3", "Express", "MySQL", "Project Map", "Data Governance"],
     qrCode: qianfanMiniProgramQr,
     proofCopy: {
@@ -1217,7 +1217,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Batch 03", value: 16 },
     ],
     oneLineSummary:
-      "Based on real operational requirements, I independently developed the mini program, backend API, administration system, and database, including batch import, validation feedback, and production deployment.",
+      "I independently developed the mini program, backend API, administration system, and database for a live operational workflow. I also implemented batch imports, validation feedback, and production deployment.",
     screenshots: [
       {
         src: qianfanHomeScreenshot,
@@ -1262,10 +1262,10 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Policy access",
-        body: "Public policy documents are exposed through a dedicated mini-program library and PDF reading flow.",
+        body: "Users can browse public policy documents through a dedicated mini-program library and PDF reader.",
       },
       {
-        title: "Governed data operations",
+        title: "Data import and validation",
         body: "The administration system supports bulk imports, validation feedback, error receipts, and reversible import tasks.",
       },
     ],

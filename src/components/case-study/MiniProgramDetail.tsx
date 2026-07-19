@@ -166,7 +166,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
         <header className={`mini-section-heading${isJingjiang || isLaoWang ? " is-compact-title" : ""}`}>
           <div>
             {isLaoWang ? <h2 className="mini-editorial-section-title" id="mini-system-title">{bilingual(language, "System Flow", "系统流程")}</h2> : <p className="section-eyebrow" id={isJingjiang ? "mini-system-title" : undefined}>{bilingual(language, "System Flow", "系统流程")}</p>}
-            {!isJingjiang && !isLaoWang ? <h2 id="mini-system-title">{bilingual(language, "From user action to maintained data", "从用户操作到可持续维护的数据")}</h2> : null}
+            {!isJingjiang && !isLaoWang ? <h2 id="mini-system-title">{bilingual(language, "From user actions to maintained records", "从用户操作到可持续维护的数据")}</h2> : null}
           </div>
           {!isJingjiang && !isLaoWang ? <p>{bilingual(language, "The diagram separates the user-facing entry, service layer, stored records, and operational follow-up.", "该流程区分用户入口、服务层、数据记录与后续运营。")}</p> : null}
         </header>
@@ -189,7 +189,7 @@ export function MiniProgramDetail({ study }: { study: MiniProgramCaseStudy }) {
         <header className={`mini-section-heading${isJingjiang || isLaoWang ? " is-compact-title" : ""}`}>
           <div>
             {isLaoWang ? <h2 className="mini-editorial-section-title" id="mini-features-title">{bilingual(language, "Product Decisions", "产品决策")}</h2> : <p className="section-eyebrow" id={isJingjiang ? "mini-features-title" : undefined}>{bilingual(language, "Product Decisions", "产品决策")}</p>}
-            {!isJingjiang && !isLaoWang ? <h2 id="mini-features-title">{bilingual(language, "What the product had to make understandable", "产品必须让用户一眼理解什么")}</h2> : null}
+            {!isJingjiang && !isLaoWang ? <h2 id="mini-features-title">{bilingual(language, "What users needed to understand at a glance", "产品必须让用户一眼理解什么")}</h2> : null}
           </div>
         </header>
         <div className="mini-feature-grid">
